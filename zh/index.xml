@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Guoqing&#39;s second brain</title>
+    <link>https://xgugeng.github.io/zh/</link>
+    <description>Recent content on Guoqing&#39;s second brain</description>
+    <generator>Hugo -- 0.150.0</generator>
+    <language>zh</language>
+    <lastBuildDate>Sun, 16 Feb 2020 11:05:45 +0800</lastBuildDate>
+    <atom:link href="https://xgugeng.github.io/zh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>理解源码的一种方式</title>
+      <link>https://xgugeng.github.io/zh/post/one-way-to-understand-source-code/</link>
+      <pubDate>Sun, 16 Feb 2020 11:05:45 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/one-way-to-understand-source-code/</guid>
+      <description>&lt;p&gt;TL;DR&lt;/p&gt;
+&lt;p&gt;目标导向，带着问题读源码；自顶向下，先理解 what，再去代码中找 how；最后擅用图形化工具，抓大放小，有的放矢。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux Namespace Explained</title>
+      <link>https://xgugeng.github.io/zh/post/linux-namespace-explained/</link>
+      <pubDate>Wed, 27 Nov 2019 20:12:20 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/linux-namespace-explained/</guid>
+      <description>&lt;p&gt;最近在做 Kubernetes Security 相关的工作。作为一个 Kubernetes 新手，刚看到 yaml 文件中的 namespace 时，很容易和 Linux 的 Namespace 搞混。加上在读 Kubernetes 文档的时候，总时不时看到 Linux Namespace 的字样就更加困惑起来。以此为契机，正好把 Linux Namespace 再好好梳理一下，解开心中的谜团：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux 的 Namespace 是如何实现资源的隔离&lt;/li&gt;
+&lt;li&gt;Linux 下哪些资源可以按照 Namespace 组织，如何组织&lt;/li&gt;
+&lt;li&gt;Container 哪些地方用到了 Linux Namespace&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>这个就叫专业 🚬</title>
+      <link>https://xgugeng.github.io/zh/post/this-is-professionalism/</link>
+      <pubDate>Thu, 12 Sep 2019 18:51:44 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/this-is-professionalism/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;最好的软件开发人员知道一个秘密：美的东西比丑的东西创建起来更廉价、也更快捷。美的系统是灵活、易于理解的，构建和维护它们就是一种快乐。&lt;/p&gt;
+&lt;p&gt;我们需要招聘的不是“经历丰富”的人，而是“有职素养”的人。并不是问题的难度，而是解决问题的方式、步骤以及反思的深度，更能体现一个人的职业素养。&lt;/p&gt;
+&lt;p&gt;如果只会快速编码，却不关心代码背后的意义，不能迅速判断、解决程序运行中的问题，不能自信满满地为自己交付的程序承担责任，同样是与职业素养绝缘。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python Threading</title>
+      <link>https://xgugeng.github.io/zh/post/python-threading/</link>
+      <pubDate>Mon, 05 Aug 2019 14:46:40 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/python-threading/</guid>
+      <description>&lt;p&gt;今天看了 &lt;a href=&#34;https://book.douban.com/subject/3117898/&#34;&gt;《Python源码剖析》&lt;/a&gt; 中多线程的章节，看完头都秃了。但还是感觉自己没有吸收多少，知识一股脑倾泻下来，然后匆匆流过。在两个番茄钟的间隙，我全景思考了下，还是要从上往下入手，先将 threading 模块梳理清楚。其次是带着问题来阅读源码，跟着作者的思路容易迷，而问题最好是从 threading 的使用姿势中来。&lt;/p&gt;
+&lt;p&gt;来看廖雪峰老师&lt;a href=&#34;https://www.liaoxuefeng.com/wiki/1016959663602400/1017629247922688&#34;&gt;Python教程&lt;/a&gt;中的例子：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; time&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; threading
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;loop&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;thread &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; is running...&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; threading&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;current_thread()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;name)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;thread &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; &amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; (threading&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;current_thread()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;name, n))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        time&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sleep(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;thread &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; ended.&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; threading&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;current_thread()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;name)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;thread &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; is running...&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; threading&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;current_thread()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;name)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;t &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; threading&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Thread(target&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;loop, name&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;LoopThread&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;t&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;start()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;t&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;thread &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; ended.&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; threading&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;current_thread()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;name)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看完这段代码，我的脑海中浮现了这几个问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Thread&lt;/code&gt; 是如何描述线程对象的？&lt;/li&gt;
+&lt;li&gt;启动线程的时候做了些啥，线程对象保存在哪里？&lt;/li&gt;
+&lt;li&gt;除了 &lt;code&gt;Thread&lt;/code&gt;，threading 里还保存了写东西，否则 &lt;code&gt;threading.current_thread()&lt;/code&gt; 怎么实现？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;除此之外，还有一些线程的常见问题，如：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;threading 提供了哪些线程同步方式，锁？&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    <item>
+      <title>Are you ok - 分布式系统的租约和心跳</title>
+      <link>https://xgugeng.github.io/zh/post/are-you-ok/</link>
+      <pubDate>Wed, 24 Jul 2019 14:24:00 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/are-you-ok/</guid>
+      <description>&lt;p&gt;故障检测主要有两种机制：心跳和租约。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;心跳：假设总控机 A 需要确认工作机 B 是否发生故障，那么总控机 A 每隔一段时间，比如 1 秒，向工作机 B 发送一个心跳包。&lt;/li&gt;
+&lt;li&gt;租约：租约在一定期限内给予持有者特定权力的协议。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;租约的协议决定了其用途，它能做的事情远不止故障检测。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果协议内容是服务器确认客户端还存活，那么这个租约的功能就相当于&lt;em&gt;心跳&lt;/em&gt;；&lt;/li&gt;
+&lt;li&gt;如果协议内容是服务器保证内容不会被修改，那么这个 租约就相当于&lt;em&gt;读锁&lt;/em&gt;；&lt;/li&gt;
+&lt;li&gt;如果协议内容是服务器保证内容只能被这个客户端修改，那么这个租约就相当于&lt;em&gt;写锁&lt;/em&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;那么在判断客户端是否存活的问题上，心跳和租约有什么区别呢？&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Redis 启动流程：命令注册和执行</title>
+      <link>https://xgugeng.github.io/zh/post/redis-cmd-population-execution/</link>
+      <pubDate>Wed, 03 Apr 2019 20:11:53 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/redis-cmd-population-execution/</guid>
+      <description>&lt;p&gt;这篇博客想讲一下 Redis 命令的注册、解析和执行。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本文采用的源码是 Redis 5.0.0&lt;/p&gt;&lt;/blockquote&gt;</description>
+    </item>
+    <item>
+      <title>Naval Ravikant 有关读书的最佳实践</title>
+      <link>https://xgugeng.github.io/zh/post/best-practices-for-reading-from-angel-philosopher/</link>
+      <pubDate>Tue, 19 Mar 2019 16:44:45 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/best-practices-for-reading-from-angel-philosopher/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://fs.blog/naval-ravikant/&#34;&gt;The Angel Philosopher&lt;/a&gt; 这集 episode，我起码听了 20 遍。但每次打开 Podcast，都忍不住再听一次。从读书、习惯、决策，到认知，Naval 给出了自己的真知灼见，每次听都有新收获。&lt;/p&gt;
+&lt;p&gt;这篇博客主要记录了其中关于读书的见解，一句话归纳就是：反复读几本书，而不是单纯看很多书。&lt;/p&gt;
+&lt;p&gt;Naval 的简介用一句话就可以：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Naval is the CEO and co-founder of AngelList. He&amp;rsquo;s invested in more than 100 companies, including Uber, Twitter, Yammer, and so many others.&lt;/p&gt;&lt;/blockquote&gt;</description>
+    </item>
+    <item>
+      <title>水平思考笔记</title>
+      <link>https://xgugeng.github.io/zh/post/lateral-thinking-notes/</link>
+      <pubDate>Fri, 15 Mar 2019 20:49:53 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/lateral-thinking-notes/</guid>
+      <description>&lt;p&gt;这两天上了一堂水平思考课，说实话，比上班还累！但跟着老师的思路，加上及时的课堂练习，最后是收获满满。&lt;/p&gt;
+&lt;p&gt;课程之后总感觉要再巩固一下，遂成此文。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Redisson 的布隆过滤器实现</title>
+      <link>https://xgugeng.github.io/zh/post/redisson-bloomfilter-impl/</link>
+      <pubDate>Tue, 05 Mar 2019 16:33:21 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/redisson-bloomfilter-impl/</guid>
+      <description>&lt;p&gt;之前看到一篇 &lt;a href=&#34;https://zhouzhipeng.com/blog/#/articles/implementing-bloomfilter-with-redis&#34;&gt;用 Redis 快速实现 BloomFilter&lt;/a&gt; 就忍不住看看 Redisson 的 &lt;a href=&#34;https://github.com/redisson/redisson/wiki/6.-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AF%B9%E8%B1%A1#68-%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8bloom-filter&#34;&gt;实现方式&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Redis 哨兵：自动故障转移</title>
+      <link>https://xgugeng.github.io/zh/post/redis-sentinel-automatic-failover/</link>
+      <pubDate>Sat, 02 Feb 2019 14:21:53 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/redis-sentinel-automatic-failover/</guid>
+      <description>&lt;p&gt;Redis 哨兵是 Redis 的高可用实现方案。本节首先会回顾主从复制模式下故障处理可能产生的问题，而后引出高可用的概念，最后重点分析 Redis 哨兵的基本架构、优势，以及是如何实现高可用的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本文大部分摘录自：&lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;&gt;Redis开发与运维&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</description>
+    </item>
+    <item>
+      <title>Redis 哨兵: 客户端连接</title>
+      <link>https://xgugeng.github.io/zh/post/redis-sentinel-client-connection/</link>
+      <pubDate>Tue, 29 Jan 2019 10:21:46 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/redis-sentinel-client-connection/</guid>
+      <description>&lt;p&gt;Redis 的主从复制模式下，一旦主节点不可达，需要人工干预进行故障转移，无论对于 Redis 的使用方还是运维方都带来了极大不便。对应用方来说无法感知主节点的变化，可能会造成数据丢失或读错误，也可能会短暂的服务不可用。对于运维来说，整个故障转移需要人工介入，实时性和准确性都无法保障。&lt;/p&gt;
+&lt;p&gt;Redis Sentinel(哨兵) 就是为了解决这些问题而生的，它是 Redis 2.8 引入的高可用实现方案，包括故障发现、故障转移、配置中心、客户端通知等。&lt;/p&gt;
+&lt;p&gt;本文的关注点是哨兵下的客户端连接问题。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本文大部分摘录自：&lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;&gt;Redis开发与运维&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</description>
+    </item>
+    <item>
+      <title>Redis 全量同步解析</title>
+      <link>https://xgugeng.github.io/zh/post/redis-full-sync-explained/</link>
+      <pubDate>Sun, 20 Jan 2019 21:38:27 -0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/redis-full-sync-explained/</guid>
+      <description>&lt;p&gt;复制功能是高可用 Redis 的基础，同时也是 Redis 日常运维的常见问题。深刻理解复制的工作原理与使用姿势对我们的日常开发和运维都非常重要。&lt;/p&gt;
+&lt;p&gt;本文从同步的过程讲起，重点是全量同步的可能问题和运维方法。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本文大部分摘录自：&lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;&gt;Redis开发与运维&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</description>
+    </item>
+    <item>
+      <title>页错误引发的 Redis 延迟</title>
+      <link>https://xgugeng.github.io/zh/post/redis-anomalous-latency-because-of-page-fault/</link>
+      <pubDate>Mon, 07 Jan 2019 14:11:18 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/redis-anomalous-latency-because-of-page-fault/</guid>
+      <description>&lt;p&gt;继续每天的知心姐姐时间，这次客户邮件说，CPU 使用率飙升，同时 GET/LLEN 等命令，都要执行几十毫秒。看了一下慢日志，我去：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Id:900909 When:(1/1/2019 6:16:15 PM) Duration:41564us Command:(Llen PRIVATE ARG)
+Id:900908 When:(1/1/2019 6:16:14 PM) Duration:17041us Command:(get PRIVATE ARG)
+Id:900907 When:(1/1/2019 6:16:14 PM) Duration:51032us Command:(get PRIVATE ARG)
+Id:900906 When:(1/1/2019 6:16:12 PM) Duration:49292us Command:(get PRIVATE ARG)
+Id:900905 When:(1/1/2019 6:16:11 PM) Duration:56329us Command:(Llen PRIVATE ARG)
+Id:900904 When:(1/1/2019 6:16:10 PM) Duration:10562us Command:(get PRIVATE ARG)
+Id:900903 When:(1/1/2019 6:16:10 PM) Duration:35680us Command:(get PRIVATE ARG)
+Id:900902 When:(1/1/2019 6:16:10 PM) Duration:16367us Command:(get PRIVATE ARG)
+Id:900901 When:(1/1/2019 6:16:10 PM) Duration:29851us Command:(Llen PRIVATE ARG)
+Id:900900 When:(1/1/2019 6:16:08 PM) Duration:29050us Command:(get PRIVATE ARG)
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title>Jedis 的常见异常</title>
+      <link>https://xgugeng.github.io/zh/post/exceptions-thrown-by-jedis/</link>
+      <pubDate>Wed, 02 Jan 2019 16:21:00 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/exceptions-thrown-by-jedis/</guid>
+      <description>&lt;p&gt;最近在读的 &lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;&gt;Redis开发与运维&lt;/a&gt;，很好地总结了客户端的常见异常。这篇博客权且作为读书笔记。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Redis 的 SSL</title>
+      <link>https://xgugeng.github.io/zh/post/redis-ssl/</link>
+      <pubDate>Wed, 26 Dec 2018 10:26:19 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/redis-ssl/</guid>
+      <description>&lt;p&gt;这篇博客的起源是一位内部用户询问，Azure Cache for Redis 有没有 &lt;em&gt;.pem&lt;/em&gt; 或者 &lt;em&gt;.cem&lt;/em&gt; 的证书，然后可以在客户端指定它：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; redis
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    conn &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; redis&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;StrictRedis(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        host&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;lt;cache-name&amp;gt;.redis.cache.windows.net&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        port&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;6380&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        password&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;your password here&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ssl&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ssl_ca_certs&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;path to cert&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print (conn)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    conn&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ping()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Connected!&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;except&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Exception&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; ex:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Error:&amp;#39;&lt;/span&gt;, ex)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    exit(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Failed to connect, terminating.&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Redis 用作 LRU 缓存</title>
+      <link>https://xgugeng.github.io/zh/post/redis-as-an-lru-cache/</link>
+      <pubDate>Mon, 24 Dec 2018 16:47:34 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/redis-as-an-lru-cache/</guid>
+      <description>&lt;p&gt;本文翻译自 &lt;a href=&#34;https://redis.io/topics/lru-cache&#34;&gt;Using Redis as an LRU Cache&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;Redis 作为缓存使用时，很容易在增加新数据时剔除旧数据。这也是 &lt;em&gt;memcached&lt;/em&gt; 的默认行为。&lt;/p&gt;
+&lt;p&gt;LRU 只是其中的一种剔除方法。使用 Redis 作为 LRU 时，必须用到 &lt;code&gt;maxmemory&lt;/code&gt; 参数来限制可用内存的大小。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Redis 同步引发的系统过载</title>
+      <link>https://xgugeng.github.io/zh/post/100-server-load-because-of-redis-sync/</link>
+      <pubDate>Wed, 28 Nov 2018 14:25:25 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/100-server-load-because-of-redis-sync/</guid>
+      <description>&lt;p&gt;今天一早，就有客户来报说机器负载 100%。从日志中看到的现象是，Slave 向 Master 请求部分同步，Master 却要求 Slave 做个全套：全量同步，因为 Slave 发过来的 replication ID 太老了。Slave 说好吧，整个全的，然后消费成功。接着，Slave 还想来个部分同步，上述的过程连续发生 3 次。Master 有点强买强卖的意思了，这样一来两边的 CPU 不干了，这不是加班嘛！二者之间的网络带宽也是突增，从下图可以看出：&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/redis-network-bandwidth-spiking.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>每周/每日目标法</title>
+      <link>https://xgugeng.github.io/zh/post/weekly-daily-goals/</link>
+      <pubDate>Thu, 01 Nov 2018 09:44:00 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/weekly-daily-goals/</guid>
+      <description>&lt;p&gt;现代社会的工作方式和远古的狩猎时代颇为相似。首先，不管投入的时间有多少，只有取得具体劳动成果的人才能获得报酬。其次，工作都是集中而短暂的，一个好的算法设计通常只需几分钟，但创造的价值却远远超过几百小时的平凡工作。&lt;/p&gt;
+&lt;p&gt;但在许多人看来，高产出意味着必须朝九晚九马不停蹄地工作。这实质上是把“重复”看做工作的本质。Scott Young 提出的每周/每日目标的工作方法，完全以工作任务为标准，不管你几点下班都不是关键。核心的问题是，你到底取得了多少成果。&lt;/p&gt;
+&lt;p&gt;我执行这个方法已经3年多了，不管是在恣意慵懒的外企，还是在紧张忙碌的创业公司，这种方法都大大提高了我的产出。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>整体式学习的道与术</title>
+      <link>https://xgugeng.github.io/zh/post/holitstic-learning/</link>
+      <pubDate>Sat, 27 Oct 2018 13:11:01 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/holitstic-learning/</guid>
+      <description>&lt;p&gt;Scott Young 的故事已经家喻户晓，他曾在一年内在麻省理工学院（MIT）学完了别人需要四年才能掌握的33门课程，成绩都是 A 或 A+。Scott 将自己的学习方法称之为 &lt;em&gt;整体式学习&lt;/em&gt; （Holistic Learning），并总结出一本 &lt;a href=&#34;https://book.douban.com/subject/25783654/&#34;&gt;《如何高效学习》&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;这本书很早就出现在我的 TODO 列表中，直到最近才将它读完。放下书本之后，有点后悔没有早点读这本书。虽说书中的一些观点，已经被我用到自己的学习过程中，但大部分都是无意识的，不系统的。所以，效果也是时好时坏。&lt;/p&gt;
+&lt;p&gt;本文将书中的观点，结合自己的实践，整理出来。力图做到直观易懂，又结构清晰。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>《跟各国人都聊得来》中的方法总结</title>
+      <link>https://xgugeng.github.io/zh/post/tips-from-fluent-in-3-months/</link>
+      <pubDate>Thu, 25 Oct 2018 14:57:53 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/tips-from-fluent-in-3-months/</guid>
+      <description>&lt;p&gt;公开课 &lt;a href=&#34;https://www.coursera.org/learn/learning-how-to-learn&#34;&gt;Learning How to Learn&lt;/a&gt; 中有一段采访 Benny Lewis 的短片，他从一个没有任何语言天赋的学渣，变身掌握12门语言的狂人。看完这段采访后，总感觉意犹未尽，很多观点掷地有声、深以为然。幸好片中推荐了他的书 &lt;a href=&#34;https://book.douban.com/subject/26873699/&#34;&gt;《跟各国人都聊得来》&lt;/a&gt;，趁着空闲，就把这本书读了一遍。&lt;/p&gt;
+&lt;p&gt;虽说书中讲述的经历针对语言学习，但方法是通用的，同样适用于其他事物的学习。我将其中的几个重要观点和方法提炼出来，遂成本文。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>战胜拖延</title>
+      <link>https://xgugeng.github.io/zh/post/overcome-procrastination/</link>
+      <pubDate>Sun, 03 Jul 2016 09:07:19 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/overcome-procrastination/</guid>
+      <description>&lt;p&gt;拖延是很多人头疼的问题，它把人从无聊的现实中短暂地解脱出来。但长期来看，这是一种自欺欺人，因为事情放在那里不会自己完成。拖延反而可能浪费了做事的最好时机，贻害无穷。&lt;/p&gt;
+&lt;p&gt;拖延的坏处可能没有人不知道。即便嘴上说不，但身体还是很诚实的。遇到不喜欢或者困难的事情，我们还是习惯为自己找一些听起来有道理实际荒谬的借口，然后心安理得地将事情抛之脑后。&lt;/p&gt;
+&lt;p&gt;解决拖延的问题，和解决其他科学问题没什么两样，都是要先了解它的成因和模式。举个例子，计算机世界里的死锁。明白了死锁形成的四个条件，只要任意破坏一个条件，死锁也就不成立了。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>像写作一样写代码</title>
+      <link>https://xgugeng.github.io/zh/post/coding-is-analogous-to-writing/</link>
+      <pubDate>Wed, 25 May 2016 11:23:36 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/coding-is-analogous-to-writing/</guid>
+      <description>&lt;p&gt;订阅 &lt;a href=&#34;https://www.publicationcoach.com/&#34;&gt;Publication Coach&lt;/a&gt; 很久了，越发感到写作和写代码之间的共通之处。本文仅展开一个方面来论述，也是最重要的一个方面，即思考模式。很多人都知道，我们人类的大脑有两种不同的思考模式，称之为 &lt;em&gt;专注模式&lt;/em&gt; 和 &lt;em&gt;发散模式&lt;/em&gt; 。&lt;/p&gt;
+&lt;p&gt;专注模式为人熟知，当我们一心一意扑在某些东西上，试着去理解它们的时候，就是“专注”。专注模式致力于落实某个问题的解决方案，或者理解某个概念中最细微的方面。但你必须从一个出发点开始。&lt;/p&gt;
+&lt;p&gt;发散模式也受到热捧，它让你更概括地看待事物，以一种完全不同的全景视角。发散模式构建一个全新的想法，你甚至不知道这个想法是怎么来的。随着这个想法在新通道间穿梭，你便可以建立起新的神经连接。发散模式可以帮助我们找到一个解决问题的出发点。&lt;/p&gt;
+&lt;p&gt;专注模式和发散模式，像是一枚硬币的两面，只能单独存在。在一个模式中思考，限制了你转换另外一个思维模式的通道。无论是写作还是写代码，我们都是在这两种模式中切换。在多次循环之后，我们才达成了最终的任务。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>高效的一天可以这样过</title>
+      <link>https://xgugeng.github.io/zh/post/an-efficient-day/</link>
+      <pubDate>Tue, 16 Feb 2016 12:34:01 +0800</pubDate>
+      <guid>https://xgugeng.github.io/zh/post/an-efficient-day/</guid>
+      <description>&lt;p&gt;工具列表 (全部免费):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.appving.com/&#34;&gt;微习惯&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://itunes.apple.com/us/app/7-minute-workout-seven-high/id650276551?mt=8&#34;&gt;Seven&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;www.yinxiang.com&#34;&gt;Evernote&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.wunderlist.com&#34;&gt;奇妙清单&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pomotodo.com/&#34;&gt;番茄土豆&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://itunes.apple.com/us/app/health-through-breath-pranayama/id341935130?mt=8&#34;&gt;Pranayama&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://itunes.apple.com/us/app/xi-ma-la-yafm-ting-shu-she/id876336838?mt=8&#34;&gt;喜马拉雅&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.gotokeep.com/&#34;&gt;Keep&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.codoon.com/&#34;&gt;咕咚运动&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Guoqing&#39;s second brain</title>
+    <link>https://xgugeng.github.io/</link>
+    <description>Recent content on Guoqing&#39;s second brain</description>
+    <generator>Hugo -- 0.150.0</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 28 Apr 2019 20:20:38 +0800</lastBuildDate>
+    <atom:link href="https://xgugeng.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Redis Internals: File Event Handling</title>
+      <link>https://xgugeng.github.io/post/redis-internals-file-event-handling/</link>
+      <pubDate>Sun, 28 Apr 2019 20:20:38 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/redis-internals-file-event-handling/</guid>
+      <description>&lt;p&gt;Events are the core of Redis server, reponsible for dealing with two important tasks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;File events: receive the requests from multiple clients, process and responde to clients.&lt;/li&gt;
+&lt;li&gt;Time events: server cron job.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In this post, we will take a look at multiplexing event handling processing requests from clients. Clients connect to Redis server via sockets, but the server interacts with these clients only when the sockets can be read or written without blocking.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Connection Pool in redis-py</title>
+      <link>https://xgugeng.github.io/post/connection-pool-in-redis-py/</link>
+      <pubDate>Fri, 18 Jan 2019 10:52:17 -0800</pubDate>
+      <guid>https://xgugeng.github.io/post/connection-pool-in-redis-py/</guid>
+      <description>&lt;p&gt;A typical example of using &lt;a href=&#34;https://github.com/andymccurdy/redis-py#connection-pools&#34;&gt;Collection Pools&lt;/a&gt; in  &lt;a href=&#34;https://github.com/andymccurdy/redis-py&#34;&gt;redis-py&lt;/a&gt; is:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pool &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; redis&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ConnectionPool(host&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;, port&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;6379&lt;/span&gt;, db&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;r &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; redis&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Redis(connection_pool&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;pool)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Redis Internals: Dict</title>
+      <link>https://xgugeng.github.io/post/redis-internals-dict/</link>
+      <pubDate>Thu, 15 Nov 2018 19:56:57 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/redis-internals-dict/</guid>
+      <description>&lt;p&gt;Dictionary is a data structure for storing key-value pair. Each key in a dictionary is unique and has a corresponding value. Redis implements its own dictionary and use it for hash key.&lt;/p&gt;
+&lt;p&gt;As a data structure in server side, dictionary must take memory into consideration. That&amp;rsquo;s the reason why resizing and rehashing are so significant.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Redis Internals: List</title>
+      <link>https://xgugeng.github.io/post/redis-internals-list/</link>
+      <pubDate>Tue, 06 Nov 2018 09:38:12 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/redis-internals-list/</guid>
+      <description>&lt;p&gt;Redis provides a generic doubly linked list implementation, which is widely used in Redis. If a list key involves two many elements or there are many long strings in the list, Redis will apply linked list for it.  Publish-subscribe, slow query, monitor also make use of linked list. Redis keeps the states of clients in linked list, and client&amp;rsquo;s output buffer use it too.&lt;/p&gt;
+&lt;p&gt;This post will plough into the implementation of doubly linked list.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Weak References</title>
+      <link>https://xgugeng.github.io/post/weak-references-in-python/</link>
+      <pubDate>Mon, 05 Nov 2018 20:46:15 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/weak-references-in-python/</guid>
+      <description>&lt;p&gt;In Python, objects are never explicitly destroyed. However, they may be garbage-collected when they become unreachable.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;del&lt;/code&gt; statement deletes names, not objects. An object may be garbage collected as result of a &lt;code&gt;del&lt;/code&gt; command, but only if the variable deleted holds the last reference to the object, or if the object becomes unreachable.&lt;/p&gt;
+&lt;p&gt;In CPython, the primary algorithm for garbage collection is reference counting. Essentially each object keeps count fo how many references point to it. As soon as that &lt;code&gt;refcount&lt;/code&gt; reaches 0, the object is immediately destroyed: CPython calls the &lt;code&gt;__del__&lt;/code&gt; method on the object (if defined) and the frees the memory.&lt;/p&gt;
+&lt;p&gt;But sometimes, it is useful to have a reference to an object that does not keep it around longer than necessary. Week references to an object do not increase its reference count. A weak reference does not prevent the referent from being garbage collected.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Variables Are Labels, Not Boxes</title>
+      <link>https://xgugeng.github.io/post/variables-are-labels-not-boxes/</link>
+      <pubDate>Thu, 01 Nov 2018 14:51:40 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/variables-are-labels-not-boxes/</guid>
+      <description>&lt;p&gt;Variables are labels, not boxes. Take the following code for example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;b &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; a
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(b)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/variables-are-labels.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;If you imagine that variables are like boxes, you cannot make sense of assignment in Python. For an assignment, you must always read the right-hand side first: that&amp;rsquo;s where the object is created or retrieved. After that, the variable on the left is bound to the object, like a label stuck to it. Just forget about the boxes.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Redis Internals: SDS</title>
+      <link>https://xgugeng.github.io/post/redis-internals-sds/</link>
+      <pubDate>Thu, 01 Nov 2018 09:26:50 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/redis-internals-sds/</guid>
+      <description>&lt;p&gt;C string is used only for literal constant in Redis. For the situation that the string can be modified, Redis provide a Simple Dynamic String(SDS). The key in Redis is actually a SDS, and if you insert a key-value with &lt;code&gt;SET msg &amp;quot;hello world&amp;quot;&lt;/code&gt;, a SDS instance will be constructed for the key. In this case, the value is also a SDS instance with the content of &amp;ldquo;hello world&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Besides string, SDS is also used for buffer which can serve the AOF module and client&amp;rsquo;s input.&lt;/p&gt;
+&lt;p&gt;This post will dive into the implementation of SDS comparing with classic C string.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>What Is the Concurrent Mode Failure?</title>
+      <link>https://xgugeng.github.io/post/what-is-the-concurrent-mode-failure/</link>
+      <pubDate>Wed, 31 Oct 2018 14:25:16 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/what-is-the-concurrent-mode-failure/</guid>
+      <description>&lt;p&gt;This is a question that I was asked during an interview: what does the concurrent mode failure means? It&amp;rsquo;s really a good question to check your understanding of Concurrent Mark Sweep (CMS) Collector.&lt;/p&gt;
+&lt;p&gt;This post starts with concurrent mode failure and explains the whole steps of one CMS cycle.&lt;/p&gt;
+&lt;p&gt;In a nutshell,&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The message &amp;ldquo;concurrent mode failure&amp;rdquo; signifies that the concurrent collection of the Old Generation did not finish before the Old Generation became full.&lt;/p&gt;&lt;/blockquote&gt;</description>
+    </item>
+    <item>
+      <title>When Python Executes Decorators</title>
+      <link>https://xgugeng.github.io/post/when-python-executes-decorators/</link>
+      <pubDate>Mon, 29 Oct 2018 14:55:25 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/when-python-executes-decorators/</guid>
+      <description>A key feature of decorators is that they run right after the decorated function is defined. This is usually at import time.</description>
+    </item>
+    <item>
+      <title>Design Patterns with First-class Functions</title>
+      <link>https://xgugeng.github.io/post/design-patterns-with-first-class-functions/</link>
+      <pubDate>Sat, 27 Oct 2018 16:16:13 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/design-patterns-with-first-class-functions/</guid>
+      <description>&lt;p&gt;Design patterns are language-independent, but in the context of languages with first-class functions, it&amp;rsquo;s beneficial to rethink some patterns. The general idea is: you can replace instances of some participant class with simple functions, reducing a lot of boilerplate code.&lt;/p&gt;
+&lt;p&gt;In this post, I will refactor Strategy using functions objects.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A List Comprehension Puzzler</title>
+      <link>https://xgugeng.github.io/post/a-list-comprehension-puzzler/</link>
+      <pubDate>Wed, 24 Oct 2018 11:19:09 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/a-list-comprehension-puzzler/</guid>
+      <description>&lt;p&gt;Sometimes, we need to initialize a list with a certain number of nested lists, for example, a list with 3 lists of length 3 that can represent a Tic-tac-toe board.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; board = [[&amp;#39;&amp;#39;] * 3] * 3
+&amp;gt;&amp;gt; board
+[[&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;&amp;#39;], [&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;&amp;#39;], [&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;&amp;#39;]]
+&amp;gt;&amp;gt; board[1][2] = &amp;#39;X&amp;#39;
+&amp;gt;&amp;gt; board
+[[&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;X&amp;#39;], [&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;X&amp;#39;], [&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;X&amp;#39;]]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The output is not expected, why?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>What Happens When Starting Redis</title>
+      <link>https://xgugeng.github.io/post/what-happens-when-starting-redis/</link>
+      <pubDate>Mon, 22 Oct 2018 17:23:59 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/what-happens-when-starting-redis/</guid>
+      <description>&lt;p&gt;Redis is a great example of high-performance server. When I worked as a backend developer, my mentor recommended that I should read the code of Redis. And so I did, it&amp;rsquo;s rewarding. As the time goes by, the ideas behind Redis are still cutting-edge, so I think it&amp;rsquo;s time to retrospect the implementation of Redis. This post is a good beginning.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s my habit to start from the entry when meeting a big project. In Redis, &lt;code&gt;server.c&lt;/code&gt; is responsible for bootstrap, that&amp;rsquo;s what I pay close attention to in this post.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Using Mixins with Python</title>
+      <link>https://xgugeng.github.io/post/using-mixins-with-python/</link>
+      <pubDate>Thu, 18 Oct 2018 08:15:29 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/using-mixins-with-python/</guid>
+      <description>&lt;p&gt;Python supports multiple inheritance, while it doesn&amp;rsquo;t provide the syntax for interface. See &lt;a href=&#34;https://www.python.org/dev/peps/pep-0245/&#34;&gt;PEP-0245&lt;/a&gt;. Of course, you can use the &lt;code&gt;abc&lt;/code&gt; module for abstract base classes, which seems tricky.&lt;/p&gt;
+&lt;p&gt;Python introduces a concept called mixin that encapsulates behavior that can be reused in other classes. It&amp;rsquo;s supported via multiple inheritance, the difference of inheritance and mixin is, inheritance means &amp;ldquo;is-a&amp;rdquo; and mixin means &amp;ldquo;has-a&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;This post will illustrate how mixin works with a simple example.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Special Methods in Python Data Model</title>
+      <link>https://xgugeng.github.io/post/special-methods-in-python-data-model/</link>
+      <pubDate>Tue, 16 Oct 2018 15:19:05 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/special-methods-in-python-data-model/</guid>
+      <description>&lt;p&gt;You can think of the Data Model as a description of Python as a framework. It formalizes the interfaces of the building blocks of the languages itself, such as sequences, iterators, functions, classes, context managers and so on.&lt;/p&gt;
+&lt;p&gt;Python allows operator overloading, which let us to define the custom behavior for a class. For instance, if a class defines a &lt;code&gt;__str__()&lt;/code&gt;, then it can return a readable string representation of an object.&lt;/p&gt;
+&lt;p&gt;In this post, I will enumerate some special methods that can change the behavior of an object and may putted into practice in daily work.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Managing Ordered Sequences With bisect</title>
+      <link>https://xgugeng.github.io/post/managing-ordered-sequences-with-bisect/</link>
+      <pubDate>Mon, 24 Sep 2018 14:16:14 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/managing-ordered-sequences-with-bisect/</guid>
+      <description>&lt;p&gt;The &lt;code&gt;bisect&lt;/code&gt; module offers two main functions - &lt;code&gt;bisect&lt;/code&gt; and &lt;code&gt;insort&lt;/code&gt; - that use the binary search algorithm to quickly find an d insert items in any sorted sequence.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Python Closure</title>
+      <link>https://xgugeng.github.io/post/python-closure/</link>
+      <pubDate>Wed, 19 Sep 2018 18:38:29 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/python-closure/</guid>
+      <description>&lt;p&gt;A closure is a function with an extended scope that encompasses non-global variables but not defined there. It does not matter whether the function is anonymous of not, what matters is that it can access non-global variables that are defined outside of its body.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A Few Things That I Know About Spark</title>
+      <link>https://xgugeng.github.io/post/a-few-things-about-spark/</link>
+      <pubDate>Mon, 03 Sep 2018 20:52:46 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/a-few-things-about-spark/</guid>
+      <description>&lt;p&gt;This post concludes a global view of Spark using a mind map, in which I try to enumerate what I know about it. A graph for the relationship of terminologies like Job, Stage is illustrated firstly so that you would be confused.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/spark-terminology-relationship.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Handling Missing Keys in Python</title>
+      <link>https://xgugeng.github.io/post/handling-missing-keys-in-python/</link>
+      <pubDate>Mon, 27 Aug 2018 14:50:08 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/handling-missing-keys-in-python/</guid>
+      <description>&lt;p&gt;In line with fail-fast philosophy, &lt;code&gt;dict&lt;/code&gt; access with &lt;code&gt;d[k]&lt;/code&gt; raises an error if &lt;code&gt;k&lt;/code&gt; is not an existing key. A common solution is &lt;code&gt;d.get(k, default)&lt;/code&gt; which return a default rather handling &lt;code&gt;KeyError&lt;/code&gt; if &lt;code&gt;k&lt;/code&gt; is not present.&lt;/p&gt;
+&lt;p&gt;This post introduces three alternatives - &lt;code&gt;setdefault&lt;/code&gt;, &lt;code&gt;defaultdict&lt;/code&gt; and &lt;code&gt;__mising&lt;/code&gt; for this situation.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Consensus in Distributed System</title>
+      <link>https://xgugeng.github.io/post/consensus-in-distributed-system/</link>
+      <pubDate>Sun, 19 Aug 2018 16:07:16 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/consensus-in-distributed-system/</guid>
+      <description>&lt;p&gt;The distributed consensus problem deals with reaching an agreement on a single data value among a group of process connected by an unreliable network. The processes must put forth their candidate values, communicate with one another, and agree on a single consensus value in presence of failures of some processes.&lt;/p&gt;
+&lt;p&gt;Examples of applications of consensus include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Leader election / Mutable Exclusion&lt;/li&gt;
+&lt;li&gt;Commit or Abort in distributed transactions&lt;/li&gt;
+&lt;li&gt;Reaching agreement about which process has failed&lt;/li&gt;
+&lt;li&gt;Clock phase synchronization&lt;/li&gt;
+&lt;li&gt;Load balancing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A visual diagram of this problem unfolds in the following. Each process &lt;strong&gt;p&lt;!-- raw HTML omitted --&gt;k&lt;!-- raw HTML omitted --&gt;&lt;/strong&gt; with an input value &lt;strong&gt;u&lt;!-- raw HTML omitted --&gt;k&lt;!-- raw HTML omitted --&gt;&lt;/strong&gt; runs a program to exchange its value. Finally the output of all non-faulty processes become identical. It is permissive that one or more processes may fail at any time, but the output &lt;strong&gt;v&lt;/strong&gt; must be equal to the value of at least one process.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/distributed-consensus-problem.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Unpacking in Python</title>
+      <link>https://xgugeng.github.io/post/python-unpacking/</link>
+      <pubDate>Tue, 14 Aug 2018 20:02:15 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/python-unpacking/</guid>
+      <description>&lt;p&gt;Python provides many friendly advanced API for programmer, one of which is unpacking. By unpacking, it means getting all the elements from a container. A simplest case in the below demonstrates assigns the two items in tuple to variables.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; a, b = (1,2)
+&amp;gt;&amp;gt;&amp;gt; a
+1
+&amp;gt;&amp;gt;&amp;gt; b
+2
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Besides tuple, every iterative object can support unpacking, such as list, dictionary, set, string, generator etc. Let&amp;rsquo;s traverse them one by one.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A Quick Retrospect of Design Pattern</title>
+      <link>https://xgugeng.github.io/post/retrospect-design-pattern/</link>
+      <pubDate>Mon, 13 Aug 2018 15:24:26 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/retrospect-design-pattern/</guid>
+      <description>&lt;p&gt;This post summarizes some design patterns I used in daily work or learnt from books.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/design-pattern-overview.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Linux: Principles, Manual and Programming</title>
+      <link>https://xgugeng.github.io/post/linux-principle-manual-programming/</link>
+      <pubDate>Fri, 10 Aug 2018 10:27:16 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/linux-principle-manual-programming/</guid>
+      <description>&lt;p&gt;This post only involves three mind maps for Linux covering principles, manual and programming. I find it is beneficial to organize my knowledge with mind map.&lt;/p&gt;
+&lt;p&gt;I also realized a few captions are also useful for the full picture, so they are attached.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Refactor: Why, What, When and How</title>
+      <link>https://xgugeng.github.io/post/refactor-why-what-when-how/</link>
+      <pubDate>Wed, 08 Aug 2018 10:45:36 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/refactor-why-what-when-how/</guid>
+      <description>&lt;p&gt;I read &lt;a href=&#34;https://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672&#34;&gt;Refactoring: Improving the Design of Existing Code&lt;/a&gt; while chasing my master degree and did not realize how beneficial it would be considering the number of lines I wrote.&lt;/p&gt;
+&lt;p&gt;After joining the workforce, I found its importance can never be overstressed. It is rewarding to read this book over and over, so I draw this mind map for quick index.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Binary Search for Upper Bound</title>
+      <link>https://xgugeng.github.io/post/binary-search-for-upper-bound/</link>
+      <pubDate>Fri, 03 Aug 2018 10:55:27 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/binary-search-for-upper-bound/</guid>
+      <description>&lt;p&gt;A frequent question I ask when interviewing some candidates is binary search. It cannot be more easier to write a binary search, but the variant may be challenging. For example, upper bound for the given target. When should I shrink my scope to left?&lt;/p&gt;
+&lt;p&gt;This post elucidates the steps of binary search by illustrating some common mistakes and sloving a problem in LeetCode. And I will remind what should be paid more attention when doing search.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Java NIO: Selector</title>
+      <link>https://xgugeng.github.io/post/java-nio-selector/</link>
+      <pubDate>Sat, 21 Jul 2018 17:54:50 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/java-nio-selector/</guid>
+      <description>&lt;p&gt;Taking FileChannel for example in the &lt;a href=&#34;https://xgugeng.github.io/post/java-nio-channel/&#34;&gt;previous post&lt;/a&gt; may bewilder audiences: it&amp;rsquo;s non-blocking, so how does NIO achievement non-blocking? Here comes Selector.&lt;/p&gt;
+&lt;p&gt;A Selector is a Java NIO component which can examine one or more NIO Channel&amp;rsquo;s, and determine which channels are ready for reading or writing. A thread can manage multiply channels with Selector making multiple network connections feasible. This way avoids the cost of switching between threads which is expensive.&lt;/p&gt;
+&lt;p&gt;Here is an illustration of a thread using a Selector to handle 3 Channels:&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/java-nio-selector-handle-channels.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Java NIO: Channel</title>
+      <link>https://xgugeng.github.io/post/java-nio-channel/</link>
+      <pubDate>Thu, 19 Jul 2018 11:00:38 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/java-nio-channel/</guid>
+      <description>&lt;p&gt;Channels are similar to streams available for blocking IO with a few differences:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You can both read and write to Channels. Streams are typically one-way (read or write).&lt;/li&gt;
+&lt;li&gt;Channels can be read and written asynchronously.&lt;/li&gt;
+&lt;li&gt;Channels always read to, or write from, a Buffer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The Channels have multiple implementations depending on the data to be read or written:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;FileChannel: Used to read and write data from and to the files&lt;/li&gt;
+&lt;li&gt;DatagramChannel: Used for data exchange over network using UDP packets&lt;/li&gt;
+&lt;li&gt;SocketChannel: TCP channel to exchange data over TCP sockets&lt;/li&gt;
+&lt;li&gt;ServerSocketChannel: An implementation similar to a web server listening to requests over a specific TCP port. It creates a new SocketChannel instance for every new connection&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This post will take FileChannel for further exploration, from example to implementation.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Learn Consciously</title>
+      <link>https://xgugeng.github.io/post/learn-consciously/</link>
+      <pubDate>Sun, 15 Jul 2018 17:53:35 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/learn-consciously/</guid>
+      <description>&lt;p&gt;Learning is an eternal topic for everyone, no matter which field you are engaging in. I highly admire the guys who produce excellent performance in any specific domain. It needs patience, and hours and hours will be spent on practice. Aside from tenacity, there must be something related contributing to their success.&lt;/p&gt;
+&lt;p&gt;Two books changed my perspective of learning. The first one is &lt;a href=&#34;https://www.amazon.com/dp/B000QCQ970&#34;&gt;The Art of Learning&lt;/a&gt; telling a remarkable story of personal achievement and inspires me with a series of principles for improving performance in any field. The other, &lt;a href=&#34;https://www.amazon.com/Learn-Better-Mastering-Business-Anything/dp/1623365260&#34;&gt;Learn Better&lt;/a&gt;, demonstrates that how we learn can matter just as much as what we learn.&lt;/p&gt;
+&lt;p&gt;Stimulated by my preparation for IELTS recently, I think it must be rewarding to summarize my strategy of learning, active learning or conscious learning. Most of ideas come from the above books, and I put them into practice again and again proving their effectiveness.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Java NIO: Buffer</title>
+      <link>https://xgugeng.github.io/post/java-nio-buffer/</link>
+      <pubDate>Sat, 14 Jul 2018 17:00:53 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/java-nio-buffer/</guid>
+      <description>&lt;p&gt;Java NIO (New IO), introduced by Java 1.4, is an alternative IO API for Java. It offers a different way of working with IO than the standard IO API&amp;rsquo;s.&lt;/p&gt;
+&lt;p&gt;Three core components of Java NIO cover:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Channels&lt;/li&gt;
+&lt;li&gt;Buffers&lt;/li&gt;
+&lt;li&gt;Selectors&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All IO in NIO involves with Channel. Data can be read from Channel to a Buffer and vice versa.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/java-nio-channel-buffer.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Buffers are used to interact with Channels. A Buffer is an allocated block of memory with fixed size, into which you can read or write data. In this post, I&amp;rsquo;ll illustrate the basic usage of Buffer and elucidate how it manages to do that from the view of source code.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How HMaster Detect Death of RegionServer</title>
+      <link>https://xgugeng.github.io/post/how-master-detect-death-of-regionserver/</link>
+      <pubDate>Fri, 06 Jul 2018 10:31:19 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/how-master-detect-death-of-regionserver/</guid>
+      <description>&lt;p&gt;Step 3 of &lt;a href=&#34;https://xgugeng.github.io/post/regionserver-stops-after-full-gc/#explanation&#34;&gt;explanation&lt;/a&gt; about what happens after Full GC may be vague. It confuses audiences by&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;ServerManager&lt;/code&gt; on &lt;code&gt;HMaster&lt;/code&gt; finds there must be something wrong with this &lt;code&gt;RegionServer&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;How does &lt;code&gt;HMaster&lt;/code&gt; detect the death of &lt;code&gt;RegionServer&lt;/code&gt;?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RegionServer Stops after Full GC</title>
+      <link>https://xgugeng.github.io/post/regionserver-stops-after-full-gc/</link>
+      <pubDate>Thu, 05 Jul 2018 16:31:24 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/regionserver-stops-after-full-gc/</guid>
+      <description>&lt;p&gt;One of the most devastating and unpredictable latency intruders is the Java Virtual Machine’s &amp;ldquo;stop the world&amp;rdquo; pauses for garbage collection (memory clean-up). This post troubleshoots an unexpected shutdown of &lt;code&gt;RegionServer&lt;/code&gt; fundamentally caused by Full GC and makes the whole process clear.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>JVM Series: class File Format</title>
+      <link>https://xgugeng.github.io/post/jvm-series-class-file-format/</link>
+      <pubDate>Thu, 17 May 2018 16:52:29 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/jvm-series-class-file-format/</guid>
+      <description>&lt;p&gt;Today, let&amp;rsquo;s focus on the &lt;code&gt;class&lt;/code&gt; file format, the hardware- and operating system-independent binary format used to represent compiled classes and interfaces.&lt;/p&gt;
+&lt;p&gt;A &lt;code&gt;class&lt;/code&gt; file consists of a stream of 8-bit bytes. All 16-bit, 32-bit, and 64-bit quantities are constructed by reading in two, four, and eight consecutive 8-bit bytes, respectively.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>JVM Series: Class Loader</title>
+      <link>https://xgugeng.github.io/post/jvm-series-class-loader/</link>
+      <pubDate>Wed, 18 Apr 2018 18:27:20 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/jvm-series-class-loader/</guid>
+      <description>&lt;p&gt;The Java Classloader, a part of the Java Runtime Environment, dynamically loads Java classes into the Java Virtual Machine. Each Java class must be loaded by a class loader.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>JVM Series: Oop and Klass</title>
+      <link>https://xgugeng.github.io/post/jvm-series-oop-klass/</link>
+      <pubDate>Tue, 10 Apr 2018 14:46:26 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/jvm-series-oop-klass/</guid>
+      <description>&lt;p&gt;As a part of &lt;a href=&#34;https://xgugeng.github.io/en/tags/jvm/&#34;&gt;JVM Series&lt;/a&gt;, this post tries to explore the object model in JVM.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>IndexOutput: Lucene Index Output</title>
+      <link>https://xgugeng.github.io/post/indexoutput-lucene-index-output/</link>
+      <pubDate>Mon, 09 Apr 2018 11:25:40 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/indexoutput-lucene-index-output/</guid>
+      <description>&lt;p&gt;Immediately following &lt;a href=&#34;https://xgugeng.github.io/post/indexwriter-lucene-index-creation-maintenance/&#34;&gt;
+Indexwriter: Lucene Index Creation and Maintenance&lt;/a&gt;, &lt;code&gt;IndexOutput&lt;/code&gt;, a random-access output stream. is used for all Lucene index output operations.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>IndexWriter: Lucene Index Creation and Maintenance</title>
+      <link>https://xgugeng.github.io/post/indexwriter-lucene-index-creation-maintenance/</link>
+      <pubDate>Tue, 03 Apr 2018 14:37:02 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/indexwriter-lucene-index-creation-maintenance/</guid>
+      <description>&lt;p&gt;An &lt;code&gt;IndexWriter&lt;/code&gt; creates and maintains an index. It&amp;rsquo;s the basic Class defined in Lucene Core.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A Troubleshooting for Threads Explosion in HBase Client</title>
+      <link>https://xgugeng.github.io/post/troubleshooting-for-threads-explosion-in-hbase-client/</link>
+      <pubDate>Fri, 09 Mar 2018 18:27:56 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/troubleshooting-for-threads-explosion-in-hbase-client/</guid>
+      <description>&lt;p&gt;An issue, excessive threads of HBase client, annoyed me for a quite while. It reminds me to penetrate into uses of &lt;code&gt;Executorservice&lt;/code&gt; in HBase client. That&amp;rsquo;s the origin of this blog.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Consistency Models and Protocols in Distributed System</title>
+      <link>https://xgugeng.github.io/post/consistency-in-distributed-system/</link>
+      <pubDate>Fri, 09 Feb 2018 17:03:05 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/consistency-in-distributed-system/</guid>
+      <description>&lt;p&gt;Data replication is a vital feature in distributed system, but brings in an inevitable price to be paid: consistency maintenance. The consistency model specifies a contract between programmer and system, wherein the system guarantees that if the programmer follows the rules, memory will be consistent and the results of reading, writing, or updating memory will be predictable.&lt;/p&gt;
+&lt;p&gt;In Chinese, &amp;ldquo;consistency&amp;rdquo; often mixes up with &amp;ldquo;consensus&amp;rdquo; because of their similar translations. The consensus problem requires &lt;strong&gt;agreement among a number of processes for a single data value&lt;/strong&gt;. Some of the processes may fail or be unreliable in other ways, so consensus protocols must be fault tolerant or resilient.&lt;/p&gt;
+&lt;p&gt;This post focus on consistency only, enumerating various common types of consistency models and illuminating some consistency protocols.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HBase Batch Puts with BufferedMutator</title>
+      <link>https://xgugeng.github.io/post/hbase-batch-puts-with-bufferedmutator/</link>
+      <pubDate>Mon, 15 Jan 2018 16:56:23 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/hbase-batch-puts-with-bufferedmutator/</guid>
+      <description>&lt;p&gt;&lt;code&gt;BufferedMutator&lt;/code&gt; is meant for batched, potentially asynchronous puts into a single table. This class relies heavily on &lt;code&gt;AsyncProcess&lt;/code&gt;, which I has explained &lt;a href=&#34;https://xgugeng.github.io/post/hbase-batch-puts-without-bufferedmutator/#asyncprocess&#34;&gt;here&lt;/a&gt;. Then, we can focus on what &lt;code&gt;BufferedMutator&lt;/code&gt; does in this post.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>JVM Series: Overview</title>
+      <link>https://xgugeng.github.io/post/jvm-series-overview/</link>
+      <pubDate>Tue, 09 Jan 2018 20:56:47 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/jvm-series-overview/</guid>
+      <description>&lt;p&gt;When executing a java program, you may simply input in terminal, like:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;javac HelloWorld.java
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;java HelloWorld
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Behind these commands, JVM, as the cornerstone of the Java platform, does a lot of work, which are what this blog attempts to figure out. Today, a new series about JVM will be started, and this is the first episode.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HBase Batch Puts without BufferedMutator</title>
+      <link>https://xgugeng.github.io/post/hbase-batch-puts-without-bufferedmutator/</link>
+      <pubDate>Tue, 09 Jan 2018 11:33:34 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/hbase-batch-puts-without-bufferedmutator/</guid>
+      <description>&lt;p&gt;For batch puts, it&amp;rsquo;s better if you construct a list of puts and then call &lt;code&gt;HTable.put(final List&amp;lt;Put&amp;gt; puts)&lt;/code&gt;, because it uses a single RPC call to commit the batch, but depending on the size of the list write buffer may flush it all or not.&lt;/p&gt;
+&lt;p&gt;In this post, &lt;code&gt;BufferedMutator&lt;/code&gt; is excluded. It will be discussed in the near future.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>2017 in Review and Look Ahead</title>
+      <link>https://xgugeng.github.io/post/2017-in-review-look-ahead/</link>
+      <pubDate>Wed, 03 Jan 2018 18:43:27 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/2017-in-review-look-ahead/</guid>
+      <description>My Summary of 2017 Year</description>
+    </item>
+    <item>
+      <title>Multiversion Concurrency Control in HBase</title>
+      <link>https://xgugeng.github.io/post/multiversion-concurrency-control-in-hbase/</link>
+      <pubDate>Wed, 27 Dec 2017 16:19:17 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/multiversion-concurrency-control-in-hbase/</guid>
+      <description>&lt;p&gt;Multiversion Concurrency Control (MVCC for short) manages the read/write consistency, providing an interface for readers to determine what entries to ignore, and a mechanism for writers to obtain new write numbers, then &amp;ldquo;commit&amp;rdquo; the new writes for readers to read (thus forming atomic transactions).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A Lifecycle of HBase&#39;s Put: Server-side</title>
+      <link>https://xgugeng.github.io/post/a-lifecycle-of-hbase-put-server-side/</link>
+      <pubDate>Tue, 05 Dec 2017 15:14:28 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/a-lifecycle-of-hbase-put-server-side/</guid>
+      <description>&lt;p&gt;Following the preceding &lt;a href=&#34;https://xgugeng.github.io/post/a-lifecycle-of-hbase-put-client-side/&#34;&gt;A Lifecycle of HBase&amp;rsquo;s Put: Client-side&lt;/a&gt;, this post will figure out how a &lt;code&gt;Put&lt;/code&gt; request does its mutation on &lt;code&gt;HRegionServer&lt;/code&gt;. The whole process involves WAL, MemStore, and Coprocessor etc. After reading this post, hope you make their roles clear.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A Lifecycle of HBase&#39;s Put: Client-side</title>
+      <link>https://xgugeng.github.io/post/a-lifecycle-of-hbase-put-client-side/</link>
+      <pubDate>Fri, 24 Nov 2017 11:38:14 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/a-lifecycle-of-hbase-put-client-side/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Put&lt;/code&gt; is used to perform insert or update a single row of HBase table. It&amp;rsquo;s essential to understand its lifecycle, which can be broke into two pieces,&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Client-side, How the &lt;code&gt;put&lt;/code&gt; request is built up and sent to the right &lt;code&gt;RegionServer&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Server-side, How the &lt;code&gt;RegionServer&lt;/code&gt; handle the &lt;code&gt;Put&lt;/code&gt; request and update one row.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In view of the limitation of one single post, the client-side is discussed only.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HBase Code Analysis: MemStore</title>
+      <link>https://xgugeng.github.io/post/hbase-code-analysis-memstore/</link>
+      <pubDate>Thu, 23 Nov 2017 11:39:43 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/hbase-code-analysis-memstore/</guid>
+      <description>&lt;p&gt;The &lt;code&gt;MemStore&lt;/code&gt; holds in-memory modifications to the Store. This post deeps into the source code for sake of understanding what it really do underneath.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HBase Storage Internals</title>
+      <link>https://xgugeng.github.io/post/hbase-storage-internals/</link>
+      <pubDate>Thu, 16 Nov 2017 11:34:49 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/hbase-storage-internals/</guid>
+      <description>&lt;p&gt;Overview&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;An HBase &lt;code&gt;Table&lt;/code&gt; consists of multiple rows.&lt;/li&gt;
+&lt;li&gt;Table will be split into &lt;code&gt;Regions&lt;/code&gt; based on rows&amp;rsquo; lexicographical order.&lt;/li&gt;
+&lt;li&gt;A &lt;code&gt;Store&lt;/code&gt; corresponds to a column family for a table for a given region.&lt;/li&gt;
+&lt;li&gt;A Store hosts a &lt;code&gt;MemStore&lt;/code&gt; and 0 or more &lt;code&gt;StoreFiles (HFiles)&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;The MemStore holds in-memory modifications to the Store.&lt;/li&gt;
+&lt;li&gt;StoreFiles are composed of &lt;code&gt;Blocks&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Variable Scope Rules in Python</title>
+      <link>https://xgugeng.github.io/post/variable-scope-rules-in-python/</link>
+      <pubDate>Sun, 29 Oct 2017 15:44:51 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/variable-scope-rules-in-python/</guid>
+      <description>Variable Scope</description>
+    </item>
+    <item>
+      <title>Fixing Elasticsearch with Red Status</title>
+      <link>https://xgugeng.github.io/post/fixing-elasticsearch-with-red-status/</link>
+      <pubDate>Tue, 10 Oct 2017 10:05:01 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/fixing-elasticsearch-with-red-status/</guid>
+      <description>&lt;p&gt;Elasticsearch&amp;rsquo;s red status means at least one primary shard (and all of its replicas) is missing. This reminds you of missing data: searches will return partial results, and indexing into that shard will return an exception.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Understanding Python Decorator</title>
+      <link>https://xgugeng.github.io/post/understanding-python-decorator/</link>
+      <pubDate>Wed, 20 Sep 2017 19:36:07 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/understanding-python-decorator/</guid>
+      <description>&lt;p&gt;A Python decorator, similar with &lt;a href=&#34;http://en.wikipedia.org/wiki/Decorator_pattern&#34;&gt;Decorator Pattern&lt;/a&gt;, is a specific change to the Python syntax that allows us to more conveniently alter functions and methods. In this post, I will try my best to deep into this advanced feature in Python.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>JDK Build-in Development Tools</title>
+      <link>https://xgugeng.github.io/post/jdk-build-in-development-tools/</link>
+      <pubDate>Thu, 14 Sep 2017 16:20:46 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/jdk-build-in-development-tools/</guid>
+      <description>&lt;p&gt;The following documents contain important information you will need to know to get the most out of the JDK tools.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>*args and **kwargs Usage in Python</title>
+      <link>https://xgugeng.github.io/post/args-and-kwargs-usage-in-python/</link>
+      <pubDate>Fri, 08 Sep 2017 16:46:50 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/args-and-kwargs-usage-in-python/</guid>
+      <description>&lt;p&gt;The &lt;code&gt;*args&lt;/code&gt; and &lt;code&gt;**kwargs&lt;/code&gt; is a common idiom to allow arbitrary number of arguments to functions as described in the section more on &lt;a href=&#34;https://docs.python.org/dev/tutorial/controlflow.html#more-on-defining-functions&#34;&gt;defining functions&lt;/a&gt; in the Python documentation.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How Does Client Find the Region</title>
+      <link>https://xgugeng.github.io/post/how-does-client-find-the-region/</link>
+      <pubDate>Fri, 08 Sep 2017 11:04:57 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/how-does-client-find-the-region/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;client-related source code is located in the module &lt;code&gt;hbase-client&lt;/code&gt;.&lt;/p&gt;&lt;/blockquote&gt;</description>
+    </item>
+    <item>
+      <title>Directory in Lucene</title>
+      <link>https://xgugeng.github.io/post/lucene-directory/</link>
+      <pubDate>Tue, 05 Sep 2017 16:26:31 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/lucene-directory/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Directory&lt;/code&gt; represents the storage location of the indexes and generally it is a list of files. These files are called index files. Index files are normally created once and then used for read operation or can be deleted.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>When finally Really Executes</title>
+      <link>https://xgugeng.github.io/post/when-finally-really-executes/</link>
+      <pubDate>Mon, 04 Sep 2017 16:22:03 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/when-finally-really-executes/</guid>
+      <description>&lt;p&gt;Epitome:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;return doesn&amp;rsquo;t really return, it pushes value to stack, then jumps to finally, which was set up by &lt;code&gt;SETUP_FINALLY&lt;/code&gt; before.&lt;/li&gt;
+&lt;li&gt;after executing finally, &lt;code&gt;END_FINALLY&lt;/code&gt; returns.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Exit Options in Python</title>
+      <link>https://xgugeng.github.io/post/exit-options-in-python/</link>
+      <pubDate>Fri, 01 Sep 2017 16:47:37 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/exit-options-in-python/</guid>
+      <description>&lt;p&gt;First candidate is &lt;code&gt;os._exit&lt;/code&gt;, which exits without calling cleanup handlers, flushing stdio buffers, etc. (and which should normally only be used in the child process after a &lt;code&gt;fork()&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Second, &lt;code&gt;sys.exit&lt;/code&gt; is intended for use in programs. According to official document:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This is implemented by raising the &lt;code&gt;SystemExit&lt;/code&gt; exception, so cleanup actions specified by finally clauses of try statements are honored, and it is possible to intercept the exit attempt at an outer level. Since &lt;code&gt;exit()&lt;/code&gt; ultimately “only” raises an exception, it will only exit the process when called from the main thread, and the exception is not intercepted.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Difference between range and xrange</title>
+      <link>https://xgugeng.github.io/post/difference-between-range-and-xrange/</link>
+      <pubDate>Fri, 01 Sep 2017 16:22:27 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/difference-between-range-and-xrange/</guid>
+      <description>&lt;p&gt;Short answer:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;range&lt;/code&gt; creates a list, so if you do &lt;code&gt;range(1, 10000000)&lt;/code&gt; it creates a list in memory with 9999999 elements. This will become an expensive operation on very large ranges.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;xrange&lt;/code&gt; is a sequence object that &lt;em&gt;evaluates lazily&lt;/em&gt;(it will only compute the next value when needed).&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>A Dive into __slots__</title>
+      <link>https://xgugeng.github.io/post/a-dive-into-slots/</link>
+      <pubDate>Thu, 31 Aug 2017 14:25:37 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/a-dive-into-slots/</guid>
+      <description>&lt;p&gt;&lt;code&gt;__slots__&lt;/code&gt; tells the interpreter not to use a &lt;code&gt;dict&lt;/code&gt;, and only allocate space for a fixed set of attributes.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How to Read English Books</title>
+      <link>https://xgugeng.github.io/post/how-to-read-english-books/</link>
+      <pubDate>Thu, 10 Aug 2017 18:04:07 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/how-to-read-english-books/</guid>
+      <description>&lt;p&gt;For the sake of learning English, I try to read the original version of &lt;em&gt;The Power of Now&lt;/em&gt; and &lt;em&gt;Hackers and Painters&lt;/em&gt;. To be honest, it&amp;rsquo;s very difficult, two many unacquainted words and phrases. Even only one in a sentence would affect my understanding.&lt;/p&gt;
+&lt;p&gt;Therefore, I stopped my reading and searched on the Internet for better approach to do this. After a long surfing, Here is the tips that I summarized.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Document in Lucene</title>
+      <link>https://xgugeng.github.io/post/lucene-document/</link>
+      <pubDate>Mon, 07 Aug 2017 18:52:01 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/lucene-document/</guid>
+      <description>&lt;p&gt;In Lucene, a &lt;strong&gt;Document&lt;/strong&gt; is the unit of search and index.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;An index consists of a sequence of documents.&lt;/li&gt;
+&lt;li&gt;A document contains of one or more &lt;strong&gt;Fields&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;A field is a named sequence of &lt;strong&gt;terms&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;A term is a string.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/indexing-process.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;In order to index data with Lucene, you must convert it to a stream of plain-text tokens firstly. Based on the stream, the document containing fields will be created. After that, you can call &lt;code&gt;addDocument&lt;/code&gt; method in &lt;code&gt;IndexWriter&lt;/code&gt; class to transmit it to index. During this procedure, analyzer may be used to make the data more suitable for indexing.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Guice Usage in Elasticsearch</title>
+      <link>https://xgugeng.github.io/post/guice-usage-in-es/</link>
+      <pubDate>Fri, 04 Aug 2017 15:58:27 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/guice-usage-in-es/</guid>
+      <description>&lt;p&gt;The motivation of using Guice lists here: &lt;a href=&#34;https://github.com/google/guice/wiki/Motivation&#34;&gt;Motivation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To create bindings, extend &lt;code&gt;AbstractModule&lt;/code&gt; and override its &lt;code&gt;configure&lt;/code&gt; method. In the method body, call &lt;code&gt;bind()&lt;/code&gt; to specify each binding. These methods are type checked so the compiler can report errors if you use the wrong types. Once you&amp;rsquo;ve created your modules, pass them as arguments to &lt;code&gt;Guice.createInjector()&lt;/code&gt; to build an injector.&lt;/p&gt;
+&lt;p&gt;Elasticsearch has a &lt;code&gt;ModulesBuilder&lt;/code&gt; which is responsible for assembling modules.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ModulesBuilder&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;implements&lt;/span&gt; Iterable&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Module&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// container for all Module&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;final&lt;/span&gt; List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Module&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; modules &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ArrayList&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// add new Modules into container&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; ModulesBuilder &lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(Module... newModules) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Collections.&lt;span style=&#34;color:#a6e22e&#34;&gt;addAll&lt;/span&gt;(modules, newModules);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; Iterator&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Module&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;iterator&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; modules.&lt;span style=&#34;color:#a6e22e&#34;&gt;iterator&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; Injector &lt;span style=&#34;color:#a6e22e&#34;&gt;createInjector&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Injector injector &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Guice.&lt;span style=&#34;color:#a6e22e&#34;&gt;createInjector&lt;/span&gt;(modules);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ((InjectorImpl) injector).&lt;span style=&#34;color:#a6e22e&#34;&gt;clearCache&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// in ES, we always create all instances as if they are eager singletons&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// this allows for considerable memory savings (no need to store construction info) as well as cycles&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ((InjectorImpl) injector).&lt;span style=&#34;color:#a6e22e&#34;&gt;readOnlyAllSingletons&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; injector;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;A &lt;code&gt;Node&lt;/code&gt; represents a node within a cluster. &lt;code&gt;Node&lt;/code&gt; is made up of many &lt;code&gt;Modules&lt;/code&gt; with the help of &lt;code&gt;ModulesBuilder&lt;/code&gt;. Here is the short version of &lt;code&gt;Node&lt;/code&gt; class.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Pip Install ipython Exception on EI Capitan</title>
+      <link>https://xgugeng.github.io/post/pip-install-ipython-exception-on-ei-capitan/</link>
+      <pubDate>Thu, 03 Aug 2017 15:23:36 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/pip-install-ipython-exception-on-ei-capitan/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;For those impatient: OS X EI Capitan shipped a security feature named System Integrity Protection, which would be a hinder for &lt;code&gt;pip&lt;/code&gt;. Try to install IPython in user mode: &lt;code&gt;pip install ipython --user&lt;/code&gt;.&lt;/p&gt;&lt;/blockquote&gt;</description>
+    </item>
+    <item>
+      <title>A Mind Map for HBase</title>
+      <link>https://xgugeng.github.io/post/hbase-mind-map/</link>
+      <pubDate>Sat, 01 Jul 2017 15:17:33 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/hbase-mind-map/</guid>
+      <description>&lt;p&gt;This map records my learning path to HBase. Every time I know something new about HBase, I will append it to this map.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Mind Maps for Java and JVM</title>
+      <link>https://xgugeng.github.io/post/java-jvm-mind-map/</link>
+      <pubDate>Fri, 16 Jun 2017 18:14:16 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/java-jvm-mind-map/</guid>
+      <description>&lt;p&gt;These two mind maps are drawn for the further exploration of Java and JVM. For Java I try to cover some advanced features ranging from NIO and Thread. As to JVM, few components are covered, of course, I will replenish it at any moment.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Redis Mind Map</title>
+      <link>https://xgugeng.github.io/post/redis-mind-map/</link>
+      <pubDate>Sun, 06 Nov 2016 21:20:07 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/redis-mind-map/</guid>
+      <description>&lt;p&gt;This post includes a few mind maps for Redis ranging from quick start to implementation.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/redis-quick-start.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Differences between Hashtable and HashMap</title>
+      <link>https://xgugeng.github.io/post/java-hashtable-comparing-with-hashmap/</link>
+      <pubDate>Fri, 05 Aug 2016 12:01:40 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/java-hashtable-comparing-with-hashmap/</guid>
+      <description>&lt;p&gt;As I mentioned before, it is vital to read code with prepared questions. Hum, How about reading code with answers? The differences between Hashtable and HashMap have been explained many times including,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;null key &amp;amp; null value&lt;/li&gt;
+&lt;li&gt;synchronized or not&lt;/li&gt;
+&lt;li&gt;Enumeration and Iterator&lt;/li&gt;
+&lt;li&gt;hash method&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I am wondering how these arguments are supported by code. This post will give a view of code illustrating the above confusion.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Java HashSet</title>
+      <link>https://xgugeng.github.io/post/java-hashset/</link>
+      <pubDate>Mon, 01 Aug 2016 11:45:53 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/java-hashset/</guid>
+      <description>&lt;p&gt;For those who has no patience to look through this post, I conclude it in a word: HashSet is backed by HashMap.&lt;/p&gt;
+&lt;p&gt;Set is a collection in which every element is unique. So does the keys in HashMap. It is reasonable to infer that the implementation of HashSet is based on HashMap, so it is. Remember &lt;a href=&#34;https://xgugeng.github.io/post/java-hashmap/#resize&#34;&gt;resize&lt;/a&gt; of HashMap? it makes no guarantees as to the iteration order of the set.&lt;/p&gt;
+&lt;p&gt;With the help of HashMap, HashSet offers constant time performance for the basic operations, like &lt;code&gt;add&lt;/code&gt;, &lt;code&gt;remove&lt;/code&gt;, &lt;code&gt;contains&lt;/code&gt; and &lt;code&gt;size&lt;/code&gt;. Iterating over this set requires time proportional to the sum of the HashSet instance&amp;rsquo;s size (the number of elements) plus the &amp;ldquo;capacity&amp;rdquo; of the backing HashMap instance (the number of buckets).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Java TreeMap</title>
+      <link>https://xgugeng.github.io/post/java-treemap/</link>
+      <pubDate>Sun, 12 Jun 2016 12:54:23 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/java-treemap/</guid>
+      <description>&lt;p&gt;After joining the workforce, I have coded with various programming languages, like C++, Objective-C, Ruby, Python, Scala, Java, Go, etc. I ask to myself spontaneously, which language am I most skillful at? This question dismay me because I cannot answer it immediately.&lt;/p&gt;
+&lt;p&gt;Since I choice to focus on Big Data, it&amp;rsquo;s pragmatic to equipped with Java and Python, two powerful weapons in this field. Reading the source code of &lt;a href=&#34;https://xgugeng.github.io/en/tags/java.util/&#34;&gt;java.util&lt;/a&gt; is a good start.&lt;/p&gt;
+&lt;p&gt;The leading actor of this post is &lt;code&gt;TreeMap&lt;/code&gt;, a Red-Black tree based &lt;code&gt;NavigableMap&lt;/code&gt; implementation. It has no array underneath, as many of you think. Because &lt;code&gt;TreeMap&lt;/code&gt; inherits directly &lt;code&gt;AbstractMap&lt;/code&gt;, in contrast with &lt;a href=&#34;https://xgugeng.github.io/post/java-linkedhashmap/&#34;&gt;LinkedHashMap&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Performances differ on account of distinctive data structures. This implementation provides guaranteed log(n) time cost for the &lt;code&gt;containsKey&lt;/code&gt;, &lt;code&gt;get&lt;/code&gt;, &lt;code&gt;put&lt;/code&gt; and &lt;code&gt;remove&lt;/code&gt; operations. Now allow me to show you a close look.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Java LinkedHashMap</title>
+      <link>https://xgugeng.github.io/post/java-linkedhashmap/</link>
+      <pubDate>Fri, 10 Jun 2016 20:01:59 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/java-linkedhashmap/</guid>
+      <description>&lt;p&gt;As its name implies, &lt;code&gt;LinkedHashMap&lt;/code&gt; is a hash table and linked list implementation of the &lt;code&gt;Map&lt;/code&gt; interface, with predictable iteration order. Different with &lt;code&gt;HashMap&lt;/code&gt;, it maintains a doubly-linked list running through all of its entries, which also defines the iteration ordering, same as the order in which keys were inserted into the map. This order remains if a key is re-inserted into the map.&lt;/p&gt;
+&lt;p&gt;Like &lt;code&gt;HashMap&lt;/code&gt;, &lt;code&gt;LinkedHashMap&lt;/code&gt; provides constant-time performance for the basic operations &lt;code&gt;add&lt;/code&gt;, &lt;code&gt;contains&lt;/code&gt; and &lt;code&gt;remove&lt;/code&gt;, assuming the hash function disperses elements properly among the buckets.  Performance is likely to be just slightly below that of &lt;code&gt;HashMap&lt;/code&gt;, due to the added expense of maintaining the linked list,&lt;/p&gt;
+&lt;p&gt;Thanks to the linked list, this kind of map is well-suited to building LRU caches. So my questions is how &lt;code&gt;LinkedHashMap&lt;/code&gt; preserves the linked list when key changes.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Java HashMap</title>
+      <link>https://xgugeng.github.io/post/java-hashmap/</link>
+      <pubDate>Thu, 09 Jun 2016 20:42:52 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/java-hashmap/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s necessary to learn with questions. Otherwise, you may distract your focus when something you don&amp;rsquo;t know appears, whether should I go deeper or not. With preliminary doubts in your mind, this would not be a problem. Learning can be direct, clear and fruitful, which brings you more sense of achievement.&lt;/p&gt;
+&lt;p&gt;For this post about the source code of &lt;code&gt;HashMap&lt;/code&gt;, few questions need answers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;data structure underneath&lt;/li&gt;
+&lt;li&gt;why &lt;code&gt;HashMap&lt;/code&gt; permits nulls and unsynchronized&lt;/li&gt;
+&lt;li&gt;does it make guarantees as to the order of the map&lt;/li&gt;
+&lt;li&gt;what happens when I put and get a key with value, and time complexity&lt;/li&gt;
+&lt;li&gt;how the map shrink or expand when size changes&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Java LinkedList</title>
+      <link>https://xgugeng.github.io/post/java-linkedlist/</link>
+      <pubDate>Mon, 18 Apr 2016 11:37:29 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/java-linkedlist/</guid>
+      <description>&lt;p&gt;&lt;code&gt;LinkedList&lt;/code&gt; is a doubly-linked list implementation of the &lt;code&gt;List&lt;/code&gt; and &lt;code&gt;Deque&lt;/code&gt; interfaces. By &amp;ldquo;doubly-linked&amp;rdquo;, it means we can traverse the list from the beginning to the end, and vice versa. This class is a member of Java Collections Framework, located in &lt;code&gt;java.util&lt;/code&gt;. Let&amp;rsquo;s go straight to the source code.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Java String</title>
+      <link>https://xgugeng.github.io/post/java-string/</link>
+      <pubDate>Wed, 13 Apr 2016 11:33:34 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/java-string/</guid>
+      <description>&lt;p&gt;&lt;code&gt;String&lt;/code&gt; is one of the most common type of data in computer languages. A Java string is a series of characters gathered together, such as &amp;ldquo;abc&amp;rdquo;. Strings are constant, which means their value cannot be changed after created.&lt;/p&gt;
+&lt;p&gt;This post introduces the basic of Java string, includes methods for examining individual characters of the sequence, for comparing strings, for searching strings, for extracting substrings and so on.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

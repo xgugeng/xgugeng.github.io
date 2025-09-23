@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Java.lang on Guoqing&#39;s second brain</title>
+    <link>https://xgugeng.github.io/tags/java.lang/</link>
+    <description>Recent content in Java.lang on Guoqing&#39;s second brain</description>
+    <generator>Hugo -- 0.150.0</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 13 Apr 2016 15:33:34 +0800</lastBuildDate>
+    <atom:link href="https://xgugeng.github.io/tags/java.lang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java String</title>
+      <link>https://xgugeng.github.io/post/java-string/</link>
+      <pubDate>Wed, 13 Apr 2016 11:33:34 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/java-string/</guid>
+      <description>&lt;p&gt;&lt;code&gt;String&lt;/code&gt; is one of the most common type of data in computer languages. A Java string is a series of characters gathered together, such as &amp;ldquo;abc&amp;rdquo;. Strings are constant, which means their value cannot be changed after created.&lt;/p&gt;
+&lt;p&gt;This post introduces the basic of Java string, includes methods for examining individual characters of the sequence, for comparing strings, for searching strings, for extracting substrings and so on.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

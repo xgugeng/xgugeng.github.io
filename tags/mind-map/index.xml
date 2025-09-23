@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Mind Map on Guoqing&#39;s second brain</title>
+    <link>https://xgugeng.github.io/tags/mind-map/</link>
+    <description>Recent content in Mind Map on Guoqing&#39;s second brain</description>
+    <generator>Hugo -- 0.150.0</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 03 Sep 2018 20:52:46 +0800</lastBuildDate>
+    <atom:link href="https://xgugeng.github.io/tags/mind-map/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Few Things That I Know About Spark</title>
+      <link>https://xgugeng.github.io/post/a-few-things-about-spark/</link>
+      <pubDate>Mon, 03 Sep 2018 20:52:46 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/a-few-things-about-spark/</guid>
+      <description>&lt;p&gt;This post concludes a global view of Spark using a mind map, in which I try to enumerate what I know about it. A graph for the relationship of terminologies like Job, Stage is illustrated firstly so that you would be confused.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/spark-terminology-relationship.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Consensus in Distributed System</title>
+      <link>https://xgugeng.github.io/post/consensus-in-distributed-system/</link>
+      <pubDate>Sun, 19 Aug 2018 16:07:16 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/consensus-in-distributed-system/</guid>
+      <description>&lt;p&gt;The distributed consensus problem deals with reaching an agreement on a single data value among a group of process connected by an unreliable network. The processes must put forth their candidate values, communicate with one another, and agree on a single consensus value in presence of failures of some processes.&lt;/p&gt;
+&lt;p&gt;Examples of applications of consensus include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Leader election / Mutable Exclusion&lt;/li&gt;
+&lt;li&gt;Commit or Abort in distributed transactions&lt;/li&gt;
+&lt;li&gt;Reaching agreement about which process has failed&lt;/li&gt;
+&lt;li&gt;Clock phase synchronization&lt;/li&gt;
+&lt;li&gt;Load balancing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A visual diagram of this problem unfolds in the following. Each process &lt;strong&gt;p&lt;!-- raw HTML omitted --&gt;k&lt;!-- raw HTML omitted --&gt;&lt;/strong&gt; with an input value &lt;strong&gt;u&lt;!-- raw HTML omitted --&gt;k&lt;!-- raw HTML omitted --&gt;&lt;/strong&gt; runs a program to exchange its value. Finally the output of all non-faulty processes become identical. It is permissive that one or more processes may fail at any time, but the output &lt;strong&gt;v&lt;/strong&gt; must be equal to the value of at least one process.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/distributed-consensus-problem.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A Quick Retrospect of Design Pattern</title>
+      <link>https://xgugeng.github.io/post/retrospect-design-pattern/</link>
+      <pubDate>Mon, 13 Aug 2018 15:24:26 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/retrospect-design-pattern/</guid>
+      <description>&lt;p&gt;This post summarizes some design patterns I used in daily work or learnt from books.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/design-pattern-overview.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Refactor: Why, What, When and How</title>
+      <link>https://xgugeng.github.io/post/refactor-why-what-when-how/</link>
+      <pubDate>Wed, 08 Aug 2018 10:45:36 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/refactor-why-what-when-how/</guid>
+      <description>&lt;p&gt;I read &lt;a href=&#34;https://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672&#34;&gt;Refactoring: Improving the Design of Existing Code&lt;/a&gt; while chasing my master degree and did not realize how beneficial it would be considering the number of lines I wrote.&lt;/p&gt;
+&lt;p&gt;After joining the workforce, I found its importance can never be overstressed. It is rewarding to read this book over and over, so I draw this mind map for quick index.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Consistency Models and Protocols in Distributed System</title>
+      <link>https://xgugeng.github.io/post/consistency-in-distributed-system/</link>
+      <pubDate>Fri, 09 Feb 2018 17:03:05 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/consistency-in-distributed-system/</guid>
+      <description>&lt;p&gt;Data replication is a vital feature in distributed system, but brings in an inevitable price to be paid: consistency maintenance. The consistency model specifies a contract between programmer and system, wherein the system guarantees that if the programmer follows the rules, memory will be consistent and the results of reading, writing, or updating memory will be predictable.&lt;/p&gt;
+&lt;p&gt;In Chinese, &amp;ldquo;consistency&amp;rdquo; often mixes up with &amp;ldquo;consensus&amp;rdquo; because of their similar translations. The consensus problem requires &lt;strong&gt;agreement among a number of processes for a single data value&lt;/strong&gt;. Some of the processes may fail or be unreliable in other ways, so consensus protocols must be fault tolerant or resilient.&lt;/p&gt;
+&lt;p&gt;This post focus on consistency only, enumerating various common types of consistency models and illuminating some consistency protocols.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A Mind Map for HBase</title>
+      <link>https://xgugeng.github.io/post/hbase-mind-map/</link>
+      <pubDate>Sat, 01 Jul 2017 15:17:33 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/hbase-mind-map/</guid>
+      <description>&lt;p&gt;This map records my learning path to HBase. Every time I know something new about HBase, I will append it to this map.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Mind Maps for Java and JVM</title>
+      <link>https://xgugeng.github.io/post/java-jvm-mind-map/</link>
+      <pubDate>Fri, 16 Jun 2017 18:14:16 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/java-jvm-mind-map/</guid>
+      <description>&lt;p&gt;These two mind maps are drawn for the further exploration of Java and JVM. For Java I try to cover some advanced features ranging from NIO and Thread. As to JVM, few components are covered, of course, I will replenish it at any moment.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Redis Mind Map</title>
+      <link>https://xgugeng.github.io/post/redis-mind-map/</link>
+      <pubDate>Sun, 06 Nov 2016 21:20:07 +0800</pubDate>
+      <guid>https://xgugeng.github.io/post/redis-mind-map/</guid>
+      <description>&lt;p&gt;This post includes a few mind maps for Redis ranging from quick start to implementation.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/redis-quick-start.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
