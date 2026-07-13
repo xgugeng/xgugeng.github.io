@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Linux on XGugeng</title>
-    <link>https://xgugeng.github.io/categories/linux/</link>
-    <description>Recent content in Linux on XGugeng</description>
-    <generator>Hugo -- 0.164.0</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 10 Aug 2018 10:27:16 +0800</lastBuildDate>
-    <atom:link href="https://xgugeng.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Linux: Principles, Manual and Programming</title>
-      <link>https://xgugeng.github.io/post/linux-principle-manual-programming/</link>
-      <pubDate>Fri, 10 Aug 2018 10:27:16 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/linux-principle-manual-programming/</guid>
-      <description>&lt;p&gt;This post only involves three mind maps for Linux covering principles, manual and programming. I find it is beneficial to organize my knowledge with mind map.&lt;/p&gt;
-&lt;p&gt;I also realized a few captions are also useful for the full picture, so they are attached.&lt;/p&gt;</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Linux on XGugeng</title>
+		<link>https://xgugeng.github.io/categories/linux/</link>
+		<description>Recent content in Linux on XGugeng</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 10 Aug 2018 10:27:16 +0800</lastBuildDate>
+		
+			<atom:link href="https://xgugeng.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Linux: Principles, Manual and Programming</title>
+				<link>https://xgugeng.github.io/post/linux-principle-manual-programming/</link>
+				<pubDate>Fri, 10 Aug 2018 10:27:16 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/linux-principle-manual-programming/</guid>
+				<description>&lt;p&gt;This post only involves three mind maps for Linux covering principles, manual and programming. I find it is beneficial to organize my knowledge with mind map.&lt;/p&gt;&#xA;&lt;p&gt;I also realized a few captions are also useful for the full picture, so they are attached.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

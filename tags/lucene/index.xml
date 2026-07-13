@@ -1,50 +1,45 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Lucene on XGugeng</title>
-    <link>https://xgugeng.github.io/tags/lucene/</link>
-    <description>Recent content in Lucene on XGugeng</description>
-    <generator>Hugo -- 0.164.0</generator>
-    <language>en</language>
-    <lastBuildDate>Mon, 09 Apr 2018 11:25:40 +0800</lastBuildDate>
-    <atom:link href="https://xgugeng.github.io/tags/lucene/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>IndexOutput: Lucene Index Output</title>
-      <link>https://xgugeng.github.io/post/indexoutput-lucene-index-output/</link>
-      <pubDate>Mon, 09 Apr 2018 11:25:40 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/indexoutput-lucene-index-output/</guid>
-      <description>&lt;p&gt;Immediately following &lt;a href=&#34;https://www.xgugeng.com/post/indexwriter-lucene-index-creation-maintenance/&#34;&gt;
-Indexwriter: Lucene Index Creation and Maintenance&lt;/a&gt;, &lt;code&gt;IndexOutput&lt;/code&gt;, a random-access output stream. is used for all Lucene index output operations.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>IndexWriter: Lucene Index Creation and Maintenance</title>
-      <link>https://xgugeng.github.io/post/indexwriter-lucene-index-creation-maintenance/</link>
-      <pubDate>Tue, 03 Apr 2018 14:37:02 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/indexwriter-lucene-index-creation-maintenance/</guid>
-      <description>&lt;p&gt;An &lt;code&gt;IndexWriter&lt;/code&gt; creates and maintains an index. It&amp;rsquo;s the basic Class defined in Lucene Core.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Directory in Lucene</title>
-      <link>https://xgugeng.github.io/post/lucene-directory/</link>
-      <pubDate>Tue, 05 Sep 2017 16:26:31 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/lucene-directory/</guid>
-      <description>&lt;p&gt;&lt;code&gt;Directory&lt;/code&gt; represents the storage location of the indexes and generally it is a list of files. These files are called index files. Index files are normally created once and then used for read operation or can be deleted.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Document in Lucene</title>
-      <link>https://xgugeng.github.io/post/lucene-document/</link>
-      <pubDate>Mon, 07 Aug 2017 18:52:01 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/lucene-document/</guid>
-      <description>&lt;p&gt;In Lucene, a &lt;strong&gt;Document&lt;/strong&gt; is the unit of search and index.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;An index consists of a sequence of documents.&lt;/li&gt;
-&lt;li&gt;A document contains of one or more &lt;strong&gt;Fields&lt;/strong&gt;.&lt;/li&gt;
-&lt;li&gt;A field is a named sequence of &lt;strong&gt;terms&lt;/strong&gt;.&lt;/li&gt;
-&lt;li&gt;A term is a string.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/indexing-process.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-&lt;p&gt;In order to index data with Lucene, you must convert it to a stream of plain-text tokens firstly. Based on the stream, the document containing fields will be created. After that, you can call &lt;code&gt;addDocument&lt;/code&gt; method in &lt;code&gt;IndexWriter&lt;/code&gt; class to transmit it to index. During this procedure, analyzer may be used to make the data more suitable for indexing.&lt;/p&gt;</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Lucene on XGugeng</title>
+		<link>https://xgugeng.github.io/tags/lucene/</link>
+		<description>Recent content in Lucene on XGugeng</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 09 Apr 2018 11:25:40 +0800</lastBuildDate>
+		
+			<atom:link href="https://xgugeng.github.io/tags/lucene/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>IndexOutput: Lucene Index Output</title>
+				<link>https://xgugeng.github.io/post/indexoutput-lucene-index-output/</link>
+				<pubDate>Mon, 09 Apr 2018 11:25:40 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/indexoutput-lucene-index-output/</guid>
+				<description>&lt;p&gt;Immediately following &lt;a href=&#34;https://www.xgugeng.com/post/indexwriter-lucene-index-creation-maintenance/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;Indexwriter: Lucene Index Creation and Maintenance&lt;/a&gt;, &lt;code&gt;IndexOutput&lt;/code&gt;, a random-access output stream. is used for all Lucene index output operations.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>IndexWriter: Lucene Index Creation and Maintenance</title>
+				<link>https://xgugeng.github.io/post/indexwriter-lucene-index-creation-maintenance/</link>
+				<pubDate>Tue, 03 Apr 2018 14:37:02 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/indexwriter-lucene-index-creation-maintenance/</guid>
+				<description>&lt;p&gt;An &lt;code&gt;IndexWriter&lt;/code&gt; creates and maintains an index. It&amp;rsquo;s the basic Class defined in Lucene Core.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Directory in Lucene</title>
+				<link>https://xgugeng.github.io/post/lucene-directory/</link>
+				<pubDate>Tue, 05 Sep 2017 16:26:31 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/lucene-directory/</guid>
+				<description>&lt;p&gt;&lt;code&gt;Directory&lt;/code&gt; represents the storage location of the indexes and generally it is a list of files. These files are called index files. Index files are normally created once and then used for read operation or can be deleted.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Document in Lucene</title>
+				<link>https://xgugeng.github.io/post/lucene-document/</link>
+				<pubDate>Mon, 07 Aug 2017 18:52:01 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/lucene-document/</guid>
+				<description>&lt;p&gt;In Lucene, a &lt;strong&gt;Document&lt;/strong&gt; is the unit of search and index.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;An index consists of a sequence of documents.&lt;/li&gt;&#xA;&lt;li&gt;A document contains of one or more &lt;strong&gt;Fields&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;li&gt;A field is a named sequence of &lt;strong&gt;terms&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;li&gt;A term is a string.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://xgugeng.github.io/images/indexing-process.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;In order to index data with Lucene, you must convert it to a stream of plain-text tokens firstly. Based on the stream, the document containing fields will be created. After that, you can call &lt;code&gt;addDocument&lt;/code&gt; method in &lt;code&gt;IndexWriter&lt;/code&gt; class to transmit it to index. During this procedure, analyzer may be used to make the data more suitable for indexing.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

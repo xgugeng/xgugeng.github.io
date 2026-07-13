@@ -1,92 +1,59 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Elasticsearch on XGugeng</title>
-    <link>https://xgugeng.github.io/categories/elasticsearch/</link>
-    <description>Recent content in Elasticsearch on XGugeng</description>
-    <generator>Hugo -- 0.164.0</generator>
-    <language>en</language>
-    <lastBuildDate>Mon, 09 Apr 2018 11:25:40 +0800</lastBuildDate>
-    <atom:link href="https://xgugeng.github.io/categories/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>IndexOutput: Lucene Index Output</title>
-      <link>https://xgugeng.github.io/post/indexoutput-lucene-index-output/</link>
-      <pubDate>Mon, 09 Apr 2018 11:25:40 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/indexoutput-lucene-index-output/</guid>
-      <description>&lt;p&gt;Immediately following &lt;a href=&#34;https://www.xgugeng.com/post/indexwriter-lucene-index-creation-maintenance/&#34;&gt;
-Indexwriter: Lucene Index Creation and Maintenance&lt;/a&gt;, &lt;code&gt;IndexOutput&lt;/code&gt;, a random-access output stream. is used for all Lucene index output operations.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>IndexWriter: Lucene Index Creation and Maintenance</title>
-      <link>https://xgugeng.github.io/post/indexwriter-lucene-index-creation-maintenance/</link>
-      <pubDate>Tue, 03 Apr 2018 14:37:02 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/indexwriter-lucene-index-creation-maintenance/</guid>
-      <description>&lt;p&gt;An &lt;code&gt;IndexWriter&lt;/code&gt; creates and maintains an index. It&amp;rsquo;s the basic Class defined in Lucene Core.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Fixing Elasticsearch with Red Status</title>
-      <link>https://xgugeng.github.io/post/fixing-elasticsearch-with-red-status/</link>
-      <pubDate>Tue, 10 Oct 2017 10:05:01 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/fixing-elasticsearch-with-red-status/</guid>
-      <description>&lt;p&gt;Elasticsearch&amp;rsquo;s red status means at least one primary shard (and all of its replicas) is missing. This reminds you of missing data: searches will return partial results, and indexing into that shard will return an exception.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Directory in Lucene</title>
-      <link>https://xgugeng.github.io/post/lucene-directory/</link>
-      <pubDate>Tue, 05 Sep 2017 16:26:31 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/lucene-directory/</guid>
-      <description>&lt;p&gt;&lt;code&gt;Directory&lt;/code&gt; represents the storage location of the indexes and generally it is a list of files. These files are called index files. Index files are normally created once and then used for read operation or can be deleted.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Document in Lucene</title>
-      <link>https://xgugeng.github.io/post/lucene-document/</link>
-      <pubDate>Mon, 07 Aug 2017 18:52:01 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/lucene-document/</guid>
-      <description>&lt;p&gt;In Lucene, a &lt;strong&gt;Document&lt;/strong&gt; is the unit of search and index.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;An index consists of a sequence of documents.&lt;/li&gt;
-&lt;li&gt;A document contains of one or more &lt;strong&gt;Fields&lt;/strong&gt;.&lt;/li&gt;
-&lt;li&gt;A field is a named sequence of &lt;strong&gt;terms&lt;/strong&gt;.&lt;/li&gt;
-&lt;li&gt;A term is a string.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/indexing-process.jpg&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-&lt;p&gt;In order to index data with Lucene, you must convert it to a stream of plain-text tokens firstly. Based on the stream, the document containing fields will be created. After that, you can call &lt;code&gt;addDocument&lt;/code&gt; method in &lt;code&gt;IndexWriter&lt;/code&gt; class to transmit it to index. During this procedure, analyzer may be used to make the data more suitable for indexing.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Guice Usage in Elasticsearch</title>
-      <link>https://xgugeng.github.io/post/guice-usage-in-es/</link>
-      <pubDate>Fri, 04 Aug 2017 15:58:27 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/guice-usage-in-es/</guid>
-      <description>&lt;p&gt;The motivation of using Guice lists here: &lt;a href=&#34;https://github.com/google/guice/wiki/Motivation&#34;&gt;Motivation&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;To create bindings, extend &lt;code&gt;AbstractModule&lt;/code&gt; and override its &lt;code&gt;configure&lt;/code&gt; method. In the method body, call &lt;code&gt;bind()&lt;/code&gt; to specify each binding. These methods are type checked so the compiler can report errors if you use the wrong types. Once you&amp;rsquo;ve created your modules, pass them as arguments to &lt;code&gt;Guice.createInjector()&lt;/code&gt; to build an injector.&lt;/p&gt;
-&lt;p&gt;Elasticsearch has a &lt;code&gt;ModulesBuilder&lt;/code&gt; which is responsible for assembling modules.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ModulesBuilder&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;implements&lt;/span&gt; Iterable&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Module&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// container for all Module&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;final&lt;/span&gt; List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Module&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; modules &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ArrayList&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// add new Modules into container&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; ModulesBuilder &lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(Module... newModules) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Collections.&lt;span style=&#34;color:#a6e22e&#34;&gt;addAll&lt;/span&gt;(modules, newModules);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; Iterator&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Module&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;iterator&lt;/span&gt;() {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; modules.&lt;span style=&#34;color:#a6e22e&#34;&gt;iterator&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; Injector &lt;span style=&#34;color:#a6e22e&#34;&gt;createInjector&lt;/span&gt;() {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Injector injector &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Guice.&lt;span style=&#34;color:#a6e22e&#34;&gt;createInjector&lt;/span&gt;(modules);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ((InjectorImpl) injector).&lt;span style=&#34;color:#a6e22e&#34;&gt;clearCache&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// in ES, we always create all instances as if they are eager singletons&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// this allows for considerable memory savings (no need to store construction info) as well as cycles&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ((InjectorImpl) injector).&lt;span style=&#34;color:#a6e22e&#34;&gt;readOnlyAllSingletons&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; injector;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;A &lt;code&gt;Node&lt;/code&gt; represents a node within a cluster. &lt;code&gt;Node&lt;/code&gt; is made up of many &lt;code&gt;Modules&lt;/code&gt; with the help of &lt;code&gt;ModulesBuilder&lt;/code&gt;. Here is the short version of &lt;code&gt;Node&lt;/code&gt; class.&lt;/p&gt;</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Elasticsearch on XGugeng</title>
+		<link>https://xgugeng.github.io/categories/elasticsearch/</link>
+		<description>Recent content in Elasticsearch on XGugeng</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 09 Apr 2018 11:25:40 +0800</lastBuildDate>
+		
+			<atom:link href="https://xgugeng.github.io/categories/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>IndexOutput: Lucene Index Output</title>
+				<link>https://xgugeng.github.io/post/indexoutput-lucene-index-output/</link>
+				<pubDate>Mon, 09 Apr 2018 11:25:40 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/indexoutput-lucene-index-output/</guid>
+				<description>&lt;p&gt;Immediately following &lt;a href=&#34;https://www.xgugeng.com/post/indexwriter-lucene-index-creation-maintenance/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&#xA;Indexwriter: Lucene Index Creation and Maintenance&lt;/a&gt;, &lt;code&gt;IndexOutput&lt;/code&gt;, a random-access output stream. is used for all Lucene index output operations.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>IndexWriter: Lucene Index Creation and Maintenance</title>
+				<link>https://xgugeng.github.io/post/indexwriter-lucene-index-creation-maintenance/</link>
+				<pubDate>Tue, 03 Apr 2018 14:37:02 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/indexwriter-lucene-index-creation-maintenance/</guid>
+				<description>&lt;p&gt;An &lt;code&gt;IndexWriter&lt;/code&gt; creates and maintains an index. It&amp;rsquo;s the basic Class defined in Lucene Core.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Fixing Elasticsearch with Red Status</title>
+				<link>https://xgugeng.github.io/post/fixing-elasticsearch-with-red-status/</link>
+				<pubDate>Tue, 10 Oct 2017 10:05:01 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/fixing-elasticsearch-with-red-status/</guid>
+				<description>&lt;p&gt;Elasticsearch&amp;rsquo;s red status means at least one primary shard (and all of its replicas) is missing. This reminds you of missing data: searches will return partial results, and indexing into that shard will return an exception.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Directory in Lucene</title>
+				<link>https://xgugeng.github.io/post/lucene-directory/</link>
+				<pubDate>Tue, 05 Sep 2017 16:26:31 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/lucene-directory/</guid>
+				<description>&lt;p&gt;&lt;code&gt;Directory&lt;/code&gt; represents the storage location of the indexes and generally it is a list of files. These files are called index files. Index files are normally created once and then used for read operation or can be deleted.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Document in Lucene</title>
+				<link>https://xgugeng.github.io/post/lucene-document/</link>
+				<pubDate>Mon, 07 Aug 2017 18:52:01 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/lucene-document/</guid>
+				<description>&lt;p&gt;In Lucene, a &lt;strong&gt;Document&lt;/strong&gt; is the unit of search and index.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;An index consists of a sequence of documents.&lt;/li&gt;&#xA;&lt;li&gt;A document contains of one or more &lt;strong&gt;Fields&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;li&gt;A field is a named sequence of &lt;strong&gt;terms&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;li&gt;A term is a string.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://xgugeng.github.io/images/indexing-process.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;In order to index data with Lucene, you must convert it to a stream of plain-text tokens firstly. Based on the stream, the document containing fields will be created. After that, you can call &lt;code&gt;addDocument&lt;/code&gt; method in &lt;code&gt;IndexWriter&lt;/code&gt; class to transmit it to index. During this procedure, analyzer may be used to make the data more suitable for indexing.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Guice Usage in Elasticsearch</title>
+				<link>https://xgugeng.github.io/post/guice-usage-in-es/</link>
+				<pubDate>Fri, 04 Aug 2017 15:58:27 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/guice-usage-in-es/</guid>
+				<description>&lt;p&gt;The motivation of using Guice lists here: &lt;a href=&#34;https://github.com/google/guice/wiki/Motivation&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Motivation&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;To create bindings, extend &lt;code&gt;AbstractModule&lt;/code&gt; and override its &lt;code&gt;configure&lt;/code&gt; method. In the method body, call &lt;code&gt;bind()&lt;/code&gt; to specify each binding. These methods are type checked so the compiler can report errors if you use the wrong types. Once you&amp;rsquo;ve created your modules, pass them as arguments to &lt;code&gt;Guice.createInjector()&lt;/code&gt; to build an injector.&lt;/p&gt;&#xA;&lt;p&gt;Elasticsearch has a &lt;code&gt;ModulesBuilder&lt;/code&gt; which is responsible for assembling modules.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ModulesBuilder&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;implements&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Iterable&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Module&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// container for all Module&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Module&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;modules&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ArrayList&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// add new Modules into container&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ModulesBuilder&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;add&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;newModules&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Collections&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;addAll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;modules&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;newModules&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;@Override&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Iterator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Module&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;iterator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;modules&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;iterator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Injector&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;createInjector&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Injector&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;injector&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Guice&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;createInjector&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;modules&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;InjectorImpl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;injector&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;clearCache&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// in ES, we always create all instances as if they are eager singletons&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// this allows for considerable memory savings (no need to store construction info) as well as cycles&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;InjectorImpl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;injector&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;readOnlyAllSingletons&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;injector&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;A &lt;code&gt;Node&lt;/code&gt; represents a node within a cluster. &lt;code&gt;Node&lt;/code&gt; is made up of many &lt;code&gt;Modules&lt;/code&gt; with the help of &lt;code&gt;ModulesBuilder&lt;/code&gt;. Here is the short version of &lt;code&gt;Node&lt;/code&gt; class.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

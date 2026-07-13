@@ -6,12 +6,12 @@
     <lastmod>2020-02-16T11:05:45+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
+                hreflang="en-US"
                 href="https://xgugeng.github.io/categories/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
+                hreflang="zh-CN"
                 href="https://xgugeng.github.io/zh/categories/"
                 />
   </url><url>
@@ -19,12 +19,12 @@
     <lastmod>2020-02-16T11:05:45+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
+                hreflang="en-US"
                 href="https://xgugeng.github.io/post/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
+                hreflang="zh-CN"
                 href="https://xgugeng.github.io/zh/post/"
                 />
   </url><url>
@@ -32,12 +32,12 @@
     <lastmod>2020-02-16T11:05:45+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
+                hreflang="en-US"
                 href="https://xgugeng.github.io/tags/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
+                hreflang="zh-CN"
                 href="https://xgugeng.github.io/zh/tags/"
                 />
   </url><url>
@@ -45,12 +45,12 @@
     <lastmod>2020-02-16T11:05:45+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
+                hreflang="en-US"
                 href="https://xgugeng.github.io/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
+                hreflang="zh-CN"
                 href="https://xgugeng.github.io/zh/"
                 />
   </url><url>
@@ -79,12 +79,12 @@
     <lastmod>2019-08-05T14:46:40+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
+                hreflang="en-US"
                 href="https://xgugeng.github.io/categories/python/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
+                hreflang="zh-CN"
                 href="https://xgugeng.github.io/zh/categories/python/"
                 />
   </url><url>
@@ -101,12 +101,12 @@
     <lastmod>2019-04-03T20:11:53+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
+                hreflang="en-US"
                 href="https://xgugeng.github.io/categories/redis/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
+                hreflang="zh-CN"
                 href="https://xgugeng.github.io/zh/categories/redis/"
                 />
   </url><url>
@@ -179,16 +179,28 @@
     <loc>https://xgugeng.github.io/zh/post/an-efficient-day/</loc>
     <lastmod>2018-10-25T12:34:01+08:00</lastmod>
   </url><url>
-    <loc>https://xgugeng.github.io/zh/archives/</loc>
+    <loc>https://xgugeng.github.io/zh/authors/</loc>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="https://xgugeng.github.io/archives/"
+                hreflang="en-US"
+                href="https://xgugeng.github.io/authors/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh"
-                href="https://xgugeng.github.io/zh/archives/"
+                hreflang="zh-CN"
+                href="https://xgugeng.github.io/zh/authors/"
+                />
+  </url><url>
+    <loc>https://xgugeng.github.io/zh/series/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://xgugeng.github.io/series/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="https://xgugeng.github.io/zh/series/"
                 />
   </url>
 </urlset>

@@ -1,569 +1,617 @@
-<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>A Quick Retrospect of Design Pattern | XGugeng</title><meta name=keywords content="Design Pattern"><meta name=description content="This post summarizes some design patterns I used in daily work or learnt from books.
-
-"><meta name=author content="xgugeng"><link rel=canonical href=https://xgugeng.github.io/post/retrospect-design-pattern/><meta name=google-site-verification content="XGugeng"><meta name=yandex-verification content="XGugeng"><meta name=msvalidate.01 content="XGugeng"><link crossorigin=anonymous href=/assets/css/stylesheet.6ad59631f6c2768a4592d27068d54364d637cac5c853d949b7849073cb1aa97d.css integrity="sha256-atWWMfbCdopFktJwaNVDZNY3ysXIU9lJt4SQc8saqX0=" rel="preload stylesheet" as=style><link rel=icon href=https://xgugeng.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://xgugeng.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://xgugeng.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://xgugeng.github.io/apple-touch-icon.png><link rel=mask-icon href=https://xgugeng.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://xgugeng.github.io/post/retrospect-design-pattern/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:title" content="A Quick Retrospect of Design Pattern"><meta property="og:description" content="This post summarizes some design patterns I used in daily work or learnt from books.
-
-"><meta property="og:type" content="article"><meta property="og:url" content="https://xgugeng.github.io/post/retrospect-design-pattern/"><meta property="article:section" content="post"><meta property="article:published_time" content="2018-08-13T15:24:26+08:00"><meta property="article:modified_time" content="2018-08-13T15:24:26+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="A Quick Retrospect of Design Pattern"><meta name=twitter:description content="This post summarizes some design patterns I used in daily work or learnt from books.
-
-"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://xgugeng.github.io/post/"},{"@type":"ListItem","position":2,"name":"A Quick Retrospect of Design Pattern","item":"https://xgugeng.github.io/post/retrospect-design-pattern/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"A Quick Retrospect of Design Pattern","name":"A Quick Retrospect of Design Pattern","description":"This post summarizes some design patterns I used in daily work or learnt from books.\n","keywords":["Design Pattern"],"articleBody":"This post summarizes some design patterns I used in daily work or learnt from books.\nCreational Pattern Factory Define an interface for creating an object. Let subclasses decide which class to instantiate. from abc import ABCMeta, abstractmethod class Shape(metaclass=ABCMeta): @abstractmethod def op(self): pass class Triangle(Shape): def op(self): print(\"triangle\") class Circle(Shape): def op(self): print(\"circle\") class Factory(metaclass=ABCMeta): def __init__(self): self.shape = self.getInstance() @abstractmethod def getInstance(self): pass class ConcreteFactoryA(Factory): def getInstance(self): return Triangle() class ConcreteFactoryB(Factory): def getInstance(self): return Circle() Abstract Factory Provide an interface for creating families of related objects. Avoid specifying their concrete classes. from abc import ABCMeta, abstractmethod class Shape(metaclass=ABCMeta): @abstractmethod def op(self): pass class Triangle(Shape): def op(self): print(\"triangle\") class Color(metaclass=ABCMeta): @abstractmethod def op(self): pass class Red(Color): @abstractmethod def op(self): print(\"red\") class Factory(metaclass=ABCMeta): def __init__(self): self.shape = self.getInstance() @abstractmethod def getShape(self): pass @abstractmethod def getColor(self): pass class ShapeFactory(Factory): def getShape(self): return Triangle() class ColorFactory(Factory): def getColor(self): return Red() Builder Separate the construction of a complex object from its representation. class Director: def __init__(self): self._builder = None def construct(self, builder): self._builder = builder self._builder.buildPartA() self._builder.buildPartB() class Builder(metaclass=ABCMeta): def __init__(self): self.product = Product() @abstractmethod def buildPartA(self): pass @abstractmethod def buildPartB(self): pass class ConcreteBuilder(Builder): def buildPartA(self): pass def buildPartB(self): pass class Product: pass Singleton Ensure a class has only one instance. Provide a global point of access to it. Initialization on first use. class Singleton(type): def __init__(cls, name, bases, attrs, **kwargs): super().__init__(name, bases, attrs) cls._instance = None def __call__(cls, *args, **kwargs): if cls._instance is None: cls._instance = super().__call__(*args, **kwargs) return cls._instance Prototype Specify the kinds of objects to create using a prototypical instance. Create new objects by copying this prototype. import copy class Prototype: \"\"\" Example class to be copied. \"\"\" pass def main(): prototype = Prototype() prototype_copy = copy.deepcopy(prototype) Structural Pattern Adapter Convert the interface of a class into another interface. Wrap an existing class with a new interface. from abc import ABCMeta, abstractmethod class Shape(metaclass=ABCMeta): @abstractmethod def display(self, x1, y1, x2, y2): pass class Rectangle(Shape): def __init__(self): self._adaptee = LegacyRectangle() def display(self, x1, y1, x2, y2): self._adaptee.display(x1, y1, x2-x1, y2-y1) class LegacyRectangle: def display(self, x1, y1, w, h): pass Bridge Decouple an abstraction from its implementation. Beyond encapsulation, to insulation. from abc import abstractmethod, ABCMeta class Shape: def __init__(self, api): self._api = api def draw(self): self._api.drawCircle() class DrawAPI(metaclass=ABCMeta): @abstractmethod def drawCircle(self): pass class RedCircle(DrawAPI): def drawCircle(self): pass Composite Compose objects into tree structures to represent whole-part hierarchies. Let clients treat individual objects and compositions of objects uniformly. from abc import abstractmethod, ABCMeta class Component(metaclass=ABCMeta): @abstractmethod def do(self): pass class Composite(Component): def __init__(self): self._children = set() def do(self): for child in self._children: child.do() def add(self, component): self._children.add(component) def remove(self, component): self._children.discard(component) class Leaf(Component): def do(self): pass Decorator Attach additional responsibilities to an object dynamically. Provide a flexible alternative to subclassing for extending functionality. Wrapping a gift, putting it in a box, and wrapping the box. from abc import abstractmethod, ABCMeta class Shape(metaclass=ABCMeta): @abstractmethod def draw(self): pass class ShapeDecorator(Shape, metaclass=ABCMeta): def __init__(self, shape): self._shape= shape @abstractmethod def operation(self): pass class RedShapeDecorator(ShapeDecorator): def operation(self): self._shape.operation() class Circle(Shape): def operation(self): pass def main(): cc = Circle() decorator = RedShapeDecorator(cc) decorator.operation() Facade Provide a unified interface to a set of interfaces in a subsystem. Wrap a complicated subsystem with a simpler interface. class Facade: def __init__(self): self._subsystem_1 = Subsystem1() self._subsystem_2 = Subsystem2() def operation(self): self._subsystem_1.operation1() self._subsystem_1.operation2() self._subsystem_2.operation1() self._subsystem_2.operation2() class Subsystem1: def operation1(self): pass def operation2(self): pass class Subsystem2: def operation1(self): pass def operation2(self): pass def main(): facade = Facade() facade.operation() Flyweight Use sharing to support large numbers of fine-grained objects. from abc import ABCMeta, abstractmethod class ShapeFactory: def __init__(self): self._circleDict = {} def getShape(self, key): if key not in self._circleDict: circle = Circle() self._circleDict[key] = circle return self._circleDict[key] class Shape(metaclass=ABCMeta): def __init__(self): self.intrinsic_state = None @abstractmethod def draw(self): pass class Circle(Shape): def draw(self): pass def main(): factory = ShapeFactory() concrete = factory.getShape(\"key\") concrete.draw() Proxy Provide a surrogate or placeholder for another object to control access to it. Add a wrapper and delegation to protect the real component from undue complexity. from abc import ABCMeta, abstractmethod class Subject(metaclass=ABCMeta): @abstractmethod def op(self): pass class Proxy(Subject): def __init__(self, real_subject): self._real_subject = real_subject def op(self): self._real_subject.op() class RealSubject(Subject): def op(self): print(\"real\") def main(): real_subject = RealSubject() proxy = Proxy(real_subject) proxy.op() Behavioral Pattern Chain of Responsibility Give more than one object a chance to handle the request. Launch-and-leave requests with a single processing pipeline. class Handler(metaclass=ABCMeta): def __init__(self, next=None): self._next = next self._canHandle = True @abstractmethod def handle(self): pass class HandlerOne(Handler): def handle_request(self): if self.canHandle: pass elif self._next: self._next.handle() class HandlerTwo(Handler): def handle(self): if self._canHandle: pass elif self._next: self._next.handle() def main(): handler1 = HandlerOne() handler2 = HandlerTwo(handler1) handler2.handle() Command Encapsulate a request as an object. Let you parametrize clients with different requests. class Invoker: def __init__(self): self._commands = [] def add(self, command): self._commands.append(command) def call(self): for command in self._commands: command.execute() class Command(metaclass=ABCMeta): def __init__(self, receiver): self._receiver = receiver @abstractmethod def execute(self): pass class ConcreteCommand(Command): def execute(self): self._receiver.action() class Receiver: def action(self): pass def main(): receiver = Receiver() cmd = ConcreteCommand(receiver) invoker = Invoker() invoker.add(cmd) invoker.call() Mediator Define an object that encapsulates how a set of objects interact. Design an intermediary to decouple many peers. from abc import ABCMeta, abstractmethod class Mediator(metaclass=ABCMeta): def __init__(self): self._colleagues = {} @abstractmethod def register(self, colleague): pass @abstractmethod def op(self): pass class ConcreteMediator(Mediator): def register(self, colleague): self._colleagues.append(colleague) colleague.setMeidator(self) class Colleague(metaclass=ABCMeta): def __init__(self, mediator=None): self._mediator = mediator def setMediator(self, mediator): self._mediator = mediator @abstractmethod def op(self): pass class ColleagueA: def op(self): pass class ColleagueB: def op(self): pass def main(): c1 = ColleagueA() c2 = ColleagueB() mediator = ConcreteMediator() mediator.register(c1) mediator.register(c2) c1.op() c2.op() Memento Capture and externalize an object’s internal state. Promote undo or rollback to full object status. class Memnto: def __init__(self, state=None): self._state = state def getState(self): return self._state class Originator: def __init__(self, state=None): self._state = state def setState(self, state): self._state = state def getStateFromMemento(self, memento): self._state = memento.getState() def createMemento(self): return Memnto(self._state) class CareTaker: def __init__(self): self._mem = [] def add(self, state): self._mem.append(state) def get(self, index): if index \u003c len(self._mem): return self._mem[index] def main(): originator = Originator() taker = CareTaker() originator.setState(True) taker.add(originator.createMemento()) originator.getStateFromMemento(taker.get(0)) Observer Define a one-to-many dependency between objects. When one object changes state, all its dependents are notified and updated. class Subject: def __init__(self): self._state = None self._obList = [] def attach(self, observer): observer._subject = self self._obList.add(observer) def detach(self, observer): observer._subject = None self._obList.discard(observer) def _notify(self): for observer in self._obList: observer.update(self._state) def updateState(self, state): self._state = state self._notify() class Observer(metaclass=ABCMeta): def __init__(self): self._subject = None self._state = None @abstractmethod def update(self, arg): pass class ConcreteObserver(Observer): def update(self, state): self._state = state def main(): subject = Subject() observer = ConcreteObserver() subject.attach(observer) subject.updateState(123) State Allow an object to alter its behavior when its internal state changes. Wrapper + polymorphic wrappee + collaboration. class Context: def __init__(self, state): self._state = state def request(self): self._state.handle() class State(metaclass=ABCMeta): @abstractmethod def handle(self): pass class ConcreteStateA(State): def handle(self): pass class ConcreteStateB(State): def handle(self): pass def main(): state = ConcreteStateA() context = Context(state) context.request() Strategy Define a family of algorithms, encapsulate each one. Capture the abstraction in an interface, bury implementation details in derived classes. class Context: def __init__(self, strategy): self._strategy = strategy def algorithm(self): self._strategy.algorithm() class Strategy(metaclass=ABCMeta): @abstractmethod def algorithm(self): pass class ConcreteStrategyA(Strategy): def algorithm(self): pass class ConcreteStrategyB(Strategy): def algorithm(self): pass def main(): strategy = ConcreteStrategyA() context = Context(strategy) context.algorithm() Visitor Represent an operation to be performed on the elements of an object structure. Define a new operation without changing the classes of the elements on which it operates. class Element(metaclass=ABCMeta): @abstractmethod def accept(self, visitor): pass class ConcreteElementA(Element): def accept(self, visitor): visitor.visitA(self) class ConcreteElementB(Element): def accept(self, visitor): visitor.visitB(self) class Visitor(metaclass=ABCMeta): @abstractmethod def visitA(self, eleA): pass @abstractmethod def visitB(self, eleB): pass class ConcreteVisitorA(Visitor): def visitA(self, eleA): pass def visitB(self, eleB): pass def main(): visitor = ConcreteVisitorA() element = ConcreteElementA() element.accept(visitor) Reference\nDesign Patterns Design Patterns in Java Tutorial ","wordCount":"1295","inLanguage":"en","datePublished":"2018-08-13T15:24:26+08:00","dateModified":"2018-08-13T15:24:26+08:00","author":{"@type":"Person","name":"xgugeng"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://xgugeng.github.io/post/retrospect-design-pattern/"},"publisher":{"@type":"Organization","name":"XGugeng","logo":{"@type":"ImageObject","url":"https://xgugeng.github.io/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://xgugeng.github.io/ accesskey=h title="XGugeng (Alt + H)"><img src=https://xgugeng.github.io/apple-touch-icon.png alt aria-label=logo height=35>XGugeng</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><ul class=lang-switch><li>|</li><li><a href=https://xgugeng.github.io/zh/ title=中文 aria-label=中文>Zh</a></li></ul></div></div><ul id=menu><li><a href=https://xgugeng.github.io/archives title=Archives><span>Archives</span></a></li><li><a href=https://xgugeng.github.io/categories title=Categories><span>Categories</span></a></li><li><a href=https://xgugeng.github.io/tags title=Tags><span>Tags</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://xgugeng.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://xgugeng.github.io/post/>Posts</a></div><h1 class="post-title entry-hint-parent">A Quick Retrospect of Design Pattern</h1><div class=post-meta><span title='2018-08-13 15:24:26 +0800 AWST'>Aug 13, 2018</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;xgugeng</div></header><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><ul><li><a href=#creational-pattern aria-label="Creational Pattern">Creational Pattern</a><ul><li><a href=#factory aria-label=Factory>Factory</a></li><li><a href=#abstract-factory aria-label="Abstract Factory">Abstract Factory</a></li><li><a href=#builder aria-label=Builder>Builder</a></li><li><a href=#singleton aria-label=Singleton>Singleton</a></li><li><a href=#prototype aria-label=Prototype>Prototype</a></li></ul></li><li><a href=#structural-pattern aria-label="Structural Pattern">Structural Pattern</a><ul><li><a href=#adapter aria-label=Adapter>Adapter</a></li><li><a href=#bridge aria-label=Bridge>Bridge</a></li><li><a href=#composite aria-label=Composite>Composite</a></li><li><a href=#decorator aria-label=Decorator>Decorator</a></li><li><a href=#facade aria-label=Facade>Facade</a></li><li><a href=#flyweight aria-label=Flyweight>Flyweight</a></li><li><a href=#proxy aria-label=Proxy>Proxy</a></li></ul></li><li><a href=#behavioral-pattern aria-label="Behavioral Pattern">Behavioral Pattern</a><ul><li><a href=#chain-of-responsibility aria-label="Chain of Responsibility">Chain of Responsibility</a></li><li><a href=#command aria-label=Command>Command</a></li><li><a href=#mediator aria-label=Mediator>Mediator</a></li><li><a href=#memento aria-label=Memento>Memento</a></li><li><a href=#observer aria-label=Observer>Observer</a></li><li><a href=#state aria-label=State>State</a></li><li><a href=#strategy aria-label=Strategy>Strategy</a></li><li><a href=#visitor aria-label=Visitor>Visitor</a></li></ul></li></ul></div></details></div><div class=post-content><p>This post summarizes some design patterns I used in daily work or learnt from books.</p><p><img loading=lazy src=/images/design-pattern-overview.png alt></p><h1 id=creational-pattern>Creational Pattern<a hidden class=anchor aria-hidden=true href=#creational-pattern>#</a></h1><h2 id=factory>Factory<a hidden class=anchor aria-hidden=true href=#factory>#</a></h2><ul><li>Define an interface for creating an object.</li><li>Let subclasses decide which class to instantiate.</li></ul><p><img loading=lazy src=/images/design-pattern-factory.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> abc <span style=color:#f92672>import</span> ABCMeta, abstractmethod
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Shape</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>op</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Triangle</span>(Shape):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>op</span>(self):
-</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;triangle&#34;</span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Circle</span>(Shape):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>op</span>(self):
-</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;circle&#34;</span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Factory</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>shape <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>getInstance()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>getInstance</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConcreteFactoryA</span>(Factory):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>getInstance</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> Triangle()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConcreteFactoryB</span>(Factory):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>getInstance</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> Circle()
-</span></span></code></pre></div><h2 id=abstract-factory>Abstract Factory<a hidden class=anchor aria-hidden=true href=#abstract-factory>#</a></h2><ul><li>Provide an interface for creating families of related objects.</li><li>Avoid specifying their concrete classes.</li></ul><p><img loading=lazy src=/images/design-pattern-abstract-factory.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> abc <span style=color:#f92672>import</span> ABCMeta, abstractmethod
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Shape</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>op</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Triangle</span>(Shape):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>op</span>(self):
-</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;triangle&#34;</span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Color</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>op</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Red</span>(Color):
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>op</span>(self):
-</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;red&#34;</span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Factory</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>shape <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>getInstance()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>getShape</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>getColor</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ShapeFactory</span>(Factory):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>getShape</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> Triangle()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ColorFactory</span>(Factory):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>getColor</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> Red()
-</span></span></code></pre></div><h2 id=builder>Builder<a hidden class=anchor aria-hidden=true href=#builder>#</a></h2><ul><li>Separate the construction of a complex object from its representation.</li></ul><p><img loading=lazy src=/images/design-pattern-builder.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Director</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_builder <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>construct</span>(self, builder):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_builder <span style=color:#f92672>=</span> builder
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_builder<span style=color:#f92672>.</span>buildPartA()
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_builder<span style=color:#f92672>.</span>buildPartB()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Builder</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>product <span style=color:#f92672>=</span> Product()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>buildPartA</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>buildPartB</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConcreteBuilder</span>(Builder):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>buildPartA</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>buildPartB</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Product</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>pass</span>
-</span></span></code></pre></div><h2 id=singleton>Singleton<a hidden class=anchor aria-hidden=true href=#singleton>#</a></h2><ul><li>Ensure a class has only one instance.</li><li>Provide a global point of access to it.</li><li>Initialization on first use.</li></ul><p><img loading=lazy src=/images/design-pattern-singleton.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Singleton</span>(type):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(cls, name, bases, attrs, <span style=color:#f92672>**</span>kwargs):
-</span></span><span style=display:flex><span>        super()<span style=color:#f92672>.</span><span style=color:#a6e22e>__init__</span>(name, bases, attrs)
-</span></span><span style=display:flex><span>        cls<span style=color:#f92672>.</span>_instance <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__call__</span>(cls, <span style=color:#f92672>*</span>args, <span style=color:#f92672>**</span>kwargs):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> cls<span style=color:#f92672>.</span>_instance <span style=color:#f92672>is</span> <span style=color:#66d9ef>None</span>:
-</span></span><span style=display:flex><span>            cls<span style=color:#f92672>.</span>_instance <span style=color:#f92672>=</span> super()<span style=color:#f92672>.</span><span style=color:#a6e22e>__call__</span>(<span style=color:#f92672>*</span>args, <span style=color:#f92672>**</span>kwargs)
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> cls<span style=color:#f92672>.</span>_instance
-</span></span></code></pre></div><h2 id=prototype>Prototype<a hidden class=anchor aria-hidden=true href=#prototype>#</a></h2><ul><li>Specify the kinds of objects to create using a prototypical instance.</li><li>Create new objects by copying this prototype.</li></ul><p><img loading=lazy src=/images/design-pattern-prototype.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> copy
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Prototype</span>:
-</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Example class to be copied.
-</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
-</span></span><span style=display:flex><span>    prototype <span style=color:#f92672>=</span> Prototype()
-</span></span><span style=display:flex><span>    prototype_copy <span style=color:#f92672>=</span> copy<span style=color:#f92672>.</span>deepcopy(prototype)
-</span></span></code></pre></div><h1 id=structural-pattern>Structural Pattern<a hidden class=anchor aria-hidden=true href=#structural-pattern>#</a></h1><h2 id=adapter>Adapter<a hidden class=anchor aria-hidden=true href=#adapter>#</a></h2><ul><li>Convert the interface of a class into another interface.</li><li>Wrap an existing class with a new interface.</li></ul><p><img loading=lazy src=/images/design-pattern-adapter.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> abc <span style=color:#f92672>import</span> ABCMeta, abstractmethod
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Shape</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>display</span>(self, x1, y1, x2, y2):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Rectangle</span>(Shape):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_adaptee <span style=color:#f92672>=</span> LegacyRectangle()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>display</span>(self, x1, y1, x2, y2):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_adaptee<span style=color:#f92672>.</span>display(x1, y1, x2<span style=color:#f92672>-</span>x1, y2<span style=color:#f92672>-</span>y1)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>LegacyRectangle</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>display</span>(self, x1, y1, w, h):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span></code></pre></div><h2 id=bridge>Bridge<a hidden class=anchor aria-hidden=true href=#bridge>#</a></h2><ul><li>Decouple an abstraction from its implementation.</li><li>Beyond encapsulation, to insulation.</li></ul><p><img loading=lazy src=/images/design-pattern-bridge.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> abc <span style=color:#f92672>import</span> abstractmethod, ABCMeta
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Shape</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self, api):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_api <span style=color:#f92672>=</span> api
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>draw</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_api<span style=color:#f92672>.</span>drawCircle()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DrawAPI</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>drawCircle</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>RedCircle</span>(DrawAPI):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>drawCircle</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span></code></pre></div><h2 id=composite>Composite<a hidden class=anchor aria-hidden=true href=#composite>#</a></h2><ul><li>Compose objects into tree structures to represent whole-part hierarchies.</li><li>Let clients treat individual objects and compositions of objects uniformly.</li></ul><p><img loading=lazy src=/images/design-pattern-composite.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> abc <span style=color:#f92672>import</span> abstractmethod, ABCMeta
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Component</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Composite</span>(Component):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_children <span style=color:#f92672>=</span> set()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> child <span style=color:#f92672>in</span> self<span style=color:#f92672>.</span>_children:
-</span></span><span style=display:flex><span>            child<span style=color:#f92672>.</span>do()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>add</span>(self, component):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_children<span style=color:#f92672>.</span>add(component)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>remove</span>(self, component):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_children<span style=color:#f92672>.</span>discard(component)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Leaf</span>(Component):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>do</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span></code></pre></div><h2 id=decorator>Decorator<a hidden class=anchor aria-hidden=true href=#decorator>#</a></h2><ul><li>Attach additional responsibilities to an object dynamically.</li><li>Provide a flexible alternative to subclassing for extending functionality.</li><li>Wrapping a gift, putting it in a box, and wrapping the box.</li></ul><p><img loading=lazy src=/images/design-pattern-decorator.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> abc <span style=color:#f92672>import</span> abstractmethod, ABCMeta
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Shape</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>draw</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ShapeDecorator</span>(Shape, metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self, shape):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_shape<span style=color:#f92672>=</span> shape
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>operation</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>RedShapeDecorator</span>(ShapeDecorator):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>operation</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_shape<span style=color:#f92672>.</span>operation()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Circle</span>(Shape):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>operation</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
-</span></span><span style=display:flex><span>    cc <span style=color:#f92672>=</span> Circle()
-</span></span><span style=display:flex><span>    decorator <span style=color:#f92672>=</span> RedShapeDecorator(cc)
-</span></span><span style=display:flex><span>    decorator<span style=color:#f92672>.</span>operation()
-</span></span></code></pre></div><h2 id=facade>Facade<a hidden class=anchor aria-hidden=true href=#facade>#</a></h2><ul><li>Provide a unified interface to a set of interfaces in a subsystem.</li><li>Wrap a complicated subsystem with a simpler interface.</li></ul><p><img loading=lazy src=/images/design-pattern-facade.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Facade</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_subsystem_1 <span style=color:#f92672>=</span> Subsystem1()
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_subsystem_2 <span style=color:#f92672>=</span> Subsystem2()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>operation</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_subsystem_1<span style=color:#f92672>.</span>operation1()
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_subsystem_1<span style=color:#f92672>.</span>operation2()
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_subsystem_2<span style=color:#f92672>.</span>operation1()
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_subsystem_2<span style=color:#f92672>.</span>operation2()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Subsystem1</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>operation1</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>operation2</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Subsystem2</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>operation1</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>operation2</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
-</span></span><span style=display:flex><span>    facade <span style=color:#f92672>=</span> Facade()
-</span></span><span style=display:flex><span>    facade<span style=color:#f92672>.</span>operation()
-</span></span></code></pre></div><h2 id=flyweight>Flyweight<a hidden class=anchor aria-hidden=true href=#flyweight>#</a></h2><ul><li>Use sharing to support large numbers of fine-grained objects.</li></ul><p><img loading=lazy src=/images/design-pattern-flyweight.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> abc <span style=color:#f92672>import</span> ABCMeta, abstractmethod
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ShapeFactory</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_circleDict <span style=color:#f92672>=</span> {}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>getShape</span>(self, key):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> key <span style=color:#f92672>not</span> <span style=color:#f92672>in</span> self<span style=color:#f92672>.</span>_circleDict:
-</span></span><span style=display:flex><span>            circle <span style=color:#f92672>=</span> Circle()
-</span></span><span style=display:flex><span>            self<span style=color:#f92672>.</span>_circleDict[key] <span style=color:#f92672>=</span> circle
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> self<span style=color:#f92672>.</span>_circleDict[key]
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Shape</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>intrinsic_state <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>draw</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Circle</span>(Shape):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>draw</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
-</span></span><span style=display:flex><span>    factory <span style=color:#f92672>=</span> ShapeFactory()
-</span></span><span style=display:flex><span>    concrete <span style=color:#f92672>=</span> factory<span style=color:#f92672>.</span>getShape(<span style=color:#e6db74>&#34;key&#34;</span>)
-</span></span><span style=display:flex><span>    concrete<span style=color:#f92672>.</span>draw()
-</span></span></code></pre></div><h2 id=proxy>Proxy<a hidden class=anchor aria-hidden=true href=#proxy>#</a></h2><ul><li>Provide a surrogate or placeholder for another object to control access to it.</li><li>Add a wrapper and delegation to protect the real component from undue complexity.</li></ul><p><img loading=lazy src=/images/design-pattern-proxy.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> abc <span style=color:#f92672>import</span> ABCMeta, abstractmethod
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Subject</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>op</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Proxy</span>(Subject):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self, real_subject):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_real_subject <span style=color:#f92672>=</span> real_subject
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>op</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_real_subject<span style=color:#f92672>.</span>op()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>RealSubject</span>(Subject):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>op</span>(self):
-</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;real&#34;</span>)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
-</span></span><span style=display:flex><span>    real_subject <span style=color:#f92672>=</span> RealSubject()
-</span></span><span style=display:flex><span>    proxy <span style=color:#f92672>=</span> Proxy(real_subject)
-</span></span><span style=display:flex><span>    proxy<span style=color:#f92672>.</span>op()
-</span></span></code></pre></div><h1 id=behavioral-pattern>Behavioral Pattern<a hidden class=anchor aria-hidden=true href=#behavioral-pattern>#</a></h1><h2 id=chain-of-responsibility>Chain of Responsibility<a hidden class=anchor aria-hidden=true href=#chain-of-responsibility>#</a></h2><ul><li>Give more than one object a chance to handle the request.</li><li>Launch-and-leave requests with a single processing pipeline.</li></ul><p><img loading=lazy src=/images/design-pattern-chain-of-responsibility.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Handler</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self, next<span style=color:#f92672>=</span><span style=color:#66d9ef>None</span>):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_next <span style=color:#f92672>=</span> next
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_canHandle <span style=color:#f92672>=</span> <span style=color:#66d9ef>True</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>handle</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>HandlerOne</span>(Handler):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>handle_request</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> self<span style=color:#f92672>.</span>canHandle:
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>elif</span> self<span style=color:#f92672>.</span>_next:
-</span></span><span style=display:flex><span>            self<span style=color:#f92672>.</span>_next<span style=color:#f92672>.</span>handle()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>HandlerTwo</span>(Handler):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>handle</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> self<span style=color:#f92672>.</span>_canHandle:
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>elif</span> self<span style=color:#f92672>.</span>_next:
-</span></span><span style=display:flex><span>            self<span style=color:#f92672>.</span>_next<span style=color:#f92672>.</span>handle()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
-</span></span><span style=display:flex><span>    handler1 <span style=color:#f92672>=</span> HandlerOne()
-</span></span><span style=display:flex><span>    handler2 <span style=color:#f92672>=</span> HandlerTwo(handler1)
-</span></span><span style=display:flex><span>    handler2<span style=color:#f92672>.</span>handle()
-</span></span></code></pre></div><h2 id=command>Command<a hidden class=anchor aria-hidden=true href=#command>#</a></h2><ul><li>Encapsulate a request as an object.</li><li>Let you parametrize clients with different requests.</li></ul><p><img loading=lazy src=/images/design-pattern-command.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Invoker</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_commands <span style=color:#f92672>=</span> []
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>add</span>(self, command):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_commands<span style=color:#f92672>.</span>append(command)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>call</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> command <span style=color:#f92672>in</span> self<span style=color:#f92672>.</span>_commands:
-</span></span><span style=display:flex><span>            command<span style=color:#f92672>.</span>execute()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Command</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self, receiver):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_receiver <span style=color:#f92672>=</span> receiver
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>execute</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConcreteCommand</span>(Command):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>execute</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_receiver<span style=color:#f92672>.</span>action()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Receiver</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>action</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
-</span></span><span style=display:flex><span>    receiver <span style=color:#f92672>=</span> Receiver()
-</span></span><span style=display:flex><span>    cmd <span style=color:#f92672>=</span> ConcreteCommand(receiver)
-</span></span><span style=display:flex><span>    invoker <span style=color:#f92672>=</span> Invoker()
-</span></span><span style=display:flex><span>    invoker<span style=color:#f92672>.</span>add(cmd)
-</span></span><span style=display:flex><span>    invoker<span style=color:#f92672>.</span>call()
-</span></span></code></pre></div><h2 id=mediator>Mediator<a hidden class=anchor aria-hidden=true href=#mediator>#</a></h2><ul><li>Define an object that encapsulates how a set of objects interact.</li><li>Design an intermediary to decouple many peers.</li></ul><p><img loading=lazy src=/images/design-pattern-mediator.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> abc <span style=color:#f92672>import</span> ABCMeta, abstractmethod
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Mediator</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_colleagues <span style=color:#f92672>=</span> {}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>register</span>(self, colleague):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>op</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConcreteMediator</span>(Mediator):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>register</span>(self, colleague):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_colleagues<span style=color:#f92672>.</span>append(colleague)
-</span></span><span style=display:flex><span>        colleague<span style=color:#f92672>.</span>setMeidator(self)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Colleague</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self, mediator<span style=color:#f92672>=</span><span style=color:#66d9ef>None</span>):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_mediator <span style=color:#f92672>=</span> mediator
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>setMediator</span>(self, mediator):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_mediator <span style=color:#f92672>=</span> mediator
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>op</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ColleagueA</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>op</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ColleagueB</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>op</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
-</span></span><span style=display:flex><span>    c1 <span style=color:#f92672>=</span> ColleagueA()
-</span></span><span style=display:flex><span>    c2 <span style=color:#f92672>=</span> ColleagueB()
-</span></span><span style=display:flex><span>    mediator <span style=color:#f92672>=</span> ConcreteMediator()
-</span></span><span style=display:flex><span>    mediator<span style=color:#f92672>.</span>register(c1)
-</span></span><span style=display:flex><span>    mediator<span style=color:#f92672>.</span>register(c2)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    c1<span style=color:#f92672>.</span>op()
-</span></span><span style=display:flex><span>    c2<span style=color:#f92672>.</span>op()
-</span></span></code></pre></div><h2 id=memento>Memento<a hidden class=anchor aria-hidden=true href=#memento>#</a></h2><ul><li>Capture and externalize an object&rsquo;s internal state.</li><li>Promote undo or rollback to full object status.</li></ul><p><img loading=lazy src=/images/design-pattern-memento.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Memnto</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self, state<span style=color:#f92672>=</span><span style=color:#66d9ef>None</span>):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_state <span style=color:#f92672>=</span> state
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>getState</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> self<span style=color:#f92672>.</span>_state
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Originator</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self, state<span style=color:#f92672>=</span><span style=color:#66d9ef>None</span>):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_state <span style=color:#f92672>=</span> state
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>setState</span>(self, state):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_state <span style=color:#f92672>=</span> state
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>getStateFromMemento</span>(self, memento):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_state <span style=color:#f92672>=</span> memento<span style=color:#f92672>.</span>getState()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>createMemento</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> Memnto(self<span style=color:#f92672>.</span>_state)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>CareTaker</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_mem <span style=color:#f92672>=</span> []
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>add</span>(self, state):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_mem<span style=color:#f92672>.</span>append(state)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>get</span>(self, index):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> index <span style=color:#f92672>&lt;</span> len(self<span style=color:#f92672>.</span>_mem):
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> self<span style=color:#f92672>.</span>_mem[index]
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
-</span></span><span style=display:flex><span>    originator <span style=color:#f92672>=</span> Originator()
-</span></span><span style=display:flex><span>    taker <span style=color:#f92672>=</span> CareTaker()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    originator<span style=color:#f92672>.</span>setState(<span style=color:#66d9ef>True</span>)
-</span></span><span style=display:flex><span>    taker<span style=color:#f92672>.</span>add(originator<span style=color:#f92672>.</span>createMemento())
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    originator<span style=color:#f92672>.</span>getStateFromMemento(taker<span style=color:#f92672>.</span>get(<span style=color:#ae81ff>0</span>))
-</span></span></code></pre></div><h2 id=observer>Observer<a hidden class=anchor aria-hidden=true href=#observer>#</a></h2><ul><li>Define a one-to-many dependency between objects.</li><li>When one object changes state, all its dependents are notified and updated.</li></ul><p><img loading=lazy src=/images/design-pattern-observer.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Subject</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_state <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_obList <span style=color:#f92672>=</span> []
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>attach</span>(self, observer):
-</span></span><span style=display:flex><span>        observer<span style=color:#f92672>.</span>_subject <span style=color:#f92672>=</span> self
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_obList<span style=color:#f92672>.</span>add(observer)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>detach</span>(self, observer):
-</span></span><span style=display:flex><span>        observer<span style=color:#f92672>.</span>_subject <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_obList<span style=color:#f92672>.</span>discard(observer)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>_notify</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> observer <span style=color:#f92672>in</span> self<span style=color:#f92672>.</span>_obList:
-</span></span><span style=display:flex><span>            observer<span style=color:#f92672>.</span>update(self<span style=color:#f92672>.</span>_state)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>updateState</span>(self, state):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_state <span style=color:#f92672>=</span> state
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_notify()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Observer</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_subject <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_state <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>update</span>(self, arg):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConcreteObserver</span>(Observer):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>update</span>(self, state):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_state <span style=color:#f92672>=</span> state
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
-</span></span><span style=display:flex><span>    subject <span style=color:#f92672>=</span> Subject()
-</span></span><span style=display:flex><span>    observer <span style=color:#f92672>=</span>  ConcreteObserver()
-</span></span><span style=display:flex><span>    subject<span style=color:#f92672>.</span>attach(observer)
-</span></span><span style=display:flex><span>    subject<span style=color:#f92672>.</span>updateState(<span style=color:#ae81ff>123</span>)
-</span></span></code></pre></div><h2 id=state>State<a hidden class=anchor aria-hidden=true href=#state>#</a></h2><ul><li>Allow an object to alter its behavior when its internal state changes.</li><li>Wrapper + polymorphic wrappee + collaboration.</li></ul><p><img loading=lazy src=/images/design-pattern-state.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Context</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self, state):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_state <span style=color:#f92672>=</span> state
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>request</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_state<span style=color:#f92672>.</span>handle()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>State</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>handle</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConcreteStateA</span>(State):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>handle</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConcreteStateB</span>(State):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>handle</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
-</span></span><span style=display:flex><span>    state <span style=color:#f92672>=</span> ConcreteStateA()
-</span></span><span style=display:flex><span>    context <span style=color:#f92672>=</span> Context(state)
-</span></span><span style=display:flex><span>    context<span style=color:#f92672>.</span>request()
-</span></span></code></pre></div><h2 id=strategy>Strategy<a hidden class=anchor aria-hidden=true href=#strategy>#</a></h2><ul><li>Define a family of algorithms, encapsulate each one.</li><li>Capture the abstraction in an interface, bury implementation details in derived classes.</li></ul><p><img loading=lazy src=/images/design-pattern-strategy.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Context</span>:
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self, strategy):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_strategy <span style=color:#f92672>=</span> strategy
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>algorithm</span>(self):
-</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>_strategy<span style=color:#f92672>.</span>algorithm()
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Strategy</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>algorithm</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConcreteStrategyA</span>(Strategy):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>algorithm</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConcreteStrategyB</span>(Strategy):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>algorithm</span>(self):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
-</span></span><span style=display:flex><span>    strategy <span style=color:#f92672>=</span> ConcreteStrategyA()
-</span></span><span style=display:flex><span>    context <span style=color:#f92672>=</span> Context(strategy)
-</span></span><span style=display:flex><span>    context<span style=color:#f92672>.</span>algorithm()
-</span></span></code></pre></div><h2 id=visitor>Visitor<a hidden class=anchor aria-hidden=true href=#visitor>#</a></h2><ul><li>Represent an operation to be performed on the elements of an object structure.</li><li>Define a new operation without changing the classes of the elements on which it operates.</li></ul><p><img loading=lazy src=/images/design-pattern-visitor.png alt></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Element</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>accept</span>(self, visitor):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConcreteElementA</span>(Element):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>accept</span>(self, visitor):
-</span></span><span style=display:flex><span>        visitor<span style=color:#f92672>.</span>visitA(self)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConcreteElementB</span>(Element):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>accept</span>(self, visitor):
-</span></span><span style=display:flex><span>        visitor<span style=color:#f92672>.</span>visitB(self)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Visitor</span>(metaclass<span style=color:#f92672>=</span>ABCMeta):
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>visitA</span>(self, eleA):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@abstractmethod</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>visitB</span>(self, eleB):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConcreteVisitorA</span>(Visitor):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>visitA</span>(self, eleA):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>visitB</span>(self, eleB):
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>pass</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>():
-</span></span><span style=display:flex><span>    visitor <span style=color:#f92672>=</span> ConcreteVisitorA()
-</span></span><span style=display:flex><span>    element <span style=color:#f92672>=</span> ConcreteElementA()
-</span></span><span style=display:flex><span>    element<span style=color:#f92672>.</span>accept(visitor)
-</span></span></code></pre></div><p><strong>Reference</strong></p><ul><li><a href=https://sourcemaking.com/design_patterns>Design Patterns</a></li><li><a href=https://www.tutorialspoint.com/design_pattern/index.htm>Design Patterns in Java Tutorial</a></li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://xgugeng.github.io/tags/mind-map/>Mind Map</a></li><li><a href=https://xgugeng.github.io/tags/design-pattern/>Design Pattern</a></li></ul><nav class=paginav><a class=prev href=https://xgugeng.github.io/post/python-unpacking/><span class=title>« Prev</span><br><span>Unpacking in Python</span>
-</a><a class=next href=https://xgugeng.github.io/post/linux-principle-manual-programming/><span class=title>Next »</span><br><span>Linux: Principles, Manual and Programming</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://xgugeng.github.io/>XGugeng</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!doctype html><html lang=en><head><title>A Quick Retrospect of Design Pattern · XGugeng</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="xgugeng"><meta name=description content="This post summarizes some design patterns I used in daily work or learnt from books.
+"><meta name=keywords content="Design Pattern"><meta name=twitter:card content="summary"><meta name=twitter:title content="A Quick Retrospect of Design Pattern"><meta name=twitter:description content="This post summarizes some design patterns I used in daily work or learnt from books."><meta property="og:url" content="https://xgugeng.github.io/post/retrospect-design-pattern/"><meta property="og:site_name" content="XGugeng"><meta property="og:title" content="A Quick Retrospect of Design Pattern"><meta property="og:description" content="This post summarizes some design patterns I used in daily work or learnt from books."><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2018-08-13T15:24:26+08:00"><meta property="article:modified_time" content="2018-08-13T15:24:26+08:00"><meta property="article:tag" content="Mind Map"><meta property="article:tag" content="Design Pattern"><link rel=canonical href=https://xgugeng.github.io/post/retrospect-design-pattern/><link rel=preload href=/fonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.f6b1b35a7b02521b25338f6cf58975f9980a6c12847763fe35a48307758cd1e7.css integrity="sha256-9rGzWnsCUhslM49s9Yl1+ZgKbBKEd2P+NaSDB3WM0ec=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.ad48f476275974885bdc03d5251e3cdbe1678c54a63ff772376b0ed2adc468dd.css integrity="sha256-rUj0didZdIhb3APVJR482+FnjFSmP/dyN2sO0q3EaN0=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/safari-pinned-tab.svg sizes=any><link rel=icon type=image/png href=/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://xgugeng.github.io/>XGugeng
+</a><input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><i class="fa-solid fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/post/>Blog</a></li><li class=navigation-item><a class=navigation-link href=/categories/>Categories</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li><li class="navigation-item menu-separator"><span>|</span></li><li class=navigation-item><a href=/zh/>中文</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://xgugeng.github.io/post/retrospect-design-pattern/>A Quick Retrospect of Design Pattern</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa-solid fa-calendar" aria-hidden=true></i>
+<time datetime=2018-08-13T15:24:26+08:00>Aug 13, 2018
+</time></span><span class=reading-time><i class="fa-solid fa-clock" aria-hidden=true></i>
+7-minute read</span></div><div class=categories><i class="fa-solid fa-folder" aria-hidden=true></i>
+<a href=/categories/programming/>Programming</a></div><div class=tags><i class="fa-solid fa-tag" aria-hidden=true></i>
+<span class=tag><a href=/tags/mind-map/>Mind Map</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=/tags/design-pattern/>Design Pattern</a></span></div></div></header><details class="entry__toc toc"><summary class=toc__title>Table of Contents</summary><nav id=TableOfContents><ul><li><a href=#factory>Factory</a></li><li><a href=#abstract-factory>Abstract Factory</a></li><li><a href=#builder>Builder</a></li><li><a href=#singleton>Singleton</a></li><li><a href=#prototype>Prototype</a></li></ul><ul><li><a href=#adapter>Adapter</a></li><li><a href=#bridge>Bridge</a></li><li><a href=#composite>Composite</a></li><li><a href=#decorator>Decorator</a></li><li><a href=#facade>Facade</a></li><li><a href=#flyweight>Flyweight</a></li><li><a href=#proxy>Proxy</a></li></ul><ul><li><a href=#chain-of-responsibility>Chain of Responsibility</a></li><li><a href=#command>Command</a></li><li><a href=#mediator>Mediator</a></li><li><a href=#memento>Memento</a></li><li><a href=#observer>Observer</a></li><li><a href=#state>State</a></li><li><a href=#strategy>Strategy</a></li><li><a href=#visitor>Visitor</a></li></ul></nav></details><div class=post-content><p>This post summarizes some design patterns I used in daily work or learnt from books.</p><p><img src=/images/design-pattern-overview.png alt></p><h1 id=creational-pattern>Creational Pattern
+<a class=heading-link href=#creational-pattern><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h1><h2 id=factory>Factory
+<a class=heading-link href=#factory><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Define an interface for creating an object.</li><li>Let subclasses decide which class to instantiate.</li></ul><p><img src=/images/design-pattern-factory.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>ABCMeta</span><span class=p>,</span> <span class=n>abstractmethod</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Shape</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>op</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Triangle</span><span class=p>(</span><span class=n>Shape</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>op</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;triangle&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Circle</span><span class=p>(</span><span class=n>Shape</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>op</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;circle&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Factory</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>shape</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>getInstance</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>getInstance</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteFactoryA</span><span class=p>(</span><span class=n>Factory</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>getInstance</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>Triangle</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteFactoryB</span><span class=p>(</span><span class=n>Factory</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>getInstance</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>Circle</span><span class=p>()</span>
+</span></span></code></pre></div><h2 id=abstract-factory>Abstract Factory
+<a class=heading-link href=#abstract-factory><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Provide an interface for creating families of related objects.</li><li>Avoid specifying their concrete classes.</li></ul><p><img src=/images/design-pattern-abstract-factory.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>ABCMeta</span><span class=p>,</span> <span class=n>abstractmethod</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Shape</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>op</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Triangle</span><span class=p>(</span><span class=n>Shape</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>op</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;triangle&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Color</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>op</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Red</span><span class=p>(</span><span class=n>Color</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>op</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;red&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Factory</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>shape</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>getInstance</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>getShape</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>getColor</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ShapeFactory</span><span class=p>(</span><span class=n>Factory</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>getShape</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>Triangle</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ColorFactory</span><span class=p>(</span><span class=n>Factory</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>getColor</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>Red</span><span class=p>()</span>
+</span></span></code></pre></div><h2 id=builder>Builder
+<a class=heading-link href=#builder><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Separate the construction of a complex object from its representation.</li></ul><p><img src=/images/design-pattern-builder.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Director</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_builder</span> <span class=o>=</span> <span class=kc>None</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>construct</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>builder</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_builder</span> <span class=o>=</span> <span class=n>builder</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_builder</span><span class=o>.</span><span class=n>buildPartA</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_builder</span><span class=o>.</span><span class=n>buildPartB</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Builder</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>product</span> <span class=o>=</span> <span class=n>Product</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>buildPartA</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>buildPartB</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteBuilder</span><span class=p>(</span><span class=n>Builder</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>buildPartA</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>buildPartB</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Product</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>pass</span>
+</span></span></code></pre></div><h2 id=singleton>Singleton
+<a class=heading-link href=#singleton><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Ensure a class has only one instance.</li><li>Provide a global point of access to it.</li><li>Initialization on first use.</li></ul><p><img src=/images/design-pattern-singleton.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Singleton</span><span class=p>(</span><span class=nb>type</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>cls</span><span class=p>,</span> <span class=n>name</span><span class=p>,</span> <span class=n>bases</span><span class=p>,</span> <span class=n>attrs</span><span class=p>,</span> <span class=o>**</span><span class=n>kwargs</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>super</span><span class=p>()</span><span class=o>.</span><span class=fm>__init__</span><span class=p>(</span><span class=n>name</span><span class=p>,</span> <span class=n>bases</span><span class=p>,</span> <span class=n>attrs</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=bp>cls</span><span class=o>.</span><span class=n>_instance</span> <span class=o>=</span> <span class=kc>None</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__call__</span><span class=p>(</span><span class=bp>cls</span><span class=p>,</span> <span class=o>*</span><span class=n>args</span><span class=p>,</span> <span class=o>**</span><span class=n>kwargs</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=bp>cls</span><span class=o>.</span><span class=n>_instance</span> <span class=ow>is</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=bp>cls</span><span class=o>.</span><span class=n>_instance</span> <span class=o>=</span> <span class=nb>super</span><span class=p>()</span><span class=o>.</span><span class=fm>__call__</span><span class=p>(</span><span class=o>*</span><span class=n>args</span><span class=p>,</span> <span class=o>**</span><span class=n>kwargs</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>cls</span><span class=o>.</span><span class=n>_instance</span>
+</span></span></code></pre></div><h2 id=prototype>Prototype
+<a class=heading-link href=#prototype><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Specify the kinds of objects to create using a prototypical instance.</li><li>Create new objects by copying this prototype.</li></ul><p><img src=/images/design-pattern-prototype.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>import</span> <span class=nn>copy</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Prototype</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;
+</span></span></span><span class=line><span class=cl><span class=s2>    Example class to be copied.
+</span></span></span><span class=line><span class=cl><span class=s2>    &#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>main</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>prototype</span> <span class=o>=</span> <span class=n>Prototype</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>prototype_copy</span> <span class=o>=</span> <span class=n>copy</span><span class=o>.</span><span class=n>deepcopy</span><span class=p>(</span><span class=n>prototype</span><span class=p>)</span>
+</span></span></code></pre></div><h1 id=structural-pattern>Structural Pattern
+<a class=heading-link href=#structural-pattern><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h1><h2 id=adapter>Adapter
+<a class=heading-link href=#adapter><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Convert the interface of a class into another interface.</li><li>Wrap an existing class with a new interface.</li></ul><p><img src=/images/design-pattern-adapter.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>ABCMeta</span><span class=p>,</span> <span class=n>abstractmethod</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Shape</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>display</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>x1</span><span class=p>,</span> <span class=n>y1</span><span class=p>,</span> <span class=n>x2</span><span class=p>,</span> <span class=n>y2</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Rectangle</span><span class=p>(</span><span class=n>Shape</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_adaptee</span> <span class=o>=</span> <span class=n>LegacyRectangle</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>display</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>x1</span><span class=p>,</span> <span class=n>y1</span><span class=p>,</span> <span class=n>x2</span><span class=p>,</span> <span class=n>y2</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_adaptee</span><span class=o>.</span><span class=n>display</span><span class=p>(</span><span class=n>x1</span><span class=p>,</span> <span class=n>y1</span><span class=p>,</span> <span class=n>x2</span><span class=o>-</span><span class=n>x1</span><span class=p>,</span> <span class=n>y2</span><span class=o>-</span><span class=n>y1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>LegacyRectangle</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>display</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>x1</span><span class=p>,</span> <span class=n>y1</span><span class=p>,</span> <span class=n>w</span><span class=p>,</span> <span class=n>h</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span></code></pre></div><h2 id=bridge>Bridge
+<a class=heading-link href=#bridge><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Decouple an abstraction from its implementation.</li><li>Beyond encapsulation, to insulation.</li></ul><p><img src=/images/design-pattern-bridge.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>abstractmethod</span><span class=p>,</span> <span class=n>ABCMeta</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Shape</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>api</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_api</span> <span class=o>=</span> <span class=n>api</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>draw</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_api</span><span class=o>.</span><span class=n>drawCircle</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>DrawAPI</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>drawCircle</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>RedCircle</span><span class=p>(</span><span class=n>DrawAPI</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>drawCircle</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span></code></pre></div><h2 id=composite>Composite
+<a class=heading-link href=#composite><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Compose objects into tree structures to represent whole-part hierarchies.</li><li>Let clients treat individual objects and compositions of objects uniformly.</li></ul><p><img src=/images/design-pattern-composite.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>abstractmethod</span><span class=p>,</span> <span class=n>ABCMeta</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Component</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>do</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Composite</span><span class=p>(</span><span class=n>Component</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_children</span> <span class=o>=</span> <span class=nb>set</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>do</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>child</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>_children</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=n>child</span><span class=o>.</span><span class=n>do</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>add</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>component</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_children</span><span class=o>.</span><span class=n>add</span><span class=p>(</span><span class=n>component</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>remove</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>component</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_children</span><span class=o>.</span><span class=n>discard</span><span class=p>(</span><span class=n>component</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Leaf</span><span class=p>(</span><span class=n>Component</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>do</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span></code></pre></div><h2 id=decorator>Decorator
+<a class=heading-link href=#decorator><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Attach additional responsibilities to an object dynamically.</li><li>Provide a flexible alternative to subclassing for extending functionality.</li><li>Wrapping a gift, putting it in a box, and wrapping the box.</li></ul><p><img src=/images/design-pattern-decorator.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>abstractmethod</span><span class=p>,</span> <span class=n>ABCMeta</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Shape</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>draw</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ShapeDecorator</span><span class=p>(</span><span class=n>Shape</span><span class=p>,</span> <span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>shape</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_shape</span><span class=o>=</span> <span class=n>shape</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>RedShapeDecorator</span><span class=p>(</span><span class=n>ShapeDecorator</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_shape</span><span class=o>.</span><span class=n>operation</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Circle</span><span class=p>(</span><span class=n>Shape</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>main</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>cc</span> <span class=o>=</span> <span class=n>Circle</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>decorator</span> <span class=o>=</span> <span class=n>RedShapeDecorator</span><span class=p>(</span><span class=n>cc</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>decorator</span><span class=o>.</span><span class=n>operation</span><span class=p>()</span>
+</span></span></code></pre></div><h2 id=facade>Facade
+<a class=heading-link href=#facade><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Provide a unified interface to a set of interfaces in a subsystem.</li><li>Wrap a complicated subsystem with a simpler interface.</li></ul><p><img src=/images/design-pattern-facade.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Facade</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_subsystem_1</span> <span class=o>=</span> <span class=n>Subsystem1</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_subsystem_2</span> <span class=o>=</span> <span class=n>Subsystem2</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_subsystem_1</span><span class=o>.</span><span class=n>operation1</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_subsystem_1</span><span class=o>.</span><span class=n>operation2</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_subsystem_2</span><span class=o>.</span><span class=n>operation1</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_subsystem_2</span><span class=o>.</span><span class=n>operation2</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Subsystem1</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation1</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation2</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Subsystem2</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation1</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation2</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>main</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>facade</span> <span class=o>=</span> <span class=n>Facade</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>facade</span><span class=o>.</span><span class=n>operation</span><span class=p>()</span>
+</span></span></code></pre></div><h2 id=flyweight>Flyweight
+<a class=heading-link href=#flyweight><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Use sharing to support large numbers of fine-grained objects.</li></ul><p><img src=/images/design-pattern-flyweight.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>ABCMeta</span><span class=p>,</span> <span class=n>abstractmethod</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ShapeFactory</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_circleDict</span> <span class=o>=</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>getShape</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>key</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>key</span> <span class=ow>not</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>_circleDict</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=n>circle</span> <span class=o>=</span> <span class=n>Circle</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>_circleDict</span><span class=p>[</span><span class=n>key</span><span class=p>]</span> <span class=o>=</span> <span class=n>circle</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>_circleDict</span><span class=p>[</span><span class=n>key</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Shape</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>intrinsic_state</span> <span class=o>=</span> <span class=kc>None</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>draw</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Circle</span><span class=p>(</span><span class=n>Shape</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>draw</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>main</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>factory</span> <span class=o>=</span> <span class=n>ShapeFactory</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>concrete</span> <span class=o>=</span> <span class=n>factory</span><span class=o>.</span><span class=n>getShape</span><span class=p>(</span><span class=s2>&#34;key&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>concrete</span><span class=o>.</span><span class=n>draw</span><span class=p>()</span>
+</span></span></code></pre></div><h2 id=proxy>Proxy
+<a class=heading-link href=#proxy><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Provide a surrogate or placeholder for another object to control access to it.</li><li>Add a wrapper and delegation to protect the real component from undue complexity.</li></ul><p><img src=/images/design-pattern-proxy.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>ABCMeta</span><span class=p>,</span> <span class=n>abstractmethod</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Subject</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>op</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Proxy</span><span class=p>(</span><span class=n>Subject</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>real_subject</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_real_subject</span> <span class=o>=</span> <span class=n>real_subject</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>op</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_real_subject</span><span class=o>.</span><span class=n>op</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>RealSubject</span><span class=p>(</span><span class=n>Subject</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>op</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;real&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>main</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>real_subject</span> <span class=o>=</span> <span class=n>RealSubject</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>proxy</span> <span class=o>=</span> <span class=n>Proxy</span><span class=p>(</span><span class=n>real_subject</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>proxy</span><span class=o>.</span><span class=n>op</span><span class=p>()</span>
+</span></span></code></pre></div><h1 id=behavioral-pattern>Behavioral Pattern
+<a class=heading-link href=#behavioral-pattern><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h1><h2 id=chain-of-responsibility>Chain of Responsibility
+<a class=heading-link href=#chain-of-responsibility><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Give more than one object a chance to handle the request.</li><li>Launch-and-leave requests with a single processing pipeline.</li></ul><p><img src=/images/design-pattern-chain-of-responsibility.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Handler</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=nb>next</span><span class=o>=</span><span class=kc>None</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_next</span> <span class=o>=</span> <span class=nb>next</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_canHandle</span> <span class=o>=</span> <span class=kc>True</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>handle</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>HandlerOne</span><span class=p>(</span><span class=n>Handler</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>handle_request</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>canHandle</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>pass</span>
+</span></span><span class=line><span class=cl>        <span class=k>elif</span> <span class=bp>self</span><span class=o>.</span><span class=n>_next</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>_next</span><span class=o>.</span><span class=n>handle</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>HandlerTwo</span><span class=p>(</span><span class=n>Handler</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>handle</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>_canHandle</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>pass</span>
+</span></span><span class=line><span class=cl>        <span class=k>elif</span> <span class=bp>self</span><span class=o>.</span><span class=n>_next</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>_next</span><span class=o>.</span><span class=n>handle</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>main</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>handler1</span> <span class=o>=</span> <span class=n>HandlerOne</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>handler2</span> <span class=o>=</span> <span class=n>HandlerTwo</span><span class=p>(</span><span class=n>handler1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>handler2</span><span class=o>.</span><span class=n>handle</span><span class=p>()</span>
+</span></span></code></pre></div><h2 id=command>Command
+<a class=heading-link href=#command><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Encapsulate a request as an object.</li><li>Let you parametrize clients with different requests.</li></ul><p><img src=/images/design-pattern-command.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Invoker</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_commands</span> <span class=o>=</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>add</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>command</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_commands</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>command</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>call</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>command</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>_commands</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=n>command</span><span class=o>.</span><span class=n>execute</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Command</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>receiver</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_receiver</span> <span class=o>=</span> <span class=n>receiver</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>execute</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteCommand</span><span class=p>(</span><span class=n>Command</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>execute</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_receiver</span><span class=o>.</span><span class=n>action</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Receiver</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>action</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>main</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>receiver</span> <span class=o>=</span> <span class=n>Receiver</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>cmd</span> <span class=o>=</span> <span class=n>ConcreteCommand</span><span class=p>(</span><span class=n>receiver</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>invoker</span> <span class=o>=</span> <span class=n>Invoker</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>invoker</span><span class=o>.</span><span class=n>add</span><span class=p>(</span><span class=n>cmd</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>invoker</span><span class=o>.</span><span class=n>call</span><span class=p>()</span>
+</span></span></code></pre></div><h2 id=mediator>Mediator
+<a class=heading-link href=#mediator><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Define an object that encapsulates how a set of objects interact.</li><li>Design an intermediary to decouple many peers.</li></ul><p><img src=/images/design-pattern-mediator.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>ABCMeta</span><span class=p>,</span> <span class=n>abstractmethod</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Mediator</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_colleagues</span> <span class=o>=</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>register</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>colleague</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>op</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteMediator</span><span class=p>(</span><span class=n>Mediator</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>register</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>colleague</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_colleagues</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>colleague</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>colleague</span><span class=o>.</span><span class=n>setMeidator</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Colleague</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>mediator</span><span class=o>=</span><span class=kc>None</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_mediator</span> <span class=o>=</span> <span class=n>mediator</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>setMediator</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>mediator</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_mediator</span> <span class=o>=</span> <span class=n>mediator</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>op</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ColleagueA</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>op</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ColleagueB</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>op</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>main</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>c1</span> <span class=o>=</span> <span class=n>ColleagueA</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>c2</span> <span class=o>=</span> <span class=n>ColleagueB</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>mediator</span> <span class=o>=</span> <span class=n>ConcreteMediator</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>mediator</span><span class=o>.</span><span class=n>register</span><span class=p>(</span><span class=n>c1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>mediator</span><span class=o>.</span><span class=n>register</span><span class=p>(</span><span class=n>c2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>c1</span><span class=o>.</span><span class=n>op</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>c2</span><span class=o>.</span><span class=n>op</span><span class=p>()</span>
+</span></span></code></pre></div><h2 id=memento>Memento
+<a class=heading-link href=#memento><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Capture and externalize an object&rsquo;s internal state.</li><li>Promote undo or rollback to full object status.</li></ul><p><img src=/images/design-pattern-memento.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Memnto</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>state</span><span class=o>=</span><span class=kc>None</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_state</span> <span class=o>=</span> <span class=n>state</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>getState</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>_state</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Originator</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>state</span><span class=o>=</span><span class=kc>None</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_state</span> <span class=o>=</span> <span class=n>state</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>setState</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>state</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_state</span> <span class=o>=</span> <span class=n>state</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>getStateFromMemento</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>memento</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_state</span> <span class=o>=</span> <span class=n>memento</span><span class=o>.</span><span class=n>getState</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>createMemento</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>Memnto</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>_state</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>CareTaker</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_mem</span> <span class=o>=</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>add</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>state</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_mem</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>state</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>get</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>index</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>index</span> <span class=o>&lt;</span> <span class=nb>len</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>_mem</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>_mem</span><span class=p>[</span><span class=n>index</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>main</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>originator</span> <span class=o>=</span> <span class=n>Originator</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>taker</span> <span class=o>=</span> <span class=n>CareTaker</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>originator</span><span class=o>.</span><span class=n>setState</span><span class=p>(</span><span class=kc>True</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>taker</span><span class=o>.</span><span class=n>add</span><span class=p>(</span><span class=n>originator</span><span class=o>.</span><span class=n>createMemento</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>originator</span><span class=o>.</span><span class=n>getStateFromMemento</span><span class=p>(</span><span class=n>taker</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=mi>0</span><span class=p>))</span>
+</span></span></code></pre></div><h2 id=observer>Observer
+<a class=heading-link href=#observer><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Define a one-to-many dependency between objects.</li><li>When one object changes state, all its dependents are notified and updated.</li></ul><p><img src=/images/design-pattern-observer.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Subject</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_state</span> <span class=o>=</span> <span class=kc>None</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_obList</span> <span class=o>=</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>attach</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>observer</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>observer</span><span class=o>.</span><span class=n>_subject</span> <span class=o>=</span> <span class=bp>self</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_obList</span><span class=o>.</span><span class=n>add</span><span class=p>(</span><span class=n>observer</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>detach</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>observer</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>observer</span><span class=o>.</span><span class=n>_subject</span> <span class=o>=</span> <span class=kc>None</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_obList</span><span class=o>.</span><span class=n>discard</span><span class=p>(</span><span class=n>observer</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>_notify</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>observer</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>_obList</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=n>observer</span><span class=o>.</span><span class=n>update</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>_state</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>updateState</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>state</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_state</span> <span class=o>=</span> <span class=n>state</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_notify</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Observer</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_subject</span> <span class=o>=</span> <span class=kc>None</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_state</span> <span class=o>=</span> <span class=kc>None</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>update</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>arg</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteObserver</span><span class=p>(</span><span class=n>Observer</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>update</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>state</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_state</span> <span class=o>=</span> <span class=n>state</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>main</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>subject</span> <span class=o>=</span> <span class=n>Subject</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>observer</span> <span class=o>=</span>  <span class=n>ConcreteObserver</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>subject</span><span class=o>.</span><span class=n>attach</span><span class=p>(</span><span class=n>observer</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>subject</span><span class=o>.</span><span class=n>updateState</span><span class=p>(</span><span class=mi>123</span><span class=p>)</span>
+</span></span></code></pre></div><h2 id=state>State
+<a class=heading-link href=#state><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Allow an object to alter its behavior when its internal state changes.</li><li>Wrapper + polymorphic wrappee + collaboration.</li></ul><p><img src=/images/design-pattern-state.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Context</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>state</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_state</span> <span class=o>=</span> <span class=n>state</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>request</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_state</span><span class=o>.</span><span class=n>handle</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>State</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>handle</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteStateA</span><span class=p>(</span><span class=n>State</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>handle</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteStateB</span><span class=p>(</span><span class=n>State</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>handle</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>main</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>state</span> <span class=o>=</span> <span class=n>ConcreteStateA</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>context</span> <span class=o>=</span> <span class=n>Context</span><span class=p>(</span><span class=n>state</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>context</span><span class=o>.</span><span class=n>request</span><span class=p>()</span>
+</span></span></code></pre></div><h2 id=strategy>Strategy
+<a class=heading-link href=#strategy><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Define a family of algorithms, encapsulate each one.</li><li>Capture the abstraction in an interface, bury implementation details in derived classes.</li></ul><p><img src=/images/design-pattern-strategy.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Context</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>strategy</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_strategy</span> <span class=o>=</span> <span class=n>strategy</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>algorithm</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_strategy</span><span class=o>.</span><span class=n>algorithm</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Strategy</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>algorithm</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteStrategyA</span><span class=p>(</span><span class=n>Strategy</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>algorithm</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteStrategyB</span><span class=p>(</span><span class=n>Strategy</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>algorithm</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>main</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>strategy</span> <span class=o>=</span> <span class=n>ConcreteStrategyA</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>context</span> <span class=o>=</span> <span class=n>Context</span><span class=p>(</span><span class=n>strategy</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>context</span><span class=o>.</span><span class=n>algorithm</span><span class=p>()</span>
+</span></span></code></pre></div><h2 id=visitor>Visitor
+<a class=heading-link href=#visitor><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li>Represent an operation to be performed on the elements of an object structure.</li><li>Define a new operation without changing the classes of the elements on which it operates.</li></ul><p><img src=/images/design-pattern-visitor.png alt></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Element</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>accept</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>visitor</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteElementA</span><span class=p>(</span><span class=n>Element</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>accept</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>visitor</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>visitor</span><span class=o>.</span><span class=n>visitA</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteElementB</span><span class=p>(</span><span class=n>Element</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>accept</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>visitor</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>visitor</span><span class=o>.</span><span class=n>visitB</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Visitor</span><span class=p>(</span><span class=n>metaclass</span><span class=o>=</span><span class=n>ABCMeta</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>visitA</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>eleA</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>visitB</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>eleB</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteVisitorA</span><span class=p>(</span><span class=n>Visitor</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>visitA</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>eleA</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>visitB</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>eleB</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>main</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>visitor</span> <span class=o>=</span> <span class=n>ConcreteVisitorA</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>element</span> <span class=o>=</span> <span class=n>ConcreteElementA</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>element</span><span class=o>.</span><span class=n>accept</span><span class=p>(</span><span class=n>visitor</span><span class=p>)</span>
+</span></span></code></pre></div><p><strong>Reference</strong></p><ul><li><a href=https://sourcemaking.com/design_patterns class=external-link target=_blank rel=noopener>Design Patterns</a></li><li><a href=https://www.tutorialspoint.com/design_pattern/index.htm class=external-link target=_blank rel=noopener>Design Patterns in Java Tutorial</a></li></ul></div><footer></footer></article></section></div><footer class=footer><section class=container>©
+2016 -
+2026
+xgugeng
+·
+Powered by <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/ target=_blank rel=noopener>Coder</a>.</section></footer></main><script src=/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script></body></html>

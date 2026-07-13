@@ -1,190 +1,136 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Java on XGugeng</title>
-    <link>https://xgugeng.github.io/categories/java/</link>
-    <description>Recent content in Java on XGugeng</description>
-    <generator>Hugo -- 0.164.0</generator>
-    <language>en</language>
-    <lastBuildDate>Wed, 31 Oct 2018 14:25:16 +0800</lastBuildDate>
-    <atom:link href="https://xgugeng.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>What Is the Concurrent Mode Failure?</title>
-      <link>https://xgugeng.github.io/post/what-is-the-concurrent-mode-failure/</link>
-      <pubDate>Wed, 31 Oct 2018 14:25:16 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/what-is-the-concurrent-mode-failure/</guid>
-      <description>&lt;p&gt;This is a question that I was asked during an interview: what does the concurrent mode failure means? It&amp;rsquo;s really a good question to check your understanding of Concurrent Mark Sweep (CMS) Collector.&lt;/p&gt;
-&lt;p&gt;This post starts with concurrent mode failure and explains the whole steps of one CMS cycle.&lt;/p&gt;
-&lt;p&gt;In a nutshell,&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The message &amp;ldquo;concurrent mode failure&amp;rdquo; signifies that the concurrent collection of the Old Generation did not finish before the Old Generation became full.&lt;/p&gt;
-&lt;/blockquote&gt;</description>
-    </item>
-    <item>
-      <title>Java NIO: Selector</title>
-      <link>https://xgugeng.github.io/post/java-nio-selector/</link>
-      <pubDate>Sat, 21 Jul 2018 17:54:50 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-nio-selector/</guid>
-      <description>&lt;p&gt;Taking FileChannel for example in the &lt;a href=&#34;https://www.xgugeng.com/post/java-nio-channel/&#34;&gt;previous post&lt;/a&gt; may bewilder audiences: it&amp;rsquo;s non-blocking, so how does NIO achievement non-blocking? Here comes Selector.&lt;/p&gt;
-&lt;p&gt;A Selector is a Java NIO component which can examine one or more NIO Channel&amp;rsquo;s, and determine which channels are ready for reading or writing. A thread can manage multiply channels with Selector making multiple network connections feasible. This way avoids the cost of switching between threads which is expensive.&lt;/p&gt;
-&lt;p&gt;Here is an illustration of a thread using a Selector to handle 3 Channels:&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/java-nio-selector-handle-channels.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Java NIO: Channel</title>
-      <link>https://xgugeng.github.io/post/java-nio-channel/</link>
-      <pubDate>Thu, 19 Jul 2018 11:00:38 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-nio-channel/</guid>
-      <description>&lt;p&gt;Channels are similar to streams available for blocking IO with a few differences:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;You can both read and write to Channels. Streams are typically one-way (read or write).&lt;/li&gt;
-&lt;li&gt;Channels can be read and written asynchronously.&lt;/li&gt;
-&lt;li&gt;Channels always read to, or write from, a Buffer.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The Channels have multiple implementations depending on the data to be read or written:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;FileChannel: Used to read and write data from and to the files&lt;/li&gt;
-&lt;li&gt;DatagramChannel: Used for data exchange over network using UDP packets&lt;/li&gt;
-&lt;li&gt;SocketChannel: TCP channel to exchange data over TCP sockets&lt;/li&gt;
-&lt;li&gt;ServerSocketChannel: An implementation similar to a web server listening to requests over a specific TCP port. It creates a new SocketChannel instance for every new connection&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;This post will take FileChannel for further exploration, from example to implementation.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Java NIO: Buffer</title>
-      <link>https://xgugeng.github.io/post/java-nio-buffer/</link>
-      <pubDate>Sat, 14 Jul 2018 17:00:53 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-nio-buffer/</guid>
-      <description>&lt;p&gt;Java NIO (New IO), introduced by Java 1.4, is an alternative IO API for Java. It offers a different way of working with IO than the standard IO API&amp;rsquo;s.&lt;/p&gt;
-&lt;p&gt;Three core components of Java NIO cover:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Channels&lt;/li&gt;
-&lt;li&gt;Buffers&lt;/li&gt;
-&lt;li&gt;Selectors&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;All IO in NIO involves with Channel. Data can be read from Channel to a Buffer and vice versa.&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/java-nio-channel-buffer.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-&lt;p&gt;Buffers are used to interact with Channels. A Buffer is an allocated block of memory with fixed size, into which you can read or write data. In this post, I&amp;rsquo;ll illustrate the basic usage of Buffer and elucidate how it manages to do that from the view of source code.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>JVM Series: class File Format</title>
-      <link>https://xgugeng.github.io/post/jvm-series-class-file-format/</link>
-      <pubDate>Thu, 17 May 2018 16:52:29 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/jvm-series-class-file-format/</guid>
-      <description>&lt;p&gt;Today, let&amp;rsquo;s focus on the &lt;code&gt;class&lt;/code&gt; file format, the hardware- and operating system-independent binary format used to represent compiled classes and interfaces.&lt;/p&gt;
-&lt;p&gt;A &lt;code&gt;class&lt;/code&gt; file consists of a stream of 8-bit bytes. All 16-bit, 32-bit, and 64-bit quantities are constructed by reading in two, four, and eight consecutive 8-bit bytes, respectively.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>JVM Series: Class Loader</title>
-      <link>https://xgugeng.github.io/post/jvm-series-class-loader/</link>
-      <pubDate>Wed, 18 Apr 2018 18:27:20 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/jvm-series-class-loader/</guid>
-      <description>&lt;p&gt;The Java Classloader, a part of the Java Runtime Environment, dynamically loads Java classes into the Java Virtual Machine. Each Java class must be loaded by a class loader.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>JVM Series: Oop and Klass</title>
-      <link>https://xgugeng.github.io/post/jvm-series-oop-klass/</link>
-      <pubDate>Tue, 10 Apr 2018 14:46:26 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/jvm-series-oop-klass/</guid>
-      <description>&lt;p&gt;As a part of &lt;a href=&#34;https://www.xgugeng.com/en/tags/jvm/&#34;&gt;JVM Series&lt;/a&gt;, this post tries to explore the object model in JVM.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>JVM Series: Overview</title>
-      <link>https://xgugeng.github.io/post/jvm-series-overview/</link>
-      <pubDate>Tue, 09 Jan 2018 20:56:47 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/jvm-series-overview/</guid>
-      <description>&lt;p&gt;When executing a java program, you may simply input in terminal, like:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;javac HelloWorld.java
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;java HelloWorld
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Behind these commands, JVM, as the cornerstone of the Java platform, does a lot of work, which are what this blog attempts to figure out. Today, a new series about JVM will be started, and this is the first episode.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>JDK Build-in Development Tools</title>
-      <link>https://xgugeng.github.io/post/jdk-build-in-development-tools/</link>
-      <pubDate>Thu, 14 Sep 2017 16:20:46 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/jdk-build-in-development-tools/</guid>
-      <description>&lt;p&gt;The following documents contain important information you will need to know to get the most out of the JDK tools.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Mind Maps for Java and JVM</title>
-      <link>https://xgugeng.github.io/post/java-jvm-mind-map/</link>
-      <pubDate>Fri, 16 Jun 2017 18:14:16 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-jvm-mind-map/</guid>
-      <description>&lt;p&gt;These two mind maps are drawn for the further exploration of Java and JVM. For Java I try to cover some advanced features ranging from NIO and Thread. As to JVM, few components are covered, of course, I will replenish it at any moment.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Differences between Hashtable and HashMap</title>
-      <link>https://xgugeng.github.io/post/java-hashtable-comparing-with-hashmap/</link>
-      <pubDate>Fri, 05 Aug 2016 12:01:40 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-hashtable-comparing-with-hashmap/</guid>
-      <description>&lt;p&gt;As I mentioned before, it is vital to read code with prepared questions. Hum, How about reading code with answers? The differences between Hashtable and HashMap have been explained many times including,&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;null key &amp;amp; null value&lt;/li&gt;
-&lt;li&gt;synchronized or not&lt;/li&gt;
-&lt;li&gt;Enumeration and Iterator&lt;/li&gt;
-&lt;li&gt;hash method&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I am wondering how these arguments are supported by code. This post will give a view of code illustrating the above confusion.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Java HashSet</title>
-      <link>https://xgugeng.github.io/post/java-hashset/</link>
-      <pubDate>Mon, 01 Aug 2016 11:45:53 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-hashset/</guid>
-      <description>&lt;p&gt;For those who has no patience to look through this post, I conclude it in a word: HashSet is backed by HashMap.&lt;/p&gt;
-&lt;p&gt;Set is a collection in which every element is unique. So does the keys in HashMap. It is reasonable to infer that the implementation of HashSet is based on HashMap, so it is. Remember &lt;a href=&#34;https://www.xgugeng.com/post/java-hashmap/#resize&#34;&gt;resize&lt;/a&gt; of HashMap? it makes no guarantees as to the iteration order of the set.&lt;/p&gt;
-&lt;p&gt;With the help of HashMap, HashSet offers constant time performance for the basic operations, like &lt;code&gt;add&lt;/code&gt;, &lt;code&gt;remove&lt;/code&gt;, &lt;code&gt;contains&lt;/code&gt; and &lt;code&gt;size&lt;/code&gt;. Iterating over this set requires time proportional to the sum of the HashSet instance&amp;rsquo;s size (the number of elements) plus the &amp;ldquo;capacity&amp;rdquo; of the backing HashMap instance (the number of buckets).&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Java TreeMap</title>
-      <link>https://xgugeng.github.io/post/java-treemap/</link>
-      <pubDate>Sun, 12 Jun 2016 12:54:23 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-treemap/</guid>
-      <description>&lt;p&gt;After joining the workforce, I have coded with various programming languages, like C++, Objective-C, Ruby, Python, Scala, Java, Go, etc. I ask to myself spontaneously, which language am I most skillful at? This question dismay me because I cannot answer it immediately.&lt;/p&gt;
-&lt;p&gt;Since I choice to focus on Big Data, it&amp;rsquo;s pragmatic to equipped with Java and Python, two powerful weapons in this field. Reading the source code of &lt;a href=&#34;https://www.xgugeng.com/en/tags/java.util/&#34;&gt;java.util&lt;/a&gt; is a good start.&lt;/p&gt;
-&lt;p&gt;The leading actor of this post is &lt;code&gt;TreeMap&lt;/code&gt;, a Red-Black tree based &lt;code&gt;NavigableMap&lt;/code&gt; implementation. It has no array underneath, as many of you think. Because &lt;code&gt;TreeMap&lt;/code&gt; inherits directly &lt;code&gt;AbstractMap&lt;/code&gt;, in contrast with &lt;a href=&#34;https://www.xgugeng.com/post/java-linkedhashmap/&#34;&gt;LinkedHashMap&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Performances differ on account of distinctive data structures. This implementation provides guaranteed log(n) time cost for the &lt;code&gt;containsKey&lt;/code&gt;, &lt;code&gt;get&lt;/code&gt;, &lt;code&gt;put&lt;/code&gt; and &lt;code&gt;remove&lt;/code&gt; operations. Now allow me to show you a close look.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Java LinkedHashMap</title>
-      <link>https://xgugeng.github.io/post/java-linkedhashmap/</link>
-      <pubDate>Fri, 10 Jun 2016 20:01:59 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-linkedhashmap/</guid>
-      <description>&lt;p&gt;As its name implies, &lt;code&gt;LinkedHashMap&lt;/code&gt; is a hash table and linked list implementation of the &lt;code&gt;Map&lt;/code&gt; interface, with predictable iteration order. Different with &lt;code&gt;HashMap&lt;/code&gt;, it maintains a doubly-linked list running through all of its entries, which also defines the iteration ordering, same as the order in which keys were inserted into the map. This order remains if a key is re-inserted into the map.&lt;/p&gt;
-&lt;p&gt;Like &lt;code&gt;HashMap&lt;/code&gt;, &lt;code&gt;LinkedHashMap&lt;/code&gt; provides constant-time performance for the basic operations &lt;code&gt;add&lt;/code&gt;, &lt;code&gt;contains&lt;/code&gt; and &lt;code&gt;remove&lt;/code&gt;, assuming the hash function disperses elements properly among the buckets.  Performance is likely to be just slightly below that of &lt;code&gt;HashMap&lt;/code&gt;, due to the added expense of maintaining the linked list,&lt;/p&gt;
-&lt;p&gt;Thanks to the linked list, this kind of map is well-suited to building LRU caches. So my questions is how &lt;code&gt;LinkedHashMap&lt;/code&gt; preserves the linked list when key changes.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Java HashMap</title>
-      <link>https://xgugeng.github.io/post/java-hashmap/</link>
-      <pubDate>Thu, 09 Jun 2016 20:42:52 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-hashmap/</guid>
-      <description>&lt;p&gt;It&amp;rsquo;s necessary to learn with questions. Otherwise, you may distract your focus when something you don&amp;rsquo;t know appears, whether should I go deeper or not. With preliminary doubts in your mind, this would not be a problem. Learning can be direct, clear and fruitful, which brings you more sense of achievement.&lt;/p&gt;
-&lt;p&gt;For this post about the source code of &lt;code&gt;HashMap&lt;/code&gt;, few questions need answers:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;data structure underneath&lt;/li&gt;
-&lt;li&gt;why &lt;code&gt;HashMap&lt;/code&gt; permits nulls and unsynchronized&lt;/li&gt;
-&lt;li&gt;does it make guarantees as to the order of the map&lt;/li&gt;
-&lt;li&gt;what happens when I put and get a key with value, and time complexity&lt;/li&gt;
-&lt;li&gt;how the map shrink or expand when size changes&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Java LinkedList</title>
-      <link>https://xgugeng.github.io/post/java-linkedlist/</link>
-      <pubDate>Mon, 18 Apr 2016 11:37:29 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-linkedlist/</guid>
-      <description>&lt;p&gt;&lt;code&gt;LinkedList&lt;/code&gt; is a doubly-linked list implementation of the &lt;code&gt;List&lt;/code&gt; and &lt;code&gt;Deque&lt;/code&gt; interfaces. By &amp;ldquo;doubly-linked&amp;rdquo;, it means we can traverse the list from the beginning to the end, and vice versa. This class is a member of Java Collections Framework, located in &lt;code&gt;java.util&lt;/code&gt;. Let&amp;rsquo;s go straight to the source code.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Java String</title>
-      <link>https://xgugeng.github.io/post/java-string/</link>
-      <pubDate>Wed, 13 Apr 2016 11:33:34 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-string/</guid>
-      <description>&lt;p&gt;&lt;code&gt;String&lt;/code&gt; is one of the most common type of data in computer languages. A Java string is a series of characters gathered together, such as &amp;ldquo;abc&amp;rdquo;. Strings are constant, which means their value cannot be changed after created.&lt;/p&gt;
-&lt;p&gt;This post introduces the basic of Java string, includes methods for examining individual characters of the sequence, for comparing strings, for searching strings, for extracting substrings and so on.&lt;/p&gt;</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Java on XGugeng</title>
+		<link>https://xgugeng.github.io/categories/java/</link>
+		<description>Recent content in Java on XGugeng</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 31 Oct 2018 14:25:16 +0800</lastBuildDate>
+		
+			<atom:link href="https://xgugeng.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>What Is the Concurrent Mode Failure?</title>
+				<link>https://xgugeng.github.io/post/what-is-the-concurrent-mode-failure/</link>
+				<pubDate>Wed, 31 Oct 2018 14:25:16 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/what-is-the-concurrent-mode-failure/</guid>
+				<description>&lt;p&gt;This is a question that I was asked during an interview: what does the concurrent mode failure means? It&amp;rsquo;s really a good question to check your understanding of Concurrent Mark Sweep (CMS) Collector.&lt;/p&gt;&#xA;&lt;p&gt;This post starts with concurrent mode failure and explains the whole steps of one CMS cycle.&lt;/p&gt;&#xA;&lt;p&gt;In a nutshell,&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;The message &amp;ldquo;concurrent mode failure&amp;rdquo; signifies that the concurrent collection of the Old Generation did not finish before the Old Generation became full.&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+			</item>
+			<item>
+				<title>Java NIO: Selector</title>
+				<link>https://xgugeng.github.io/post/java-nio-selector/</link>
+				<pubDate>Sat, 21 Jul 2018 17:54:50 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-nio-selector/</guid>
+				<description>&lt;p&gt;Taking FileChannel for example in the &lt;a href=&#34;https://www.xgugeng.com/post/java-nio-channel/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;previous post&lt;/a&gt; may bewilder audiences: it&amp;rsquo;s non-blocking, so how does NIO achievement non-blocking? Here comes Selector.&lt;/p&gt;&#xA;&lt;p&gt;A Selector is a Java NIO component which can examine one or more NIO Channel&amp;rsquo;s, and determine which channels are ready for reading or writing. A thread can manage multiply channels with Selector making multiple network connections feasible. This way avoids the cost of switching between threads which is expensive.&lt;/p&gt;&#xA;&lt;p&gt;Here is an illustration of a thread using a Selector to handle 3 Channels:&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://xgugeng.github.io/images/java-nio-selector-handle-channels.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Java NIO: Channel</title>
+				<link>https://xgugeng.github.io/post/java-nio-channel/</link>
+				<pubDate>Thu, 19 Jul 2018 11:00:38 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-nio-channel/</guid>
+				<description>&lt;p&gt;Channels are similar to streams available for blocking IO with a few differences:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;You can both read and write to Channels. Streams are typically one-way (read or write).&lt;/li&gt;&#xA;&lt;li&gt;Channels can be read and written asynchronously.&lt;/li&gt;&#xA;&lt;li&gt;Channels always read to, or write from, a Buffer.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The Channels have multiple implementations depending on the data to be read or written:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;FileChannel: Used to read and write data from and to the files&lt;/li&gt;&#xA;&lt;li&gt;DatagramChannel: Used for data exchange over network using UDP packets&lt;/li&gt;&#xA;&lt;li&gt;SocketChannel: TCP channel to exchange data over TCP sockets&lt;/li&gt;&#xA;&lt;li&gt;ServerSocketChannel: An implementation similar to a web server listening to requests over a specific TCP port. It creates a new SocketChannel instance for every new connection&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This post will take FileChannel for further exploration, from example to implementation.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Java NIO: Buffer</title>
+				<link>https://xgugeng.github.io/post/java-nio-buffer/</link>
+				<pubDate>Sat, 14 Jul 2018 17:00:53 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-nio-buffer/</guid>
+				<description>&lt;p&gt;Java NIO (New IO), introduced by Java 1.4, is an alternative IO API for Java. It offers a different way of working with IO than the standard IO API&amp;rsquo;s.&lt;/p&gt;&#xA;&lt;p&gt;Three core components of Java NIO cover:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Channels&lt;/li&gt;&#xA;&lt;li&gt;Buffers&lt;/li&gt;&#xA;&lt;li&gt;Selectors&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;All IO in NIO involves with Channel. Data can be read from Channel to a Buffer and vice versa.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://xgugeng.github.io/images/java-nio-channel-buffer.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Buffers are used to interact with Channels. A Buffer is an allocated block of memory with fixed size, into which you can read or write data. In this post, I&amp;rsquo;ll illustrate the basic usage of Buffer and elucidate how it manages to do that from the view of source code.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>JVM Series: class File Format</title>
+				<link>https://xgugeng.github.io/post/jvm-series-class-file-format/</link>
+				<pubDate>Thu, 17 May 2018 16:52:29 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/jvm-series-class-file-format/</guid>
+				<description>&lt;p&gt;Today, let&amp;rsquo;s focus on the &lt;code&gt;class&lt;/code&gt; file format, the hardware- and operating system-independent binary format used to represent compiled classes and interfaces.&lt;/p&gt;&#xA;&lt;p&gt;A &lt;code&gt;class&lt;/code&gt; file consists of a stream of 8-bit bytes. All 16-bit, 32-bit, and 64-bit quantities are constructed by reading in two, four, and eight consecutive 8-bit bytes, respectively.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>JVM Series: Class Loader</title>
+				<link>https://xgugeng.github.io/post/jvm-series-class-loader/</link>
+				<pubDate>Wed, 18 Apr 2018 18:27:20 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/jvm-series-class-loader/</guid>
+				<description>&lt;p&gt;The Java Classloader, a part of the Java Runtime Environment, dynamically loads Java classes into the Java Virtual Machine. Each Java class must be loaded by a class loader.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>JVM Series: Oop and Klass</title>
+				<link>https://xgugeng.github.io/post/jvm-series-oop-klass/</link>
+				<pubDate>Tue, 10 Apr 2018 14:46:26 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/jvm-series-oop-klass/</guid>
+				<description>&lt;p&gt;As a part of &lt;a href=&#34;https://www.xgugeng.com/en/tags/jvm/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;JVM Series&lt;/a&gt;, this post tries to explore the object model in JVM.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>JVM Series: Overview</title>
+				<link>https://xgugeng.github.io/post/jvm-series-overview/</link>
+				<pubDate>Tue, 09 Jan 2018 20:56:47 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/jvm-series-overview/</guid>
+				<description>&lt;p&gt;When executing a java program, you may simply input in terminal, like:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;javac HelloWorld.java&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;java HelloWorld&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Behind these commands, JVM, as the cornerstone of the Java platform, does a lot of work, which are what this blog attempts to figure out. Today, a new series about JVM will be started, and this is the first episode.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>JDK Build-in Development Tools</title>
+				<link>https://xgugeng.github.io/post/jdk-build-in-development-tools/</link>
+				<pubDate>Thu, 14 Sep 2017 16:20:46 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/jdk-build-in-development-tools/</guid>
+				<description>&lt;p&gt;The following documents contain important information you will need to know to get the most out of the JDK tools.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Mind Maps for Java and JVM</title>
+				<link>https://xgugeng.github.io/post/java-jvm-mind-map/</link>
+				<pubDate>Fri, 16 Jun 2017 18:14:16 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-jvm-mind-map/</guid>
+				<description>&lt;p&gt;These two mind maps are drawn for the further exploration of Java and JVM. For Java I try to cover some advanced features ranging from NIO and Thread. As to JVM, few components are covered, of course, I will replenish it at any moment.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Differences between Hashtable and HashMap</title>
+				<link>https://xgugeng.github.io/post/java-hashtable-comparing-with-hashmap/</link>
+				<pubDate>Fri, 05 Aug 2016 12:01:40 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-hashtable-comparing-with-hashmap/</guid>
+				<description>&lt;p&gt;As I mentioned before, it is vital to read code with prepared questions. Hum, How about reading code with answers? The differences between Hashtable and HashMap have been explained many times including,&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;null key &amp;amp; null value&lt;/li&gt;&#xA;&lt;li&gt;synchronized or not&lt;/li&gt;&#xA;&lt;li&gt;Enumeration and Iterator&lt;/li&gt;&#xA;&lt;li&gt;hash method&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I am wondering how these arguments are supported by code. This post will give a view of code illustrating the above confusion.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Java HashSet</title>
+				<link>https://xgugeng.github.io/post/java-hashset/</link>
+				<pubDate>Mon, 01 Aug 2016 11:45:53 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-hashset/</guid>
+				<description>&lt;p&gt;For those who has no patience to look through this post, I conclude it in a word: HashSet is backed by HashMap.&lt;/p&gt;&#xA;&lt;p&gt;Set is a collection in which every element is unique. So does the keys in HashMap. It is reasonable to infer that the implementation of HashSet is based on HashMap, so it is. Remember &lt;a href=&#34;https://www.xgugeng.com/post/java-hashmap/#resize&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;resize&lt;/a&gt; of HashMap? it makes no guarantees as to the iteration order of the set.&lt;/p&gt;&#xA;&lt;p&gt;With the help of HashMap, HashSet offers constant time performance for the basic operations, like &lt;code&gt;add&lt;/code&gt;, &lt;code&gt;remove&lt;/code&gt;, &lt;code&gt;contains&lt;/code&gt; and &lt;code&gt;size&lt;/code&gt;. Iterating over this set requires time proportional to the sum of the HashSet instance&amp;rsquo;s size (the number of elements) plus the &amp;ldquo;capacity&amp;rdquo; of the backing HashMap instance (the number of buckets).&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Java TreeMap</title>
+				<link>https://xgugeng.github.io/post/java-treemap/</link>
+				<pubDate>Sun, 12 Jun 2016 12:54:23 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-treemap/</guid>
+				<description>&lt;p&gt;After joining the workforce, I have coded with various programming languages, like C++, Objective-C, Ruby, Python, Scala, Java, Go, etc. I ask to myself spontaneously, which language am I most skillful at? This question dismay me because I cannot answer it immediately.&lt;/p&gt;&#xA;&lt;p&gt;Since I choice to focus on Big Data, it&amp;rsquo;s pragmatic to equipped with Java and Python, two powerful weapons in this field. Reading the source code of &lt;a href=&#34;https://www.xgugeng.com/en/tags/java.util/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;java.util&lt;/a&gt; is a good start.&lt;/p&gt;&#xA;&lt;p&gt;The leading actor of this post is &lt;code&gt;TreeMap&lt;/code&gt;, a Red-Black tree based &lt;code&gt;NavigableMap&lt;/code&gt; implementation. It has no array underneath, as many of you think. Because &lt;code&gt;TreeMap&lt;/code&gt; inherits directly &lt;code&gt;AbstractMap&lt;/code&gt;, in contrast with &lt;a href=&#34;https://www.xgugeng.com/post/java-linkedhashmap/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LinkedHashMap&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Performances differ on account of distinctive data structures. This implementation provides guaranteed log(n) time cost for the &lt;code&gt;containsKey&lt;/code&gt;, &lt;code&gt;get&lt;/code&gt;, &lt;code&gt;put&lt;/code&gt; and &lt;code&gt;remove&lt;/code&gt; operations. Now allow me to show you a close look.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Java LinkedHashMap</title>
+				<link>https://xgugeng.github.io/post/java-linkedhashmap/</link>
+				<pubDate>Fri, 10 Jun 2016 20:01:59 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-linkedhashmap/</guid>
+				<description>&lt;p&gt;As its name implies, &lt;code&gt;LinkedHashMap&lt;/code&gt; is a hash table and linked list implementation of the &lt;code&gt;Map&lt;/code&gt; interface, with predictable iteration order. Different with &lt;code&gt;HashMap&lt;/code&gt;, it maintains a doubly-linked list running through all of its entries, which also defines the iteration ordering, same as the order in which keys were inserted into the map. This order remains if a key is re-inserted into the map.&lt;/p&gt;&#xA;&lt;p&gt;Like &lt;code&gt;HashMap&lt;/code&gt;, &lt;code&gt;LinkedHashMap&lt;/code&gt; provides constant-time performance for the basic operations &lt;code&gt;add&lt;/code&gt;, &lt;code&gt;contains&lt;/code&gt; and &lt;code&gt;remove&lt;/code&gt;, assuming the hash function disperses elements properly among the buckets.  Performance is likely to be just slightly below that of &lt;code&gt;HashMap&lt;/code&gt;, due to the added expense of maintaining the linked list,&lt;/p&gt;&#xA;&lt;p&gt;Thanks to the linked list, this kind of map is well-suited to building LRU caches. So my questions is how &lt;code&gt;LinkedHashMap&lt;/code&gt; preserves the linked list when key changes.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Java HashMap</title>
+				<link>https://xgugeng.github.io/post/java-hashmap/</link>
+				<pubDate>Thu, 09 Jun 2016 20:42:52 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-hashmap/</guid>
+				<description>&lt;p&gt;It&amp;rsquo;s necessary to learn with questions. Otherwise, you may distract your focus when something you don&amp;rsquo;t know appears, whether should I go deeper or not. With preliminary doubts in your mind, this would not be a problem. Learning can be direct, clear and fruitful, which brings you more sense of achievement.&lt;/p&gt;&#xA;&lt;p&gt;For this post about the source code of &lt;code&gt;HashMap&lt;/code&gt;, few questions need answers:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;data structure underneath&lt;/li&gt;&#xA;&lt;li&gt;why &lt;code&gt;HashMap&lt;/code&gt; permits nulls and unsynchronized&lt;/li&gt;&#xA;&lt;li&gt;does it make guarantees as to the order of the map&lt;/li&gt;&#xA;&lt;li&gt;what happens when I put and get a key with value, and time complexity&lt;/li&gt;&#xA;&lt;li&gt;how the map shrink or expand when size changes&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+			</item>
+			<item>
+				<title>Java LinkedList</title>
+				<link>https://xgugeng.github.io/post/java-linkedlist/</link>
+				<pubDate>Mon, 18 Apr 2016 11:37:29 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-linkedlist/</guid>
+				<description>&lt;p&gt;&lt;code&gt;LinkedList&lt;/code&gt; is a doubly-linked list implementation of the &lt;code&gt;List&lt;/code&gt; and &lt;code&gt;Deque&lt;/code&gt; interfaces. By &amp;ldquo;doubly-linked&amp;rdquo;, it means we can traverse the list from the beginning to the end, and vice versa. This class is a member of Java Collections Framework, located in &lt;code&gt;java.util&lt;/code&gt;. Let&amp;rsquo;s go straight to the source code.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Java String</title>
+				<link>https://xgugeng.github.io/post/java-string/</link>
+				<pubDate>Wed, 13 Apr 2016 11:33:34 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-string/</guid>
+				<description>&lt;p&gt;&lt;code&gt;String&lt;/code&gt; is one of the most common type of data in computer languages. A Java string is a series of characters gathered together, such as &amp;ldquo;abc&amp;rdquo;. Strings are constant, which means their value cannot be changed after created.&lt;/p&gt;&#xA;&lt;p&gt;This post introduces the basic of Java string, includes methods for examining individual characters of the sequence, for comparing strings, for searching strings, for extracting substrings and so on.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

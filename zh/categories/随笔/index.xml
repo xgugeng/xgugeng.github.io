@@ -1,50 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>随笔 on XGugeng</title>
-    <link>https://xgugeng.github.io/zh/categories/%E9%9A%8F%E7%AC%94/</link>
-    <description>Recent content in 随笔 on XGugeng</description>
-    <generator>Hugo -- 0.164.0</generator>
-    <language>zh</language>
-    <lastBuildDate>Tue, 19 Mar 2019 16:44:45 +0800</lastBuildDate>
-    <atom:link href="https://xgugeng.github.io/zh/categories/%E9%9A%8F%E7%AC%94/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Naval Ravikant 有关读书的最佳实践</title>
-      <link>https://xgugeng.github.io/zh/post/best-practices-for-reading-from-angel-philosopher/</link>
-      <pubDate>Tue, 19 Mar 2019 16:44:45 +0800</pubDate>
-      <guid>https://xgugeng.github.io/zh/post/best-practices-for-reading-from-angel-philosopher/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://fs.blog/naval-ravikant/&#34;&gt;The Angel Philosopher&lt;/a&gt; 这集 episode，我起码听了 20 遍。但每次打开 Podcast，都忍不住再听一次。从读书、习惯、决策，到认知，Naval 给出了自己的真知灼见，每次听都有新收获。&lt;/p&gt;
-&lt;p&gt;这篇博客主要记录了其中关于读书的见解，一句话归纳就是：反复读几本书，而不是单纯看很多书。&lt;/p&gt;
-&lt;p&gt;Naval 的简介用一句话就可以：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Naval is the CEO and co-founder of AngelList. He&amp;rsquo;s invested in more than 100 companies, including Uber, Twitter, Yammer, and so many others.&lt;/p&gt;
-&lt;/blockquote&gt;</description>
-    </item>
-    <item>
-      <title>水平思考笔记</title>
-      <link>https://xgugeng.github.io/zh/post/lateral-thinking-notes/</link>
-      <pubDate>Fri, 15 Mar 2019 20:49:53 +0800</pubDate>
-      <guid>https://xgugeng.github.io/zh/post/lateral-thinking-notes/</guid>
-      <description>&lt;p&gt;这两天上了一堂水平思考课，说实话，比上班还累！但跟着老师的思路，加上及时的课堂练习，最后是收获满满。&lt;/p&gt;
-&lt;p&gt;课程之后总感觉要再巩固一下，遂成此文。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>高效的一天可以这样过</title>
-      <link>https://xgugeng.github.io/zh/post/an-efficient-day/</link>
-      <pubDate>Tue, 16 Feb 2016 12:34:01 +0800</pubDate>
-      <guid>https://xgugeng.github.io/zh/post/an-efficient-day/</guid>
-      <description>&lt;p&gt;工具列表 (全部免费):&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.appving.com/&#34;&gt;微习惯&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://itunes.apple.com/us/app/7-minute-workout-seven-high/id650276551?mt=8&#34;&gt;Seven&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;www.yinxiang.com&#34;&gt;Evernote&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.wunderlist.com&#34;&gt;奇妙清单&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://pomotodo.com/&#34;&gt;番茄土豆&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://itunes.apple.com/us/app/health-through-breath-pranayama/id341935130?mt=8&#34;&gt;Pranayama&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://itunes.apple.com/us/app/xi-ma-la-yafm-ting-shu-she/id876336838?mt=8&#34;&gt;喜马拉雅&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.gotokeep.com/&#34;&gt;Keep&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.codoon.com/&#34;&gt;咕咚运动&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>随笔 on XGugeng</title>
+		<link>https://xgugeng.github.io/zh/categories/%E9%9A%8F%E7%AC%94/</link>
+		<description>Recent content in 随笔 on XGugeng</description>
+		<generator>Hugo</generator>
+		<language>zh-CN</language>
+		
+		
+		
+		
+			<lastBuildDate>Tue, 19 Mar 2019 16:44:45 +0800</lastBuildDate>
+		
+			<atom:link href="https://xgugeng.github.io/zh/categories/%E9%9A%8F%E7%AC%94/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Naval Ravikant 有关读书的最佳实践</title>
+				<link>https://xgugeng.github.io/zh/post/best-practices-for-reading-from-angel-philosopher/</link>
+				<pubDate>Tue, 19 Mar 2019 16:44:45 +0800</pubDate>
+				<guid>https://xgugeng.github.io/zh/post/best-practices-for-reading-from-angel-philosopher/</guid>
+				<description>&lt;p&gt;&lt;a href=&#34;https://fs.blog/naval-ravikant/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Angel Philosopher&lt;/a&gt; 这集 episode，我起码听了 20 遍。但每次打开 Podcast，都忍不住再听一次。从读书、习惯、决策，到认知，Naval 给出了自己的真知灼见，每次听都有新收获。&lt;/p&gt;&#xA;&lt;p&gt;这篇博客主要记录了其中关于读书的见解，一句话归纳就是：反复读几本书，而不是单纯看很多书。&lt;/p&gt;&#xA;&lt;p&gt;Naval 的简介用一句话就可以：&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Naval is the CEO and co-founder of AngelList. He&amp;rsquo;s invested in more than 100 companies, including Uber, Twitter, Yammer, and so many others.&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+			</item>
+			<item>
+				<title>水平思考笔记</title>
+				<link>https://xgugeng.github.io/zh/post/lateral-thinking-notes/</link>
+				<pubDate>Fri, 15 Mar 2019 20:49:53 +0800</pubDate>
+				<guid>https://xgugeng.github.io/zh/post/lateral-thinking-notes/</guid>
+				<description>&lt;p&gt;这两天上了一堂水平思考课，说实话，比上班还累！但跟着老师的思路，加上及时的课堂练习，最后是收获满满。&lt;/p&gt;&#xA;&lt;p&gt;课程之后总感觉要再巩固一下，遂成此文。&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>高效的一天可以这样过</title>
+				<link>https://xgugeng.github.io/zh/post/an-efficient-day/</link>
+				<pubDate>Tue, 16 Feb 2016 12:34:01 +0800</pubDate>
+				<guid>https://xgugeng.github.io/zh/post/an-efficient-day/</guid>
+				<description>&lt;p&gt;工具列表 (全部免费):&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://www.appving.com/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;微习惯&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://itunes.apple.com/us/app/7-minute-workout-seven-high/id650276551?mt=8&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Seven&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;www.yinxiang.com&#34; &gt;Evernote&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.wunderlist.com&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;奇妙清单&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://pomotodo.com/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;番茄土豆&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://itunes.apple.com/us/app/health-through-breath-pranayama/id341935130?mt=8&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Pranayama&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://itunes.apple.com/us/app/xi-ma-la-yafm-ting-shu-she/id876336838?mt=8&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;喜马拉雅&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://www.gotokeep.com/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Keep&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://www.codoon.com/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;咕咚运动&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
+			</item>
+	</channel>
 </rss>

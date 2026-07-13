@@ -1,39 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Distributed System on XGugeng</title>
-    <link>https://xgugeng.github.io/categories/distributed-system/</link>
-    <description>Recent content in Distributed System on XGugeng</description>
-    <generator>Hugo -- 0.164.0</generator>
-    <language>en</language>
-    <lastBuildDate>Wed, 22 Aug 2018 14:05:16 +0800</lastBuildDate>
-    <atom:link href="https://xgugeng.github.io/categories/distributed-system/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Consensus in Distributed System</title>
-      <link>https://xgugeng.github.io/post/consensus-in-distributed-system/</link>
-      <pubDate>Sun, 19 Aug 2018 16:07:16 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/consensus-in-distributed-system/</guid>
-      <description>&lt;p&gt;The distributed consensus problem deals with reaching an agreement on a single data value among a group of process connected by an unreliable network. The processes must put forth their candidate values, communicate with one another, and agree on a single consensus value in presence of failures of some processes.&lt;/p&gt;
-&lt;p&gt;Examples of applications of consensus include:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Leader election / Mutable Exclusion&lt;/li&gt;
-&lt;li&gt;Commit or Abort in distributed transactions&lt;/li&gt;
-&lt;li&gt;Reaching agreement about which process has failed&lt;/li&gt;
-&lt;li&gt;Clock phase synchronization&lt;/li&gt;
-&lt;li&gt;Load balancing&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;A visual diagram of this problem unfolds in the following. Each process &lt;strong&gt;p&lt;!-- raw HTML omitted --&gt;k&lt;!-- raw HTML omitted --&gt;&lt;/strong&gt; with an input value &lt;strong&gt;u&lt;!-- raw HTML omitted --&gt;k&lt;!-- raw HTML omitted --&gt;&lt;/strong&gt; runs a program to exchange its value. Finally the output of all non-faulty processes become identical. It is permissive that one or more processes may fail at any time, but the output &lt;strong&gt;v&lt;/strong&gt; must be equal to the value of at least one process.&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/distributed-consensus-problem.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Consistency Models and Protocols in Distributed System</title>
-      <link>https://xgugeng.github.io/post/consistency-in-distributed-system/</link>
-      <pubDate>Fri, 09 Feb 2018 17:03:05 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/consistency-in-distributed-system/</guid>
-      <description>&lt;p&gt;Data replication is a vital feature in distributed system, but brings in an inevitable price to be paid: consistency maintenance. The consistency model specifies a contract between programmer and system, wherein the system guarantees that if the programmer follows the rules, memory will be consistent and the results of reading, writing, or updating memory will be predictable.&lt;/p&gt;
-&lt;p&gt;In Chinese, &amp;ldquo;consistency&amp;rdquo; often mixes up with &amp;ldquo;consensus&amp;rdquo; because of their similar translations. The consensus problem requires &lt;strong&gt;agreement among a number of processes for a single data value&lt;/strong&gt;. Some of the processes may fail or be unreliable in other ways, so consensus protocols must be fault tolerant or resilient.&lt;/p&gt;
-&lt;p&gt;This post focus on consistency only, enumerating various common types of consistency models and illuminating some consistency protocols.&lt;/p&gt;</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Distributed System on XGugeng</title>
+		<link>https://xgugeng.github.io/categories/distributed-system/</link>
+		<description>Recent content in Distributed System on XGugeng</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 22 Aug 2018 14:05:16 +0800</lastBuildDate>
+		
+			<atom:link href="https://xgugeng.github.io/categories/distributed-system/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Consensus in Distributed System</title>
+				<link>https://xgugeng.github.io/post/consensus-in-distributed-system/</link>
+				<pubDate>Sun, 19 Aug 2018 16:07:16 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/consensus-in-distributed-system/</guid>
+				<description>&lt;p&gt;The distributed consensus problem deals with reaching an agreement on a single data value among a group of process connected by an unreliable network. The processes must put forth their candidate values, communicate with one another, and agree on a single consensus value in presence of failures of some processes.&lt;/p&gt;&#xA;&lt;p&gt;Examples of applications of consensus include:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Leader election / Mutable Exclusion&lt;/li&gt;&#xA;&lt;li&gt;Commit or Abort in distributed transactions&lt;/li&gt;&#xA;&lt;li&gt;Reaching agreement about which process has failed&lt;/li&gt;&#xA;&lt;li&gt;Clock phase synchronization&lt;/li&gt;&#xA;&lt;li&gt;Load balancing&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;A visual diagram of this problem unfolds in the following. Each process &lt;strong&gt;p&lt;sub&gt;k&lt;/sub&gt;&lt;/strong&gt; with an input value &lt;strong&gt;u&lt;sub&gt;k&lt;/sub&gt;&lt;/strong&gt; runs a program to exchange its value. Finally the output of all non-faulty processes become identical. It is permissive that one or more processes may fail at any time, but the output &lt;strong&gt;v&lt;/strong&gt; must be equal to the value of at least one process.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://xgugeng.github.io/images/distributed-consensus-problem.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Consistency Models and Protocols in Distributed System</title>
+				<link>https://xgugeng.github.io/post/consistency-in-distributed-system/</link>
+				<pubDate>Fri, 09 Feb 2018 17:03:05 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/consistency-in-distributed-system/</guid>
+				<description>&lt;p&gt;Data replication is a vital feature in distributed system, but brings in an inevitable price to be paid: consistency maintenance. The consistency model specifies a contract between programmer and system, wherein the system guarantees that if the programmer follows the rules, memory will be consistent and the results of reading, writing, or updating memory will be predictable.&lt;/p&gt;&#xA;&lt;p&gt;In Chinese, &amp;ldquo;consistency&amp;rdquo; often mixes up with &amp;ldquo;consensus&amp;rdquo; because of their similar translations. The consensus problem requires &lt;strong&gt;agreement among a number of processes for a single data value&lt;/strong&gt;. Some of the processes may fail or be unreliable in other ways, so consensus protocols must be fault tolerant or resilient.&lt;/p&gt;&#xA;&lt;p&gt;This post focus on consistency only, enumerating various common types of consistency models and illuminating some consistency protocols.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

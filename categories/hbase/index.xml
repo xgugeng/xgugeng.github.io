@@ -1,116 +1,101 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>HBase on XGugeng</title>
-    <link>https://xgugeng.github.io/categories/hbase/</link>
-    <description>Recent content in HBase on XGugeng</description>
-    <generator>Hugo -- 0.164.0</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 17 Aug 2018 15:17:33 +0800</lastBuildDate>
-    <atom:link href="https://xgugeng.github.io/categories/hbase/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How HMaster Detect Death of RegionServer</title>
-      <link>https://xgugeng.github.io/post/how-master-detect-death-of-regionserver/</link>
-      <pubDate>Fri, 06 Jul 2018 10:31:19 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/how-master-detect-death-of-regionserver/</guid>
-      <description>&lt;p&gt;Step 3 of &lt;a href=&#34;https://www.xgugeng.com/post/regionserver-stops-after-full-gc/#explanation&#34;&gt;explanation&lt;/a&gt; about what happens after Full GC may be vague. It confuses audiences by&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;ServerManager&lt;/code&gt; on &lt;code&gt;HMaster&lt;/code&gt; finds there must be something wrong with this &lt;code&gt;RegionServer&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;How does &lt;code&gt;HMaster&lt;/code&gt; detect the death of &lt;code&gt;RegionServer&lt;/code&gt;?&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>RegionServer Stops after Full GC</title>
-      <link>https://xgugeng.github.io/post/regionserver-stops-after-full-gc/</link>
-      <pubDate>Thu, 05 Jul 2018 16:31:24 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/regionserver-stops-after-full-gc/</guid>
-      <description>&lt;p&gt;One of the most devastating and unpredictable latency intruders is the Java Virtual Machine’s &amp;ldquo;stop the world&amp;rdquo; pauses for garbage collection (memory clean-up). This post troubleshoots an unexpected shutdown of &lt;code&gt;RegionServer&lt;/code&gt; fundamentally caused by Full GC and makes the whole process clear.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>A Troubleshooting for Threads Explosion in HBase Client</title>
-      <link>https://xgugeng.github.io/post/troubleshooting-for-threads-explosion-in-hbase-client/</link>
-      <pubDate>Fri, 09 Mar 2018 18:27:56 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/troubleshooting-for-threads-explosion-in-hbase-client/</guid>
-      <description>&lt;p&gt;An issue, excessive threads of HBase client, annoyed me for a quite while. It reminds me to penetrate into uses of &lt;code&gt;Executorservice&lt;/code&gt; in HBase client. That&amp;rsquo;s the origin of this blog.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>HBase Batch Puts with BufferedMutator</title>
-      <link>https://xgugeng.github.io/post/hbase-batch-puts-with-bufferedmutator/</link>
-      <pubDate>Mon, 15 Jan 2018 16:56:23 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/hbase-batch-puts-with-bufferedmutator/</guid>
-      <description>&lt;p&gt;&lt;code&gt;BufferedMutator&lt;/code&gt; is meant for batched, potentially asynchronous puts into a single table. This class relies heavily on &lt;code&gt;AsyncProcess&lt;/code&gt;, which I has explained &lt;a href=&#34;https://www.xgugeng.com/post/hbase-batch-puts-without-bufferedmutator/#asyncprocess&#34;&gt;here&lt;/a&gt;. Then, we can focus on what &lt;code&gt;BufferedMutator&lt;/code&gt; does in this post.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>HBase Batch Puts without BufferedMutator</title>
-      <link>https://xgugeng.github.io/post/hbase-batch-puts-without-bufferedmutator/</link>
-      <pubDate>Tue, 09 Jan 2018 11:33:34 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/hbase-batch-puts-without-bufferedmutator/</guid>
-      <description>&lt;p&gt;For batch puts, it&amp;rsquo;s better if you construct a list of puts and then call &lt;code&gt;HTable.put(final List&amp;lt;Put&amp;gt; puts)&lt;/code&gt;, because it uses a single RPC call to commit the batch, but depending on the size of the list write buffer may flush it all or not.&lt;/p&gt;
-&lt;p&gt;In this post, &lt;code&gt;BufferedMutator&lt;/code&gt; is excluded. It will be discussed in the near future.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Multiversion Concurrency Control in HBase</title>
-      <link>https://xgugeng.github.io/post/multiversion-concurrency-control-in-hbase/</link>
-      <pubDate>Wed, 27 Dec 2017 16:19:17 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/multiversion-concurrency-control-in-hbase/</guid>
-      <description>&lt;p&gt;Multiversion Concurrency Control (MVCC for short) manages the read/write consistency, providing an interface for readers to determine what entries to ignore, and a mechanism for writers to obtain new write numbers, then &amp;ldquo;commit&amp;rdquo; the new writes for readers to read (thus forming atomic transactions).&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>A Lifecycle of HBase&#39;s Put: Server-side</title>
-      <link>https://xgugeng.github.io/post/a-lifecycle-of-hbase-put-server-side/</link>
-      <pubDate>Tue, 05 Dec 2017 15:14:28 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/a-lifecycle-of-hbase-put-server-side/</guid>
-      <description>&lt;p&gt;Following the preceding &lt;a href=&#34;https://www.xgugeng.com/post/a-lifecycle-of-hbase-put-client-side/&#34;&gt;A Lifecycle of HBase&amp;rsquo;s Put: Client-side&lt;/a&gt;, this post will figure out how a &lt;code&gt;Put&lt;/code&gt; request does its mutation on &lt;code&gt;HRegionServer&lt;/code&gt;. The whole process involves WAL, MemStore, and Coprocessor etc. After reading this post, hope you make their roles clear.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>A Lifecycle of HBase&#39;s Put: Client-side</title>
-      <link>https://xgugeng.github.io/post/a-lifecycle-of-hbase-put-client-side/</link>
-      <pubDate>Fri, 24 Nov 2017 11:38:14 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/a-lifecycle-of-hbase-put-client-side/</guid>
-      <description>&lt;p&gt;&lt;code&gt;Put&lt;/code&gt; is used to perform insert or update a single row of HBase table. It&amp;rsquo;s essential to understand its lifecycle, which can be broke into two pieces,&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Client-side, How the &lt;code&gt;put&lt;/code&gt; request is built up and sent to the right &lt;code&gt;RegionServer&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Server-side, How the &lt;code&gt;RegionServer&lt;/code&gt; handle the &lt;code&gt;Put&lt;/code&gt; request and update one row.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;In view of the limitation of one single post, the client-side is discussed only.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>HBase Code Analysis: MemStore</title>
-      <link>https://xgugeng.github.io/post/hbase-code-analysis-memstore/</link>
-      <pubDate>Thu, 23 Nov 2017 11:39:43 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/hbase-code-analysis-memstore/</guid>
-      <description>&lt;p&gt;The &lt;code&gt;MemStore&lt;/code&gt; holds in-memory modifications to the Store. This post deeps into the source code for sake of understanding what it really do underneath.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>HBase Storage Internals</title>
-      <link>https://xgugeng.github.io/post/hbase-storage-internals/</link>
-      <pubDate>Thu, 16 Nov 2017 11:34:49 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/hbase-storage-internals/</guid>
-      <description>&lt;p&gt;Overview&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;An HBase &lt;code&gt;Table&lt;/code&gt; consists of multiple rows.&lt;/li&gt;
-&lt;li&gt;Table will be split into &lt;code&gt;Regions&lt;/code&gt; based on rows&amp;rsquo; lexicographical order.&lt;/li&gt;
-&lt;li&gt;A &lt;code&gt;Store&lt;/code&gt; corresponds to a column family for a table for a given region.&lt;/li&gt;
-&lt;li&gt;A Store hosts a &lt;code&gt;MemStore&lt;/code&gt; and 0 or more &lt;code&gt;StoreFiles (HFiles)&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;The MemStore holds in-memory modifications to the Store.&lt;/li&gt;
-&lt;li&gt;StoreFiles are composed of &lt;code&gt;Blocks&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>How Does Client Find the Region</title>
-      <link>https://xgugeng.github.io/post/how-does-client-find-the-region/</link>
-      <pubDate>Fri, 08 Sep 2017 11:04:57 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/how-does-client-find-the-region/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;client-related source code is located in the module &lt;code&gt;hbase-client&lt;/code&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;</description>
-    </item>
-    <item>
-      <title>A Mind Map for HBase</title>
-      <link>https://xgugeng.github.io/post/hbase-mind-map/</link>
-      <pubDate>Sat, 01 Jul 2017 15:17:33 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/hbase-mind-map/</guid>
-      <description>&lt;p&gt;This map records my learning path to HBase. Every time I know something new about HBase, I will append it to this map.&lt;/p&gt;</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>HBase on XGugeng</title>
+		<link>https://xgugeng.github.io/categories/hbase/</link>
+		<description>Recent content in HBase on XGugeng</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 17 Aug 2018 15:17:33 +0800</lastBuildDate>
+		
+			<atom:link href="https://xgugeng.github.io/categories/hbase/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>How HMaster Detect Death of RegionServer</title>
+				<link>https://xgugeng.github.io/post/how-master-detect-death-of-regionserver/</link>
+				<pubDate>Fri, 06 Jul 2018 10:31:19 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/how-master-detect-death-of-regionserver/</guid>
+				<description>&lt;p&gt;Step 3 of &lt;a href=&#34;https://www.xgugeng.com/post/regionserver-stops-after-full-gc/#explanation&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;explanation&lt;/a&gt; about what happens after Full GC may be vague. It confuses audiences by&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;code&gt;ServerManager&lt;/code&gt; on &lt;code&gt;HMaster&lt;/code&gt; finds there must be something wrong with this &lt;code&gt;RegionServer&lt;/code&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;How does &lt;code&gt;HMaster&lt;/code&gt; detect the death of &lt;code&gt;RegionServer&lt;/code&gt;?&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>RegionServer Stops after Full GC</title>
+				<link>https://xgugeng.github.io/post/regionserver-stops-after-full-gc/</link>
+				<pubDate>Thu, 05 Jul 2018 16:31:24 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/regionserver-stops-after-full-gc/</guid>
+				<description>&lt;p&gt;One of the most devastating and unpredictable latency intruders is the Java Virtual Machine’s &amp;ldquo;stop the world&amp;rdquo; pauses for garbage collection (memory clean-up). This post troubleshoots an unexpected shutdown of &lt;code&gt;RegionServer&lt;/code&gt; fundamentally caused by Full GC and makes the whole process clear.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>A Troubleshooting for Threads Explosion in HBase Client</title>
+				<link>https://xgugeng.github.io/post/troubleshooting-for-threads-explosion-in-hbase-client/</link>
+				<pubDate>Fri, 09 Mar 2018 18:27:56 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/troubleshooting-for-threads-explosion-in-hbase-client/</guid>
+				<description>&lt;p&gt;An issue, excessive threads of HBase client, annoyed me for a quite while. It reminds me to penetrate into uses of &lt;code&gt;Executorservice&lt;/code&gt; in HBase client. That&amp;rsquo;s the origin of this blog.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>HBase Batch Puts with BufferedMutator</title>
+				<link>https://xgugeng.github.io/post/hbase-batch-puts-with-bufferedmutator/</link>
+				<pubDate>Mon, 15 Jan 2018 16:56:23 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/hbase-batch-puts-with-bufferedmutator/</guid>
+				<description>&lt;p&gt;&lt;code&gt;BufferedMutator&lt;/code&gt; is meant for batched, potentially asynchronous puts into a single table. This class relies heavily on &lt;code&gt;AsyncProcess&lt;/code&gt;, which I has explained &lt;a href=&#34;https://www.xgugeng.com/post/hbase-batch-puts-without-bufferedmutator/#asyncprocess&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;. Then, we can focus on what &lt;code&gt;BufferedMutator&lt;/code&gt; does in this post.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>HBase Batch Puts without BufferedMutator</title>
+				<link>https://xgugeng.github.io/post/hbase-batch-puts-without-bufferedmutator/</link>
+				<pubDate>Tue, 09 Jan 2018 11:33:34 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/hbase-batch-puts-without-bufferedmutator/</guid>
+				<description>&lt;p&gt;For batch puts, it&amp;rsquo;s better if you construct a list of puts and then call &lt;code&gt;HTable.put(final List&amp;lt;Put&amp;gt; puts)&lt;/code&gt;, because it uses a single RPC call to commit the batch, but depending on the size of the list write buffer may flush it all or not.&lt;/p&gt;&#xA;&lt;p&gt;In this post, &lt;code&gt;BufferedMutator&lt;/code&gt; is excluded. It will be discussed in the near future.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Multiversion Concurrency Control in HBase</title>
+				<link>https://xgugeng.github.io/post/multiversion-concurrency-control-in-hbase/</link>
+				<pubDate>Wed, 27 Dec 2017 16:19:17 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/multiversion-concurrency-control-in-hbase/</guid>
+				<description>&lt;p&gt;Multiversion Concurrency Control (MVCC for short) manages the read/write consistency, providing an interface for readers to determine what entries to ignore, and a mechanism for writers to obtain new write numbers, then &amp;ldquo;commit&amp;rdquo; the new writes for readers to read (thus forming atomic transactions).&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>A Lifecycle of HBase&#39;s Put: Server-side</title>
+				<link>https://xgugeng.github.io/post/a-lifecycle-of-hbase-put-server-side/</link>
+				<pubDate>Tue, 05 Dec 2017 15:14:28 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/a-lifecycle-of-hbase-put-server-side/</guid>
+				<description>&lt;p&gt;Following the preceding &lt;a href=&#34;https://www.xgugeng.com/post/a-lifecycle-of-hbase-put-client-side/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A Lifecycle of HBase&amp;rsquo;s Put: Client-side&lt;/a&gt;, this post will figure out how a &lt;code&gt;Put&lt;/code&gt; request does its mutation on &lt;code&gt;HRegionServer&lt;/code&gt;. The whole process involves WAL, MemStore, and Coprocessor etc. After reading this post, hope you make their roles clear.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>A Lifecycle of HBase&#39;s Put: Client-side</title>
+				<link>https://xgugeng.github.io/post/a-lifecycle-of-hbase-put-client-side/</link>
+				<pubDate>Fri, 24 Nov 2017 11:38:14 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/a-lifecycle-of-hbase-put-client-side/</guid>
+				<description>&lt;p&gt;&lt;code&gt;Put&lt;/code&gt; is used to perform insert or update a single row of HBase table. It&amp;rsquo;s essential to understand its lifecycle, which can be broke into two pieces,&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Client-side, How the &lt;code&gt;put&lt;/code&gt; request is built up and sent to the right &lt;code&gt;RegionServer&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Server-side, How the &lt;code&gt;RegionServer&lt;/code&gt; handle the &lt;code&gt;Put&lt;/code&gt; request and update one row.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;In view of the limitation of one single post, the client-side is discussed only.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>HBase Code Analysis: MemStore</title>
+				<link>https://xgugeng.github.io/post/hbase-code-analysis-memstore/</link>
+				<pubDate>Thu, 23 Nov 2017 11:39:43 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/hbase-code-analysis-memstore/</guid>
+				<description>&lt;p&gt;The &lt;code&gt;MemStore&lt;/code&gt; holds in-memory modifications to the Store. This post deeps into the source code for sake of understanding what it really do underneath.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>HBase Storage Internals</title>
+				<link>https://xgugeng.github.io/post/hbase-storage-internals/</link>
+				<pubDate>Thu, 16 Nov 2017 11:34:49 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/hbase-storage-internals/</guid>
+				<description>&lt;p&gt;Overview&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;An HBase &lt;code&gt;Table&lt;/code&gt; consists of multiple rows.&lt;/li&gt;&#xA;&lt;li&gt;Table will be split into &lt;code&gt;Regions&lt;/code&gt; based on rows&amp;rsquo; lexicographical order.&lt;/li&gt;&#xA;&lt;li&gt;A &lt;code&gt;Store&lt;/code&gt; corresponds to a column family for a table for a given region.&lt;/li&gt;&#xA;&lt;li&gt;A Store hosts a &lt;code&gt;MemStore&lt;/code&gt; and 0 or more &lt;code&gt;StoreFiles (HFiles)&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;The MemStore holds in-memory modifications to the Store.&lt;/li&gt;&#xA;&lt;li&gt;StoreFiles are composed of &lt;code&gt;Blocks&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+			</item>
+			<item>
+				<title>How Does Client Find the Region</title>
+				<link>https://xgugeng.github.io/post/how-does-client-find-the-region/</link>
+				<pubDate>Fri, 08 Sep 2017 11:04:57 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/how-does-client-find-the-region/</guid>
+				<description>&lt;blockquote&gt;&#xA;&lt;p&gt;client-related source code is located in the module &lt;code&gt;hbase-client&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+			</item>
+			<item>
+				<title>A Mind Map for HBase</title>
+				<link>https://xgugeng.github.io/post/hbase-mind-map/</link>
+				<pubDate>Sat, 01 Jul 2017 15:17:33 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/hbase-mind-map/</guid>
+				<description>&lt;p&gt;This map records my learning path to HBase. Every time I know something new about HBase, I will append it to this map.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

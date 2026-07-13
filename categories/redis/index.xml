@@ -1,66 +1,59 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Redis on XGugeng</title>
-    <link>https://xgugeng.github.io/categories/redis/</link>
-    <description>Recent content in Redis on XGugeng</description>
-    <generator>Hugo -- 0.164.0</generator>
-    <language>en</language>
-    <lastBuildDate>Sun, 28 Apr 2019 20:20:38 +0800</lastBuildDate>
-    <atom:link href="https://xgugeng.github.io/categories/redis/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Redis Internals: File Event Handling</title>
-      <link>https://xgugeng.github.io/post/redis-internals-file-event-handling/</link>
-      <pubDate>Sun, 28 Apr 2019 20:20:38 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/redis-internals-file-event-handling/</guid>
-      <description>&lt;p&gt;Events are the core of Redis server, reponsible for dealing with two important tasks:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;File events: receive the requests from multiple clients, process and responde to clients.&lt;/li&gt;
-&lt;li&gt;Time events: server cron job.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;In this post, we will take a look at multiplexing event handling processing requests from clients. Clients connect to Redis server via sockets, but the server interacts with these clients only when the sockets can be read or written without blocking.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Redis Internals: Dict</title>
-      <link>https://xgugeng.github.io/post/redis-internals-dict/</link>
-      <pubDate>Thu, 15 Nov 2018 19:56:57 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/redis-internals-dict/</guid>
-      <description>&lt;p&gt;Dictionary is a data structure for storing key-value pair. Each key in a dictionary is unique and has a corresponding value. Redis implements its own dictionary and use it for hash key.&lt;/p&gt;
-&lt;p&gt;As a data structure in server side, dictionary must take memory into consideration. That&amp;rsquo;s the reason why resizing and rehashing are so significant.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Redis Internals: List</title>
-      <link>https://xgugeng.github.io/post/redis-internals-list/</link>
-      <pubDate>Tue, 06 Nov 2018 09:38:12 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/redis-internals-list/</guid>
-      <description>&lt;p&gt;Redis provides a generic doubly linked list implementation, which is widely used in Redis. If a list key involves two many elements or there are many long strings in the list, Redis will apply linked list for it.  Publish-subscribe, slow query, monitor also make use of linked list. Redis keeps the states of clients in linked list, and client&amp;rsquo;s output buffer use it too.&lt;/p&gt;
-&lt;p&gt;This post will plough into the implementation of doubly linked list.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Redis Internals: SDS</title>
-      <link>https://xgugeng.github.io/post/redis-internals-sds/</link>
-      <pubDate>Thu, 01 Nov 2018 09:26:50 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/redis-internals-sds/</guid>
-      <description>&lt;p&gt;C string is used only for literal constant in Redis. For the situation that the string can be modified, Redis provide a Simple Dynamic String(SDS). The key in Redis is actually a SDS, and if you insert a key-value with &lt;code&gt;SET msg &amp;quot;hello world&amp;quot;&lt;/code&gt;, a SDS instance will be constructed for the key. In this case, the value is also a SDS instance with the content of &amp;ldquo;hello world&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;Besides string, SDS is also used for buffer which can serve the AOF module and client&amp;rsquo;s input.&lt;/p&gt;
-&lt;p&gt;This post will dive into the implementation of SDS comparing with classic C string.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>What Happens When Starting Redis</title>
-      <link>https://xgugeng.github.io/post/what-happens-when-starting-redis/</link>
-      <pubDate>Mon, 22 Oct 2018 17:23:59 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/what-happens-when-starting-redis/</guid>
-      <description>&lt;p&gt;Redis is a great example of high-performance server. When I worked as a backend developer, my mentor recommended that I should read the code of Redis. And so I did, it&amp;rsquo;s rewarding. As the time goes by, the ideas behind Redis are still cutting-edge, so I think it&amp;rsquo;s time to retrospect the implementation of Redis. This post is a good beginning.&lt;/p&gt;
-&lt;p&gt;It&amp;rsquo;s my habit to start from the entry when meeting a big project. In Redis, &lt;code&gt;server.c&lt;/code&gt; is responsible for bootstrap, that&amp;rsquo;s what I pay close attention to in this post.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Redis Mind Map</title>
-      <link>https://xgugeng.github.io/post/redis-mind-map/</link>
-      <pubDate>Sun, 06 Nov 2016 21:20:07 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/redis-mind-map/</guid>
-      <description>&lt;p&gt;This post includes a few mind maps for Redis ranging from quick start to implementation.&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/redis-quick-start.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Redis on XGugeng</title>
+		<link>https://xgugeng.github.io/categories/redis/</link>
+		<description>Recent content in Redis on XGugeng</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 28 Apr 2019 20:20:38 +0800</lastBuildDate>
+		
+			<atom:link href="https://xgugeng.github.io/categories/redis/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Redis Internals: File Event Handling</title>
+				<link>https://xgugeng.github.io/post/redis-internals-file-event-handling/</link>
+				<pubDate>Sun, 28 Apr 2019 20:20:38 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/redis-internals-file-event-handling/</guid>
+				<description>&lt;p&gt;Events are the core of Redis server, reponsible for dealing with two important tasks:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;File events: receive the requests from multiple clients, process and responde to clients.&lt;/li&gt;&#xA;&lt;li&gt;Time events: server cron job.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;In this post, we will take a look at multiplexing event handling processing requests from clients. Clients connect to Redis server via sockets, but the server interacts with these clients only when the sockets can be read or written without blocking.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Redis Internals: Dict</title>
+				<link>https://xgugeng.github.io/post/redis-internals-dict/</link>
+				<pubDate>Thu, 15 Nov 2018 19:56:57 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/redis-internals-dict/</guid>
+				<description>&lt;p&gt;Dictionary is a data structure for storing key-value pair. Each key in a dictionary is unique and has a corresponding value. Redis implements its own dictionary and use it for hash key.&lt;/p&gt;&#xA;&lt;p&gt;As a data structure in server side, dictionary must take memory into consideration. That&amp;rsquo;s the reason why resizing and rehashing are so significant.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Redis Internals: List</title>
+				<link>https://xgugeng.github.io/post/redis-internals-list/</link>
+				<pubDate>Tue, 06 Nov 2018 09:38:12 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/redis-internals-list/</guid>
+				<description>&lt;p&gt;Redis provides a generic doubly linked list implementation, which is widely used in Redis. If a list key involves two many elements or there are many long strings in the list, Redis will apply linked list for it.  Publish-subscribe, slow query, monitor also make use of linked list. Redis keeps the states of clients in linked list, and client&amp;rsquo;s output buffer use it too.&lt;/p&gt;&#xA;&lt;p&gt;This post will plough into the implementation of doubly linked list.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Redis Internals: SDS</title>
+				<link>https://xgugeng.github.io/post/redis-internals-sds/</link>
+				<pubDate>Thu, 01 Nov 2018 09:26:50 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/redis-internals-sds/</guid>
+				<description>&lt;p&gt;C string is used only for literal constant in Redis. For the situation that the string can be modified, Redis provide a Simple Dynamic String(SDS). The key in Redis is actually a SDS, and if you insert a key-value with &lt;code&gt;SET msg &amp;quot;hello world&amp;quot;&lt;/code&gt;, a SDS instance will be constructed for the key. In this case, the value is also a SDS instance with the content of &amp;ldquo;hello world&amp;rdquo;.&lt;/p&gt;&#xA;&lt;p&gt;Besides string, SDS is also used for buffer which can serve the AOF module and client&amp;rsquo;s input.&lt;/p&gt;&#xA;&lt;p&gt;This post will dive into the implementation of SDS comparing with classic C string.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>What Happens When Starting Redis</title>
+				<link>https://xgugeng.github.io/post/what-happens-when-starting-redis/</link>
+				<pubDate>Mon, 22 Oct 2018 17:23:59 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/what-happens-when-starting-redis/</guid>
+				<description>&lt;p&gt;Redis is a great example of high-performance server. When I worked as a backend developer, my mentor recommended that I should read the code of Redis. And so I did, it&amp;rsquo;s rewarding. As the time goes by, the ideas behind Redis are still cutting-edge, so I think it&amp;rsquo;s time to retrospect the implementation of Redis. This post is a good beginning.&lt;/p&gt;&#xA;&lt;p&gt;It&amp;rsquo;s my habit to start from the entry when meeting a big project. In Redis, &lt;code&gt;server.c&lt;/code&gt; is responsible for bootstrap, that&amp;rsquo;s what I pay close attention to in this post.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Redis Mind Map</title>
+				<link>https://xgugeng.github.io/post/redis-mind-map/</link>
+				<pubDate>Sun, 06 Nov 2016 21:20:07 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/redis-mind-map/</guid>
+				<description>&lt;p&gt;This post includes a few mind maps for Redis ranging from quick start to implementation.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://xgugeng.github.io/images/redis-quick-start.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

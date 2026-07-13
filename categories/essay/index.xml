@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Essay on XGugeng</title>
-    <link>https://xgugeng.github.io/categories/essay/</link>
-    <description>Recent content in Essay on XGugeng</description>
-    <generator>Hugo -- 0.164.0</generator>
-    <language>en</language>
-    <lastBuildDate>Sun, 15 Jul 2018 17:53:35 +0800</lastBuildDate>
-    <atom:link href="https://xgugeng.github.io/categories/essay/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Learn Consciously</title>
-      <link>https://xgugeng.github.io/post/learn-consciously/</link>
-      <pubDate>Sun, 15 Jul 2018 17:53:35 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/learn-consciously/</guid>
-      <description>&lt;p&gt;Learning is an eternal topic for everyone, no matter which field you are engaging in. I highly admire the guys who produce excellent performance in any specific domain. It needs patience, and hours and hours will be spent on practice. Aside from tenacity, there must be something related contributing to their success.&lt;/p&gt;
-&lt;p&gt;Two books changed my perspective of learning. The first one is &lt;a href=&#34;https://www.amazon.com/dp/B000QCQ970&#34;&gt;The Art of Learning&lt;/a&gt; telling a remarkable story of personal achievement and inspires me with a series of principles for improving performance in any field. The other, &lt;a href=&#34;https://www.amazon.com/Learn-Better-Mastering-Business-Anything/dp/1623365260&#34;&gt;Learn Better&lt;/a&gt;, demonstrates that how we learn can matter just as much as what we learn.&lt;/p&gt;
-&lt;p&gt;Stimulated by my preparation for IELTS recently, I think it must be rewarding to summarize my strategy of learning, active learning or conscious learning. Most of ideas come from the above books, and I put them into practice again and again proving their effectiveness.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>2017 in Review and Look Ahead</title>
-      <link>https://xgugeng.github.io/post/2017-in-review-look-ahead/</link>
-      <pubDate>Wed, 03 Jan 2018 18:43:27 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/2017-in-review-look-ahead/</guid>
-      <description>My Summary of 2017 Year</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Essay on XGugeng</title>
+		<link>https://xgugeng.github.io/categories/essay/</link>
+		<description>Recent content in Essay on XGugeng</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 15 Jul 2018 17:53:35 +0800</lastBuildDate>
+		
+			<atom:link href="https://xgugeng.github.io/categories/essay/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Learn Consciously</title>
+				<link>https://xgugeng.github.io/post/learn-consciously/</link>
+				<pubDate>Sun, 15 Jul 2018 17:53:35 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/learn-consciously/</guid>
+				<description>&lt;p&gt;Learning is an eternal topic for everyone, no matter which field you are engaging in. I highly admire the guys who produce excellent performance in any specific domain. It needs patience, and hours and hours will be spent on practice. Aside from tenacity, there must be something related contributing to their success.&lt;/p&gt;&#xA;&lt;p&gt;Two books changed my perspective of learning. The first one is &lt;a href=&#34;https://www.amazon.com/dp/B000QCQ970&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Art of Learning&lt;/a&gt; telling a remarkable story of personal achievement and inspires me with a series of principles for improving performance in any field. The other, &lt;a href=&#34;https://www.amazon.com/Learn-Better-Mastering-Business-Anything/dp/1623365260&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Learn Better&lt;/a&gt;, demonstrates that how we learn can matter just as much as what we learn.&lt;/p&gt;&#xA;&lt;p&gt;Stimulated by my preparation for IELTS recently, I think it must be rewarding to summarize my strategy of learning, active learning or conscious learning. Most of ideas come from the above books, and I put them into practice again and again proving their effectiveness.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>2017 in Review and Look Ahead</title>
+				<link>https://xgugeng.github.io/post/2017-in-review-look-ahead/</link>
+				<pubDate>Wed, 03 Jan 2018 18:43:27 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/2017-in-review-look-ahead/</guid>
+				<description>&lt;p&gt;After reading many blogs about retrospect of 2017, I realized that I should to do it too. it looks necessary and helpful.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

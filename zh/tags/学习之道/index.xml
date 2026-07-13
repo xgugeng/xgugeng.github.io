@@ -1,39 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>学习之道 on XGugeng</title>
-    <link>https://xgugeng.github.io/zh/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%81%93/</link>
-    <description>Recent content in 学习之道 on XGugeng</description>
-    <generator>Hugo -- 0.164.0</generator>
-    <language>zh</language>
-    <lastBuildDate>Thu, 12 Sep 2019 18:51:44 +0800</lastBuildDate>
-    <atom:link href="https://xgugeng.github.io/zh/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%81%93/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>这个就叫专业 🚬</title>
-      <link>https://xgugeng.github.io/zh/post/this-is-professionalism/</link>
-      <pubDate>Thu, 12 Sep 2019 18:51:44 +0800</pubDate>
-      <guid>https://xgugeng.github.io/zh/post/this-is-professionalism/</guid>
-      <description>&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;最好的软件开发人员知道一个秘密：美的东西比丑的东西创建起来更廉价、也更快捷。美的系统是灵活、易于理解的，构建和维护它们就是一种快乐。&lt;/p&gt;
-&lt;p&gt;我们需要招聘的不是“经历丰富”的人，而是“有职素养”的人。并不是问题的难度，而是解决问题的方式、步骤以及反思的深度，更能体现一个人的职业素养。&lt;/p&gt;
-&lt;p&gt;如果只会快速编码，却不关心代码背后的意义，不能迅速判断、解决程序运行中的问题，不能自信满满地为自己交付的程序承担责任，同样是与职业素养绝缘。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>整体式学习的道与术</title>
-      <link>https://xgugeng.github.io/zh/post/holitstic-learning/</link>
-      <pubDate>Sat, 27 Oct 2018 13:11:01 +0800</pubDate>
-      <guid>https://xgugeng.github.io/zh/post/holitstic-learning/</guid>
-      <description>&lt;p&gt;Scott Young 的故事已经家喻户晓，他曾在一年内在麻省理工学院（MIT）学完了别人需要四年才能掌握的33门课程，成绩都是 A 或 A+。Scott 将自己的学习方法称之为 &lt;em&gt;整体式学习&lt;/em&gt; （Holistic Learning），并总结出一本 &lt;a href=&#34;https://book.douban.com/subject/25783654/&#34;&gt;《如何高效学习》&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;这本书很早就出现在我的 TODO 列表中，直到最近才将它读完。放下书本之后，有点后悔没有早点读这本书。虽说书中的一些观点，已经被我用到自己的学习过程中，但大部分都是无意识的，不系统的。所以，效果也是时好时坏。&lt;/p&gt;
-&lt;p&gt;本文将书中的观点，结合自己的实践，整理出来。力图做到直观易懂，又结构清晰。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>《跟各国人都聊得来》中的方法总结</title>
-      <link>https://xgugeng.github.io/zh/post/tips-from-fluent-in-3-months/</link>
-      <pubDate>Thu, 25 Oct 2018 14:57:53 +0800</pubDate>
-      <guid>https://xgugeng.github.io/zh/post/tips-from-fluent-in-3-months/</guid>
-      <description>&lt;p&gt;公开课 &lt;a href=&#34;https://www.coursera.org/learn/learning-how-to-learn&#34;&gt;Learning How to Learn&lt;/a&gt; 中有一段采访 Benny Lewis 的短片，他从一个没有任何语言天赋的学渣，变身掌握12门语言的狂人。看完这段采访后，总感觉意犹未尽，很多观点掷地有声、深以为然。幸好片中推荐了他的书 &lt;a href=&#34;https://book.douban.com/subject/26873699/&#34;&gt;《跟各国人都聊得来》&lt;/a&gt;，趁着空闲，就把这本书读了一遍。&lt;/p&gt;
-&lt;p&gt;虽说书中讲述的经历针对语言学习，但方法是通用的，同样适用于其他事物的学习。我将其中的几个重要观点和方法提炼出来，遂成本文。&lt;/p&gt;</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>学习之道 on XGugeng</title>
+		<link>https://xgugeng.github.io/zh/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%81%93/</link>
+		<description>Recent content in 学习之道 on XGugeng</description>
+		<generator>Hugo</generator>
+		<language>zh-CN</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 12 Sep 2019 18:51:44 +0800</lastBuildDate>
+		
+			<atom:link href="https://xgugeng.github.io/zh/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%81%93/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>这个就叫专业 🚬</title>
+				<link>https://xgugeng.github.io/zh/post/this-is-professionalism/</link>
+				<pubDate>Thu, 12 Sep 2019 18:51:44 +0800</pubDate>
+				<guid>https://xgugeng.github.io/zh/post/this-is-professionalism/</guid>
+				<description>&lt;p align=&#34;center&#34;&gt;&#xD;&#xA;  &lt;img src=&#34;https://www.xgugeng.com/images/this-is-professionalism.jpg&#34; width=&#34;400&#34; height=&#34;400&#34; /&gt;&#xD;&#xA;&lt;/p&gt;&#xD;&#xA;&lt;p&gt;最好的软件开发人员知道一个秘密：美的东西比丑的东西创建起来更廉价、也更快捷。美的系统是灵活、易于理解的，构建和维护它们就是一种快乐。&lt;/p&gt;&#xA;&lt;p&gt;我们需要招聘的不是“经历丰富”的人，而是“有职素养”的人。并不是问题的难度，而是解决问题的方式、步骤以及反思的深度，更能体现一个人的职业素养。&lt;/p&gt;&#xA;&lt;p&gt;如果只会快速编码，却不关心代码背后的意义，不能迅速判断、解决程序运行中的问题，不能自信满满地为自己交付的程序承担责任，同样是与职业素养绝缘。&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>整体式学习的道与术</title>
+				<link>https://xgugeng.github.io/zh/post/holitstic-learning/</link>
+				<pubDate>Sat, 27 Oct 2018 13:11:01 +0800</pubDate>
+				<guid>https://xgugeng.github.io/zh/post/holitstic-learning/</guid>
+				<description>&lt;p&gt;Scott Young 的故事已经家喻户晓，他曾在一年内在麻省理工学院（MIT）学完了别人需要四年才能掌握的33门课程，成绩都是 A 或 A+。Scott 将自己的学习方法称之为 &lt;em&gt;整体式学习&lt;/em&gt; （Holistic Learning），并总结出一本 &lt;a href=&#34;https://book.douban.com/subject/25783654/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;《如何高效学习》&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;p&gt;这本书很早就出现在我的 TODO 列表中，直到最近才将它读完。放下书本之后，有点后悔没有早点读这本书。虽说书中的一些观点，已经被我用到自己的学习过程中，但大部分都是无意识的，不系统的。所以，效果也是时好时坏。&lt;/p&gt;&#xA;&lt;p&gt;本文将书中的观点，结合自己的实践，整理出来。力图做到直观易懂，又结构清晰。&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>《跟各国人都聊得来》中的方法总结</title>
+				<link>https://xgugeng.github.io/zh/post/tips-from-fluent-in-3-months/</link>
+				<pubDate>Thu, 25 Oct 2018 14:57:53 +0800</pubDate>
+				<guid>https://xgugeng.github.io/zh/post/tips-from-fluent-in-3-months/</guid>
+				<description>&lt;p&gt;公开课 &lt;a href=&#34;https://www.coursera.org/learn/learning-how-to-learn&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Learning How to Learn&lt;/a&gt; 中有一段采访 Benny Lewis 的短片，他从一个没有任何语言天赋的学渣，变身掌握12门语言的狂人。看完这段采访后，总感觉意犹未尽，很多观点掷地有声、深以为然。幸好片中推荐了他的书 &lt;a href=&#34;https://book.douban.com/subject/26873699/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;《跟各国人都聊得来》&lt;/a&gt;，趁着空闲，就把这本书读了一遍。&lt;/p&gt;&#xA;&lt;p&gt;虽说书中讲述的经历针对语言学习，但方法是通用的，同样适用于其他事物的学习。我将其中的几个重要观点和方法提炼出来，遂成本文。&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

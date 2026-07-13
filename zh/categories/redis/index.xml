@@ -1,128 +1,87 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Redis on XGugeng</title>
-    <link>https://xgugeng.github.io/zh/categories/redis/</link>
-    <description>Recent content in Redis on XGugeng</description>
-    <generator>Hugo -- 0.164.0</generator>
-    <language>zh</language>
-    <lastBuildDate>Wed, 03 Apr 2019 20:11:53 +0800</lastBuildDate>
-    <atom:link href="https://xgugeng.github.io/zh/categories/redis/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Redis 启动流程：命令注册和执行</title>
-      <link>https://xgugeng.github.io/zh/post/redis-cmd-population-execution/</link>
-      <pubDate>Wed, 03 Apr 2019 20:11:53 +0800</pubDate>
-      <guid>https://xgugeng.github.io/zh/post/redis-cmd-population-execution/</guid>
-      <description>&lt;p&gt;这篇博客想讲一下 Redis 命令的注册、解析和执行。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;本文采用的源码是 Redis 5.0.0&lt;/p&gt;
-&lt;/blockquote&gt;</description>
-    </item>
-    <item>
-      <title>Redisson 的布隆过滤器实现</title>
-      <link>https://xgugeng.github.io/zh/post/redisson-bloomfilter-impl/</link>
-      <pubDate>Tue, 05 Mar 2019 16:33:21 +0800</pubDate>
-      <guid>https://xgugeng.github.io/zh/post/redisson-bloomfilter-impl/</guid>
-      <description>&lt;p&gt;之前看到一篇 &lt;a href=&#34;https://zhouzhipeng.com/blog/#/articles/implementing-bloomfilter-with-redis&#34;&gt;用 Redis 快速实现 BloomFilter&lt;/a&gt; 就忍不住看看 Redisson 的 &lt;a href=&#34;https://github.com/redisson/redisson/wiki/6.-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AF%B9%E8%B1%A1#68-%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8bloom-filter&#34;&gt;实现方式&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Redis 哨兵：自动故障转移</title>
-      <link>https://xgugeng.github.io/zh/post/redis-sentinel-automatic-failover/</link>
-      <pubDate>Sat, 02 Feb 2019 14:21:53 +0800</pubDate>
-      <guid>https://xgugeng.github.io/zh/post/redis-sentinel-automatic-failover/</guid>
-      <description>&lt;p&gt;Redis 哨兵是 Redis 的高可用实现方案。本节首先会回顾主从复制模式下故障处理可能产生的问题，而后引出高可用的概念，最后重点分析 Redis 哨兵的基本架构、优势，以及是如何实现高可用的。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;本文大部分摘录自：&lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;&gt;Redis开发与运维&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</description>
-    </item>
-    <item>
-      <title>Redis 哨兵: 客户端连接</title>
-      <link>https://xgugeng.github.io/zh/post/redis-sentinel-client-connection/</link>
-      <pubDate>Tue, 29 Jan 2019 10:21:46 +0800</pubDate>
-      <guid>https://xgugeng.github.io/zh/post/redis-sentinel-client-connection/</guid>
-      <description>&lt;p&gt;Redis 的主从复制模式下，一旦主节点不可达，需要人工干预进行故障转移，无论对于 Redis 的使用方还是运维方都带来了极大不便。对应用方来说无法感知主节点的变化，可能会造成数据丢失或读错误，也可能会短暂的服务不可用。对于运维来说，整个故障转移需要人工介入，实时性和准确性都无法保障。&lt;/p&gt;
-&lt;p&gt;Redis Sentinel(哨兵) 就是为了解决这些问题而生的，它是 Redis 2.8 引入的高可用实现方案，包括故障发现、故障转移、配置中心、客户端通知等。&lt;/p&gt;
-&lt;p&gt;本文的关注点是哨兵下的客户端连接问题。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;本文大部分摘录自：&lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;&gt;Redis开发与运维&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</description>
-    </item>
-    <item>
-      <title>Redis 全量同步解析</title>
-      <link>https://xgugeng.github.io/zh/post/redis-full-sync-explained/</link>
-      <pubDate>Sun, 20 Jan 2019 21:38:27 -0800</pubDate>
-      <guid>https://xgugeng.github.io/zh/post/redis-full-sync-explained/</guid>
-      <description>&lt;p&gt;复制功能是高可用 Redis 的基础，同时也是 Redis 日常运维的常见问题。深刻理解复制的工作原理与使用姿势对我们的日常开发和运维都非常重要。&lt;/p&gt;
-&lt;p&gt;本文从同步的过程讲起，重点是全量同步的可能问题和运维方法。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;本文大部分摘录自：&lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;&gt;Redis开发与运维&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</description>
-    </item>
-    <item>
-      <title>页错误引发的 Redis 延迟</title>
-      <link>https://xgugeng.github.io/zh/post/redis-anomalous-latency-because-of-page-fault/</link>
-      <pubDate>Mon, 07 Jan 2019 14:11:18 +0800</pubDate>
-      <guid>https://xgugeng.github.io/zh/post/redis-anomalous-latency-because-of-page-fault/</guid>
-      <description>&lt;p&gt;继续每天的知心姐姐时间，这次客户邮件说，CPU 使用率飙升，同时 GET/LLEN 等命令，都要执行几十毫秒。看了一下慢日志，我去：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Id:900909 When:(1/1/2019 6:16:15 PM) Duration:41564us Command:(Llen PRIVATE ARG)
-Id:900908 When:(1/1/2019 6:16:14 PM) Duration:17041us Command:(get PRIVATE ARG)
-Id:900907 When:(1/1/2019 6:16:14 PM) Duration:51032us Command:(get PRIVATE ARG)
-Id:900906 When:(1/1/2019 6:16:12 PM) Duration:49292us Command:(get PRIVATE ARG)
-Id:900905 When:(1/1/2019 6:16:11 PM) Duration:56329us Command:(Llen PRIVATE ARG)
-Id:900904 When:(1/1/2019 6:16:10 PM) Duration:10562us Command:(get PRIVATE ARG)
-Id:900903 When:(1/1/2019 6:16:10 PM) Duration:35680us Command:(get PRIVATE ARG)
-Id:900902 When:(1/1/2019 6:16:10 PM) Duration:16367us Command:(get PRIVATE ARG)
-Id:900901 When:(1/1/2019 6:16:10 PM) Duration:29851us Command:(Llen PRIVATE ARG)
-Id:900900 When:(1/1/2019 6:16:08 PM) Duration:29050us Command:(get PRIVATE ARG)
-&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-    <item>
-      <title>Jedis 的常见异常</title>
-      <link>https://xgugeng.github.io/zh/post/exceptions-thrown-by-jedis/</link>
-      <pubDate>Wed, 02 Jan 2019 16:21:00 +0800</pubDate>
-      <guid>https://xgugeng.github.io/zh/post/exceptions-thrown-by-jedis/</guid>
-      <description>&lt;p&gt;最近在读的 &lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;&gt;Redis开发与运维&lt;/a&gt;，很好地总结了客户端的常见异常。这篇博客权且作为读书笔记。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Redis 的 SSL</title>
-      <link>https://xgugeng.github.io/zh/post/redis-ssl/</link>
-      <pubDate>Wed, 26 Dec 2018 10:26:19 +0800</pubDate>
-      <guid>https://xgugeng.github.io/zh/post/redis-ssl/</guid>
-      <description>&lt;p&gt;这篇博客的起源是一位内部用户询问，Azure Cache for Redis 有没有 &lt;em&gt;.pem&lt;/em&gt; 或者 &lt;em&gt;.cem&lt;/em&gt; 的证书，然后可以在客户端指定它：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; redis
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    conn &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; redis&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;StrictRedis(
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        host&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;lt;cache-name&amp;gt;.redis.cache.windows.net&amp;#39;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        port&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;6380&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        password&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;your password here&amp;#39;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ssl&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ssl_ca_certs&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;path to cert&amp;#39;&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print (conn)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    conn&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ping()
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Connected!&amp;#39;&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;except&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Exception&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; ex:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Error:&amp;#39;&lt;/span&gt;, ex)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    exit(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Failed to connect, terminating.&amp;#39;&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Redis 用作 LRU 缓存</title>
-      <link>https://xgugeng.github.io/zh/post/redis-as-an-lru-cache/</link>
-      <pubDate>Mon, 24 Dec 2018 16:47:34 +0800</pubDate>
-      <guid>https://xgugeng.github.io/zh/post/redis-as-an-lru-cache/</guid>
-      <description>&lt;p&gt;本文翻译自 &lt;a href=&#34;https://redis.io/topics/lru-cache&#34;&gt;Using Redis as an LRU Cache&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;Redis 作为缓存使用时，很容易在增加新数据时剔除旧数据。这也是 &lt;em&gt;memcached&lt;/em&gt; 的默认行为。&lt;/p&gt;
-&lt;p&gt;LRU 只是其中的一种剔除方法。使用 Redis 作为 LRU 时，必须用到 &lt;code&gt;maxmemory&lt;/code&gt; 参数来限制可用内存的大小。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Redis 同步引发的系统过载</title>
-      <link>https://xgugeng.github.io/zh/post/100-server-load-because-of-redis-sync/</link>
-      <pubDate>Wed, 28 Nov 2018 14:25:25 +0800</pubDate>
-      <guid>https://xgugeng.github.io/zh/post/100-server-load-because-of-redis-sync/</guid>
-      <description>&lt;p&gt;今天一早，就有客户来报说机器负载 100%。从日志中看到的现象是，Slave 向 Master 请求部分同步，Master 却要求 Slave 做个全套：全量同步，因为 Slave 发过来的 replication ID 太老了。Slave 说好吧，整个全的，然后消费成功。接着，Slave 还想来个部分同步，上述的过程连续发生 3 次。Master 有点强买强卖的意思了，这样一来两边的 CPU 不干了，这不是加班嘛！二者之间的网络带宽也是突增，从下图可以看出：&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/redis-network-bandwidth-spiking.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Redis on XGugeng</title>
+		<link>https://xgugeng.github.io/zh/categories/redis/</link>
+		<description>Recent content in Redis on XGugeng</description>
+		<generator>Hugo</generator>
+		<language>zh-CN</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 03 Apr 2019 20:11:53 +0800</lastBuildDate>
+		
+			<atom:link href="https://xgugeng.github.io/zh/categories/redis/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Redis 启动流程：命令注册和执行</title>
+				<link>https://xgugeng.github.io/zh/post/redis-cmd-population-execution/</link>
+				<pubDate>Wed, 03 Apr 2019 20:11:53 +0800</pubDate>
+				<guid>https://xgugeng.github.io/zh/post/redis-cmd-population-execution/</guid>
+				<description>&lt;p&gt;这篇博客想讲一下 Redis 命令的注册、解析和执行。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;本文采用的源码是 Redis 5.0.0&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+			</item>
+			<item>
+				<title>Redisson 的布隆过滤器实现</title>
+				<link>https://xgugeng.github.io/zh/post/redisson-bloomfilter-impl/</link>
+				<pubDate>Tue, 05 Mar 2019 16:33:21 +0800</pubDate>
+				<guid>https://xgugeng.github.io/zh/post/redisson-bloomfilter-impl/</guid>
+				<description>&lt;p&gt;之前看到一篇 &lt;a href=&#34;https://zhouzhipeng.com/blog/#/articles/implementing-bloomfilter-with-redis&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;用 Redis 快速实现 BloomFilter&lt;/a&gt; 就忍不住看看 Redisson 的 &lt;a href=&#34;https://github.com/redisson/redisson/wiki/6.-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AF%B9%E8%B1%A1#68-%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8bloom-filter&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;实现方式&lt;/a&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Redis 哨兵：自动故障转移</title>
+				<link>https://xgugeng.github.io/zh/post/redis-sentinel-automatic-failover/</link>
+				<pubDate>Sat, 02 Feb 2019 14:21:53 +0800</pubDate>
+				<guid>https://xgugeng.github.io/zh/post/redis-sentinel-automatic-failover/</guid>
+				<description>&lt;p&gt;Redis 哨兵是 Redis 的高可用实现方案。本节首先会回顾主从复制模式下故障处理可能产生的问题，而后引出高可用的概念，最后重点分析 Redis 哨兵的基本架构、优势，以及是如何实现高可用的。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;本文大部分摘录自：&lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Redis开发与运维&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+			</item>
+			<item>
+				<title>Redis 哨兵: 客户端连接</title>
+				<link>https://xgugeng.github.io/zh/post/redis-sentinel-client-connection/</link>
+				<pubDate>Tue, 29 Jan 2019 10:21:46 +0800</pubDate>
+				<guid>https://xgugeng.github.io/zh/post/redis-sentinel-client-connection/</guid>
+				<description>&lt;p&gt;Redis 的主从复制模式下，一旦主节点不可达，需要人工干预进行故障转移，无论对于 Redis 的使用方还是运维方都带来了极大不便。对应用方来说无法感知主节点的变化，可能会造成数据丢失或读错误，也可能会短暂的服务不可用。对于运维来说，整个故障转移需要人工介入，实时性和准确性都无法保障。&lt;/p&gt;&#xA;&lt;p&gt;Redis Sentinel(哨兵) 就是为了解决这些问题而生的，它是 Redis 2.8 引入的高可用实现方案，包括故障发现、故障转移、配置中心、客户端通知等。&lt;/p&gt;&#xA;&lt;p&gt;本文的关注点是哨兵下的客户端连接问题。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;本文大部分摘录自：&lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Redis开发与运维&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+			</item>
+			<item>
+				<title>Redis 全量同步解析</title>
+				<link>https://xgugeng.github.io/zh/post/redis-full-sync-explained/</link>
+				<pubDate>Sun, 20 Jan 2019 21:38:27 -0800</pubDate>
+				<guid>https://xgugeng.github.io/zh/post/redis-full-sync-explained/</guid>
+				<description>&lt;p&gt;复制功能是高可用 Redis 的基础，同时也是 Redis 日常运维的常见问题。深刻理解复制的工作原理与使用姿势对我们的日常开发和运维都非常重要。&lt;/p&gt;&#xA;&lt;p&gt;本文从同步的过程讲起，重点是全量同步的可能问题和运维方法。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;本文大部分摘录自：&lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Redis开发与运维&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+			</item>
+			<item>
+				<title>页错误引发的 Redis 延迟</title>
+				<link>https://xgugeng.github.io/zh/post/redis-anomalous-latency-because-of-page-fault/</link>
+				<pubDate>Mon, 07 Jan 2019 14:11:18 +0800</pubDate>
+				<guid>https://xgugeng.github.io/zh/post/redis-anomalous-latency-because-of-page-fault/</guid>
+				<description>&lt;p&gt;继续每天的知心姐姐时间，这次客户邮件说，CPU 使用率飙升，同时 GET/LLEN 等命令，都要执行几十毫秒。看了一下慢日志，我去：&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Id:900909 When:(1/1/2019 6:16:15 PM) Duration:41564us Command:(Llen PRIVATE ARG)&#xD;&#xA;Id:900908 When:(1/1/2019 6:16:14 PM) Duration:17041us Command:(get PRIVATE ARG)&#xD;&#xA;Id:900907 When:(1/1/2019 6:16:14 PM) Duration:51032us Command:(get PRIVATE ARG)&#xD;&#xA;Id:900906 When:(1/1/2019 6:16:12 PM) Duration:49292us Command:(get PRIVATE ARG)&#xD;&#xA;Id:900905 When:(1/1/2019 6:16:11 PM) Duration:56329us Command:(Llen PRIVATE ARG)&#xD;&#xA;Id:900904 When:(1/1/2019 6:16:10 PM) Duration:10562us Command:(get PRIVATE ARG)&#xD;&#xA;Id:900903 When:(1/1/2019 6:16:10 PM) Duration:35680us Command:(get PRIVATE ARG)&#xD;&#xA;Id:900902 When:(1/1/2019 6:16:10 PM) Duration:16367us Command:(get PRIVATE ARG)&#xD;&#xA;Id:900901 When:(1/1/2019 6:16:10 PM) Duration:29851us Command:(Llen PRIVATE ARG)&#xD;&#xA;Id:900900 When:(1/1/2019 6:16:08 PM) Duration:29050us Command:(get PRIVATE ARG)&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+			</item>
+			<item>
+				<title>Jedis 的常见异常</title>
+				<link>https://xgugeng.github.io/zh/post/exceptions-thrown-by-jedis/</link>
+				<pubDate>Wed, 02 Jan 2019 16:21:00 +0800</pubDate>
+				<guid>https://xgugeng.github.io/zh/post/exceptions-thrown-by-jedis/</guid>
+				<description>&lt;p&gt;最近在读的 &lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Redis开发与运维&lt;/a&gt;，很好地总结了客户端的常见异常。这篇博客权且作为读书笔记。&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Redis 的 SSL</title>
+				<link>https://xgugeng.github.io/zh/post/redis-ssl/</link>
+				<pubDate>Wed, 26 Dec 2018 10:26:19 +0800</pubDate>
+				<guid>https://xgugeng.github.io/zh/post/redis-ssl/</guid>
+				<description>&lt;p&gt;这篇博客的起源是一位内部用户询问，Azure Cache for Redis 有没有 &lt;em&gt;.pem&lt;/em&gt; 或者 &lt;em&gt;.cem&lt;/em&gt; 的证书，然后可以在客户端指定它：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;redis&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;try&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;conn&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;StrictRedis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;host&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;lt;cache-name&amp;gt;.redis.cache.windows.net&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6380&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;password&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;your password here&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;ssl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;ssl_ca_certs&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;path to cert&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;conn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;conn&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ping&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Connected!&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;except&lt;/span&gt; &lt;span class=&#34;ne&#34;&gt;Exception&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Error:&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Failed to connect, terminating.&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>Redis 用作 LRU 缓存</title>
+				<link>https://xgugeng.github.io/zh/post/redis-as-an-lru-cache/</link>
+				<pubDate>Mon, 24 Dec 2018 16:47:34 +0800</pubDate>
+				<guid>https://xgugeng.github.io/zh/post/redis-as-an-lru-cache/</guid>
+				<description>&lt;p&gt;本文翻译自 &lt;a href=&#34;https://redis.io/topics/lru-cache&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Using Redis as an LRU Cache&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;p&gt;Redis 作为缓存使用时，很容易在增加新数据时剔除旧数据。这也是 &lt;em&gt;memcached&lt;/em&gt; 的默认行为。&lt;/p&gt;&#xA;&lt;p&gt;LRU 只是其中的一种剔除方法。使用 Redis 作为 LRU 时，必须用到 &lt;code&gt;maxmemory&lt;/code&gt; 参数来限制可用内存的大小。&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Redis 同步引发的系统过载</title>
+				<link>https://xgugeng.github.io/zh/post/100-server-load-because-of-redis-sync/</link>
+				<pubDate>Wed, 28 Nov 2018 14:25:25 +0800</pubDate>
+				<guid>https://xgugeng.github.io/zh/post/100-server-load-because-of-redis-sync/</guid>
+				<description>&lt;p&gt;今天一早，就有客户来报说机器负载 100%。从日志中看到的现象是，Slave 向 Master 请求部分同步，Master 却要求 Slave 做个全套：全量同步，因为 Slave 发过来的 replication ID 太老了。Slave 说好吧，整个全的，然后消费成功。接着，Slave 还想来个部分同步，上述的过程连续发生 3 次。Master 有点强买强卖的意思了，这样一来两边的 CPU 不干了，这不是加班嘛！二者之间的网络带宽也是突增，从下图可以看出：&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://xgugeng.github.io/images/redis-network-bandwidth-spiking.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

@@ -1,197 +1,157 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Python on XGugeng</title>
-    <link>https://xgugeng.github.io/categories/python/</link>
-    <description>Recent content in Python on XGugeng</description>
-    <generator>Hugo -- 0.164.0</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 18 Jan 2019 10:52:17 -0800</lastBuildDate>
-    <atom:link href="https://xgugeng.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Connection Pool in redis-py</title>
-      <link>https://xgugeng.github.io/post/connection-pool-in-redis-py/</link>
-      <pubDate>Fri, 18 Jan 2019 10:52:17 -0800</pubDate>
-      <guid>https://xgugeng.github.io/post/connection-pool-in-redis-py/</guid>
-      <description>&lt;p&gt;A typical example of using &lt;a href=&#34;https://github.com/andymccurdy/redis-py#connection-pools&#34;&gt;Collection Pools&lt;/a&gt; in  &lt;a href=&#34;https://github.com/andymccurdy/redis-py&#34;&gt;redis-py&lt;/a&gt; is:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pool &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; redis&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ConnectionPool(host&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;, port&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;6379&lt;/span&gt;, db&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;r &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; redis&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Redis(connection_pool&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;pool)
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Weak References</title>
-      <link>https://xgugeng.github.io/post/weak-references-in-python/</link>
-      <pubDate>Mon, 05 Nov 2018 20:46:15 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/weak-references-in-python/</guid>
-      <description>&lt;p&gt;In Python, objects are never explicitly destroyed. However, they may be garbage-collected when they become unreachable.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;del&lt;/code&gt; statement deletes names, not objects. An object may be garbage collected as result of a &lt;code&gt;del&lt;/code&gt; command, but only if the variable deleted holds the last reference to the object, or if the object becomes unreachable.&lt;/p&gt;
-&lt;p&gt;In CPython, the primary algorithm for garbage collection is reference counting. Essentially each object keeps count fo how many references point to it. As soon as that &lt;code&gt;refcount&lt;/code&gt; reaches 0, the object is immediately destroyed: CPython calls the &lt;code&gt;__del__&lt;/code&gt; method on the object (if defined) and the frees the memory.&lt;/p&gt;
-&lt;p&gt;But sometimes, it is useful to have a reference to an object that does not keep it around longer than necessary. Week references to an object do not increase its reference count. A weak reference does not prevent the referent from being garbage collected.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Variables Are Labels, Not Boxes</title>
-      <link>https://xgugeng.github.io/post/variables-are-labels-not-boxes/</link>
-      <pubDate>Thu, 01 Nov 2018 14:51:40 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/variables-are-labels-not-boxes/</guid>
-      <description>&lt;p&gt;Variables are labels, not boxes. Take the following code for example:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;]
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;b &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; a
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(b)
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/variables-are-labels.png&#34; alt=&#34;&#34;  /&gt;
-&lt;/p&gt;
-&lt;p&gt;If you imagine that variables are like boxes, you cannot make sense of assignment in Python. For an assignment, you must always read the right-hand side first: that&amp;rsquo;s where the object is created or retrieved. After that, the variable on the left is bound to the object, like a label stuck to it. Just forget about the boxes.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>When Python Executes Decorators</title>
-      <link>https://xgugeng.github.io/post/when-python-executes-decorators/</link>
-      <pubDate>Mon, 29 Oct 2018 14:55:25 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/when-python-executes-decorators/</guid>
-      <description>A key feature of decorators is that they run right after the decorated function is defined. This is usually at import time.</description>
-    </item>
-    <item>
-      <title>Design Patterns with First-class Functions</title>
-      <link>https://xgugeng.github.io/post/design-patterns-with-first-class-functions/</link>
-      <pubDate>Sat, 27 Oct 2018 16:16:13 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/design-patterns-with-first-class-functions/</guid>
-      <description>&lt;p&gt;Design patterns are language-independent, but in the context of languages with first-class functions, it&amp;rsquo;s beneficial to rethink some patterns. The general idea is: you can replace instances of some participant class with simple functions, reducing a lot of boilerplate code.&lt;/p&gt;
-&lt;p&gt;In this post, I will refactor Strategy using functions objects.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>A List Comprehension Puzzler</title>
-      <link>https://xgugeng.github.io/post/a-list-comprehension-puzzler/</link>
-      <pubDate>Wed, 24 Oct 2018 11:19:09 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/a-list-comprehension-puzzler/</guid>
-      <description>&lt;p&gt;Sometimes, we need to initialize a list with a certain number of nested lists, for example, a list with 3 lists of length 3 that can represent a Tic-tac-toe board.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; board = [[&amp;#39;&amp;#39;] * 3] * 3
-&amp;gt;&amp;gt; board
-[[&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;&amp;#39;], [&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;&amp;#39;], [&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;&amp;#39;]]
-&amp;gt;&amp;gt; board[1][2] = &amp;#39;X&amp;#39;
-&amp;gt;&amp;gt; board
-[[&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;X&amp;#39;], [&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;X&amp;#39;], [&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;X&amp;#39;]]
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The output is not expected, why?&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Using Mixins with Python</title>
-      <link>https://xgugeng.github.io/post/using-mixins-with-python/</link>
-      <pubDate>Thu, 18 Oct 2018 08:15:29 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/using-mixins-with-python/</guid>
-      <description>&lt;p&gt;Python supports multiple inheritance, while it doesn&amp;rsquo;t provide the syntax for interface. See &lt;a href=&#34;https://www.python.org/dev/peps/pep-0245/&#34;&gt;PEP-0245&lt;/a&gt;. Of course, you can use the &lt;code&gt;abc&lt;/code&gt; module for abstract base classes, which seems tricky.&lt;/p&gt;
-&lt;p&gt;Python introduces a concept called mixin that encapsulates behavior that can be reused in other classes. It&amp;rsquo;s supported via multiple inheritance, the difference of inheritance and mixin is, inheritance means &amp;ldquo;is-a&amp;rdquo; and mixin means &amp;ldquo;has-a&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;This post will illustrate how mixin works with a simple example.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Special Methods in Python Data Model</title>
-      <link>https://xgugeng.github.io/post/special-methods-in-python-data-model/</link>
-      <pubDate>Tue, 16 Oct 2018 15:19:05 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/special-methods-in-python-data-model/</guid>
-      <description>&lt;p&gt;You can think of the Data Model as a description of Python as a framework. It formalizes the interfaces of the building blocks of the languages itself, such as sequences, iterators, functions, classes, context managers and so on.&lt;/p&gt;
-&lt;p&gt;Python allows operator overloading, which let us to define the custom behavior for a class. For instance, if a class defines a &lt;code&gt;__str__()&lt;/code&gt;, then it can return a readable string representation of an object.&lt;/p&gt;
-&lt;p&gt;In this post, I will enumerate some special methods that can change the behavior of an object and may putted into practice in daily work.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Managing Ordered Sequences With bisect</title>
-      <link>https://xgugeng.github.io/post/managing-ordered-sequences-with-bisect/</link>
-      <pubDate>Mon, 24 Sep 2018 14:16:14 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/managing-ordered-sequences-with-bisect/</guid>
-      <description>&lt;p&gt;The &lt;code&gt;bisect&lt;/code&gt; module offers two main functions - &lt;code&gt;bisect&lt;/code&gt; and &lt;code&gt;insort&lt;/code&gt; - that use the binary search algorithm to quickly find an d insert items in any sorted sequence.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Python Closure</title>
-      <link>https://xgugeng.github.io/post/python-closure/</link>
-      <pubDate>Wed, 19 Sep 2018 18:38:29 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/python-closure/</guid>
-      <description>&lt;p&gt;A closure is a function with an extended scope that encompasses non-global variables but not defined there. It does not matter whether the function is anonymous of not, what matters is that it can access non-global variables that are defined outside of its body.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Handling Missing Keys in Python</title>
-      <link>https://xgugeng.github.io/post/handling-missing-keys-in-python/</link>
-      <pubDate>Mon, 27 Aug 2018 14:50:08 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/handling-missing-keys-in-python/</guid>
-      <description>&lt;p&gt;In line with fail-fast philosophy, &lt;code&gt;dict&lt;/code&gt; access with &lt;code&gt;d[k]&lt;/code&gt; raises an error if &lt;code&gt;k&lt;/code&gt; is not an existing key. A common solution is &lt;code&gt;d.get(k, default)&lt;/code&gt; which return a default rather handling &lt;code&gt;KeyError&lt;/code&gt; if &lt;code&gt;k&lt;/code&gt; is not present.&lt;/p&gt;
-&lt;p&gt;This post introduces three alternatives - &lt;code&gt;setdefault&lt;/code&gt;, &lt;code&gt;defaultdict&lt;/code&gt; and &lt;code&gt;__mising&lt;/code&gt; for this situation.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Unpacking in Python</title>
-      <link>https://xgugeng.github.io/post/python-unpacking/</link>
-      <pubDate>Tue, 14 Aug 2018 20:02:15 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/python-unpacking/</guid>
-      <description>&lt;p&gt;Python provides many friendly advanced API for programmer, one of which is unpacking. By unpacking, it means getting all the elements from a container. A simplest case in the below demonstrates assigns the two items in tuple to variables.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; a, b = (1,2)
-&amp;gt;&amp;gt;&amp;gt; a
-1
-&amp;gt;&amp;gt;&amp;gt; b
-2
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Besides tuple, every iterative object can support unpacking, such as list, dictionary, set, string, generator etc. Let&amp;rsquo;s traverse them one by one.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Variable Scope Rules in Python</title>
-      <link>https://xgugeng.github.io/post/variable-scope-rules-in-python/</link>
-      <pubDate>Sun, 29 Oct 2017 15:44:51 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/variable-scope-rules-in-python/</guid>
-      <description>Variable Scope</description>
-    </item>
-    <item>
-      <title>Understanding Python Decorator</title>
-      <link>https://xgugeng.github.io/post/understanding-python-decorator/</link>
-      <pubDate>Wed, 20 Sep 2017 19:36:07 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/understanding-python-decorator/</guid>
-      <description>&lt;p&gt;A Python decorator, similar with &lt;a href=&#34;http://en.wikipedia.org/wiki/Decorator_pattern&#34;&gt;Decorator Pattern&lt;/a&gt;, is a specific change to the Python syntax that allows us to more conveniently alter functions and methods. In this post, I will try my best to deep into this advanced feature in Python.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>*args and **kwargs Usage in Python</title>
-      <link>https://xgugeng.github.io/post/args-and-kwargs-usage-in-python/</link>
-      <pubDate>Fri, 08 Sep 2017 16:46:50 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/args-and-kwargs-usage-in-python/</guid>
-      <description>&lt;p&gt;The &lt;code&gt;*args&lt;/code&gt; and &lt;code&gt;**kwargs&lt;/code&gt; is a common idiom to allow arbitrary number of arguments to functions as described in the section more on &lt;a href=&#34;https://docs.python.org/dev/tutorial/controlflow.html#more-on-defining-functions&#34;&gt;defining functions&lt;/a&gt; in the Python documentation.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>When finally Really Executes</title>
-      <link>https://xgugeng.github.io/post/when-finally-really-executes/</link>
-      <pubDate>Mon, 04 Sep 2017 16:22:03 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/when-finally-really-executes/</guid>
-      <description>&lt;p&gt;Epitome:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;return doesn&amp;rsquo;t really return, it pushes value to stack, then jumps to finally, which was set up by &lt;code&gt;SETUP_FINALLY&lt;/code&gt; before.&lt;/li&gt;
-&lt;li&gt;after executing finally, &lt;code&gt;END_FINALLY&lt;/code&gt; returns.&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Exit Options in Python</title>
-      <link>https://xgugeng.github.io/post/exit-options-in-python/</link>
-      <pubDate>Fri, 01 Sep 2017 16:47:37 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/exit-options-in-python/</guid>
-      <description>&lt;p&gt;First candidate is &lt;code&gt;os._exit&lt;/code&gt;, which exits without calling cleanup handlers, flushing stdio buffers, etc. (and which should normally only be used in the child process after a &lt;code&gt;fork()&lt;/code&gt;).&lt;/p&gt;
-&lt;p&gt;Second, &lt;code&gt;sys.exit&lt;/code&gt; is intended for use in programs. According to official document:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This is implemented by raising the &lt;code&gt;SystemExit&lt;/code&gt; exception, so cleanup actions specified by finally clauses of try statements are honored, and it is possible to intercept the exit attempt at an outer level. Since &lt;code&gt;exit()&lt;/code&gt; ultimately “only” raises an exception, it will only exit the process when called from the main thread, and the exception is not intercepted.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>The Difference between range and xrange</title>
-      <link>https://xgugeng.github.io/post/difference-between-range-and-xrange/</link>
-      <pubDate>Fri, 01 Sep 2017 16:22:27 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/difference-between-range-and-xrange/</guid>
-      <description>&lt;p&gt;Short answer:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;range&lt;/code&gt; creates a list, so if you do &lt;code&gt;range(1, 10000000)&lt;/code&gt; it creates a list in memory with 9999999 elements. This will become an expensive operation on very large ranges.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;xrange&lt;/code&gt; is a sequence object that &lt;em&gt;evaluates lazily&lt;/em&gt;(it will only compute the next value when needed).&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>A Dive into __slots__</title>
-      <link>https://xgugeng.github.io/post/a-dive-into-slots/</link>
-      <pubDate>Thu, 31 Aug 2017 14:25:37 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/a-dive-into-slots/</guid>
-      <description>&lt;p&gt;&lt;code&gt;__slots__&lt;/code&gt; tells the interpreter not to use a &lt;code&gt;dict&lt;/code&gt;, and only allocate space for a fixed set of attributes.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Pip Install ipython Exception on EI Capitan</title>
-      <link>https://xgugeng.github.io/post/pip-install-ipython-exception-on-ei-capitan/</link>
-      <pubDate>Thu, 03 Aug 2017 15:23:36 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/pip-install-ipython-exception-on-ei-capitan/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;For those impatient: OS X EI Capitan shipped a security feature named System Integrity Protection, which would be a hinder for &lt;code&gt;pip&lt;/code&gt;. Try to install IPython in user mode: &lt;code&gt;pip install ipython --user&lt;/code&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Python on XGugeng</title>
+		<link>https://xgugeng.github.io/categories/python/</link>
+		<description>Recent content in Python on XGugeng</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 18 Jan 2019 10:52:17 -0800</lastBuildDate>
+		
+			<atom:link href="https://xgugeng.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Connection Pool in redis-py</title>
+				<link>https://xgugeng.github.io/post/connection-pool-in-redis-py/</link>
+				<pubDate>Fri, 18 Jan 2019 10:52:17 -0800</pubDate>
+				<guid>https://xgugeng.github.io/post/connection-pool-in-redis-py/</guid>
+				<description>&lt;p&gt;A typical example of using &lt;a href=&#34;https://github.com/andymccurdy/redis-py#connection-pools&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Collection Pools&lt;/a&gt; in  &lt;a href=&#34;https://github.com/andymccurdy/redis-py&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;redis-py&lt;/a&gt; is:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pool&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ConnectionPool&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;host&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6379&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;r&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;redis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Redis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;connection_pool&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pool&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>Weak References</title>
+				<link>https://xgugeng.github.io/post/weak-references-in-python/</link>
+				<pubDate>Mon, 05 Nov 2018 20:46:15 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/weak-references-in-python/</guid>
+				<description>&lt;p&gt;In Python, objects are never explicitly destroyed. However, they may be garbage-collected when they become unreachable.&lt;/p&gt;&#xA;&lt;p&gt;The &lt;code&gt;del&lt;/code&gt; statement deletes names, not objects. An object may be garbage collected as result of a &lt;code&gt;del&lt;/code&gt; command, but only if the variable deleted holds the last reference to the object, or if the object becomes unreachable.&lt;/p&gt;&#xA;&lt;p&gt;In CPython, the primary algorithm for garbage collection is reference counting. Essentially each object keeps count fo how many references point to it. As soon as that &lt;code&gt;refcount&lt;/code&gt; reaches 0, the object is immediately destroyed: CPython calls the &lt;code&gt;__del__&lt;/code&gt; method on the object (if defined) and the frees the memory.&lt;/p&gt;&#xA;&lt;p&gt;But sometimes, it is useful to have a reference to an object that does not keep it around longer than necessary. Week references to an object do not increase its reference count. A weak reference does not prevent the referent from being garbage collected.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Variables Are Labels, Not Boxes</title>
+				<link>https://xgugeng.github.io/post/variables-are-labels-not-boxes/</link>
+				<pubDate>Thu, 01 Nov 2018 14:51:40 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/variables-are-labels-not-boxes/</guid>
+				<description>&lt;p&gt;Variables are labels, not boxes. Take the following code for example:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://xgugeng.github.io/images/variables-are-labels.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;If you imagine that variables are like boxes, you cannot make sense of assignment in Python. For an assignment, you must always read the right-hand side first: that&amp;rsquo;s where the object is created or retrieved. After that, the variable on the left is bound to the object, like a label stuck to it. Just forget about the boxes.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>When Python Executes Decorators</title>
+				<link>https://xgugeng.github.io/post/when-python-executes-decorators/</link>
+				<pubDate>Mon, 29 Oct 2018 14:55:25 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/when-python-executes-decorators/</guid>
+				<description>&lt;p&gt;A key feature of decorators is that they run right after the decorated function is defined. This is usually at import time.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Design Patterns with First-class Functions</title>
+				<link>https://xgugeng.github.io/post/design-patterns-with-first-class-functions/</link>
+				<pubDate>Sat, 27 Oct 2018 16:16:13 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/design-patterns-with-first-class-functions/</guid>
+				<description>&lt;p&gt;Design patterns are language-independent, but in the context of languages with first-class functions, it&amp;rsquo;s beneficial to rethink some patterns. The general idea is: you can replace instances of some participant class with simple functions, reducing a lot of boilerplate code.&lt;/p&gt;&#xA;&lt;p&gt;In this post, I will refactor Strategy using functions objects.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>A List Comprehension Puzzler</title>
+				<link>https://xgugeng.github.io/post/a-list-comprehension-puzzler/</link>
+				<pubDate>Wed, 24 Oct 2018 11:19:09 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/a-list-comprehension-puzzler/</guid>
+				<description>&lt;p&gt;Sometimes, we need to initialize a list with a certain number of nested lists, for example, a list with 3 lists of length 3 that can represent a Tic-tac-toe board.&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; board = [[&amp;#39;&amp;#39;] * 3] * 3&#xD;&#xA;&amp;gt;&amp;gt; board&#xD;&#xA;[[&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;&amp;#39;], [&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;&amp;#39;], [&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;&amp;#39;]]&#xD;&#xA;&amp;gt;&amp;gt; board[1][2] = &amp;#39;X&amp;#39;&#xD;&#xA;&amp;gt;&amp;gt; board&#xD;&#xA;[[&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;X&amp;#39;], [&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;X&amp;#39;], [&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, &amp;#39;X&amp;#39;]]&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The output is not expected, why?&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Using Mixins with Python</title>
+				<link>https://xgugeng.github.io/post/using-mixins-with-python/</link>
+				<pubDate>Thu, 18 Oct 2018 08:15:29 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/using-mixins-with-python/</guid>
+				<description>&lt;p&gt;Python supports multiple inheritance, while it doesn&amp;rsquo;t provide the syntax for interface. See &lt;a href=&#34;https://www.python.org/dev/peps/pep-0245/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PEP-0245&lt;/a&gt;. Of course, you can use the &lt;code&gt;abc&lt;/code&gt; module for abstract base classes, which seems tricky.&lt;/p&gt;&#xA;&lt;p&gt;Python introduces a concept called mixin that encapsulates behavior that can be reused in other classes. It&amp;rsquo;s supported via multiple inheritance, the difference of inheritance and mixin is, inheritance means &amp;ldquo;is-a&amp;rdquo; and mixin means &amp;ldquo;has-a&amp;rdquo;.&lt;/p&gt;&#xA;&lt;p&gt;This post will illustrate how mixin works with a simple example.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Special Methods in Python Data Model</title>
+				<link>https://xgugeng.github.io/post/special-methods-in-python-data-model/</link>
+				<pubDate>Tue, 16 Oct 2018 15:19:05 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/special-methods-in-python-data-model/</guid>
+				<description>&lt;p&gt;You can think of the Data Model as a description of Python as a framework. It formalizes the interfaces of the building blocks of the languages itself, such as sequences, iterators, functions, classes, context managers and so on.&lt;/p&gt;&#xA;&lt;p&gt;Python allows operator overloading, which let us to define the custom behavior for a class. For instance, if a class defines a &lt;code&gt;__str__()&lt;/code&gt;, then it can return a readable string representation of an object.&lt;/p&gt;&#xA;&lt;p&gt;In this post, I will enumerate some special methods that can change the behavior of an object and may putted into practice in daily work.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Managing Ordered Sequences With bisect</title>
+				<link>https://xgugeng.github.io/post/managing-ordered-sequences-with-bisect/</link>
+				<pubDate>Mon, 24 Sep 2018 14:16:14 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/managing-ordered-sequences-with-bisect/</guid>
+				<description>&lt;p&gt;The &lt;code&gt;bisect&lt;/code&gt; module offers two main functions - &lt;code&gt;bisect&lt;/code&gt; and &lt;code&gt;insort&lt;/code&gt; - that use the binary search algorithm to quickly find an d insert items in any sorted sequence.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Python Closure</title>
+				<link>https://xgugeng.github.io/post/python-closure/</link>
+				<pubDate>Wed, 19 Sep 2018 18:38:29 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/python-closure/</guid>
+				<description>&lt;p&gt;A closure is a function with an extended scope that encompasses non-global variables but not defined there. It does not matter whether the function is anonymous of not, what matters is that it can access non-global variables that are defined outside of its body.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Handling Missing Keys in Python</title>
+				<link>https://xgugeng.github.io/post/handling-missing-keys-in-python/</link>
+				<pubDate>Mon, 27 Aug 2018 14:50:08 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/handling-missing-keys-in-python/</guid>
+				<description>&lt;p&gt;In line with fail-fast philosophy, &lt;code&gt;dict&lt;/code&gt; access with &lt;code&gt;d[k]&lt;/code&gt; raises an error if &lt;code&gt;k&lt;/code&gt; is not an existing key. A common solution is &lt;code&gt;d.get(k, default)&lt;/code&gt; which return a default rather handling &lt;code&gt;KeyError&lt;/code&gt; if &lt;code&gt;k&lt;/code&gt; is not present.&lt;/p&gt;&#xA;&lt;p&gt;This post introduces three alternatives - &lt;code&gt;setdefault&lt;/code&gt;, &lt;code&gt;defaultdict&lt;/code&gt; and &lt;code&gt;__mising&lt;/code&gt; for this situation.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Unpacking in Python</title>
+				<link>https://xgugeng.github.io/post/python-unpacking/</link>
+				<pubDate>Tue, 14 Aug 2018 20:02:15 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/python-unpacking/</guid>
+				<description>&lt;p&gt;Python provides many friendly advanced API for programmer, one of which is unpacking. By unpacking, it means getting all the elements from a container. A simplest case in the below demonstrates assigns the two items in tuple to variables.&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; a, b = (1,2)&#xD;&#xA;&amp;gt;&amp;gt;&amp;gt; a&#xD;&#xA;1&#xD;&#xA;&amp;gt;&amp;gt;&amp;gt; b&#xD;&#xA;2&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Besides tuple, every iterative object can support unpacking, such as list, dictionary, set, string, generator etc. Let&amp;rsquo;s traverse them one by one.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Variable Scope Rules in Python</title>
+				<link>https://xgugeng.github.io/post/variable-scope-rules-in-python/</link>
+				<pubDate>Sun, 29 Oct 2017 15:44:51 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/variable-scope-rules-in-python/</guid>
+				<description>&lt;p&gt;What&amp;rsquo;s the output of the following code:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ans&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;bt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;():&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;ans&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;bt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ans&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+			</item>
+			<item>
+				<title>Understanding Python Decorator</title>
+				<link>https://xgugeng.github.io/post/understanding-python-decorator/</link>
+				<pubDate>Wed, 20 Sep 2017 19:36:07 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/understanding-python-decorator/</guid>
+				<description>&lt;p&gt;A Python decorator, similar with &lt;a href=&#34;http://en.wikipedia.org/wiki/Decorator_pattern&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Decorator Pattern&lt;/a&gt;, is a specific change to the Python syntax that allows us to more conveniently alter functions and methods. In this post, I will try my best to deep into this advanced feature in Python.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>*args and **kwargs Usage in Python</title>
+				<link>https://xgugeng.github.io/post/args-and-kwargs-usage-in-python/</link>
+				<pubDate>Fri, 08 Sep 2017 16:46:50 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/args-and-kwargs-usage-in-python/</guid>
+				<description>&lt;p&gt;The &lt;code&gt;*args&lt;/code&gt; and &lt;code&gt;**kwargs&lt;/code&gt; is a common idiom to allow arbitrary number of arguments to functions as described in the section more on &lt;a href=&#34;https://docs.python.org/dev/tutorial/controlflow.html#more-on-defining-functions&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;defining functions&lt;/a&gt; in the Python documentation.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>When finally Really Executes</title>
+				<link>https://xgugeng.github.io/post/when-finally-really-executes/</link>
+				<pubDate>Mon, 04 Sep 2017 16:22:03 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/when-finally-really-executes/</guid>
+				<description>&lt;p&gt;Epitome:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;return doesn&amp;rsquo;t really return, it pushes value to stack, then jumps to finally, which was set up by &lt;code&gt;SETUP_FINALLY&lt;/code&gt; before.&lt;/li&gt;&#xA;&lt;li&gt;after executing finally, &lt;code&gt;END_FINALLY&lt;/code&gt; returns.&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+			</item>
+			<item>
+				<title>Exit Options in Python</title>
+				<link>https://xgugeng.github.io/post/exit-options-in-python/</link>
+				<pubDate>Fri, 01 Sep 2017 16:47:37 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/exit-options-in-python/</guid>
+				<description>&lt;p&gt;First candidate is &lt;code&gt;os._exit&lt;/code&gt;, which exits without calling cleanup handlers, flushing stdio buffers, etc. (and which should normally only be used in the child process after a &lt;code&gt;fork()&lt;/code&gt;).&lt;/p&gt;&#xA;&lt;p&gt;Second, &lt;code&gt;sys.exit&lt;/code&gt; is intended for use in programs. According to official document:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;This is implemented by raising the &lt;code&gt;SystemExit&lt;/code&gt; exception, so cleanup actions specified by finally clauses of try statements are honored, and it is possible to intercept the exit attempt at an outer level. Since &lt;code&gt;exit()&lt;/code&gt; ultimately “only” raises an exception, it will only exit the process when called from the main thread, and the exception is not intercepted.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>The Difference between range and xrange</title>
+				<link>https://xgugeng.github.io/post/difference-between-range-and-xrange/</link>
+				<pubDate>Fri, 01 Sep 2017 16:22:27 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/difference-between-range-and-xrange/</guid>
+				<description>&lt;p&gt;Short answer:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;range&lt;/code&gt; creates a list, so if you do &lt;code&gt;range(1, 10000000)&lt;/code&gt; it creates a list in memory with 9999999 elements. This will become an expensive operation on very large ranges.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;xrange&lt;/code&gt; is a sequence object that &lt;em&gt;evaluates lazily&lt;/em&gt;(it will only compute the next value when needed).&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+			</item>
+			<item>
+				<title>A Dive into __slots__</title>
+				<link>https://xgugeng.github.io/post/a-dive-into-slots/</link>
+				<pubDate>Thu, 31 Aug 2017 14:25:37 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/a-dive-into-slots/</guid>
+				<description>&lt;p&gt;&lt;code&gt;__slots__&lt;/code&gt; tells the interpreter not to use a &lt;code&gt;dict&lt;/code&gt;, and only allocate space for a fixed set of attributes.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Pip Install ipython Exception on EI Capitan</title>
+				<link>https://xgugeng.github.io/post/pip-install-ipython-exception-on-ei-capitan/</link>
+				<pubDate>Thu, 03 Aug 2017 15:23:36 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/pip-install-ipython-exception-on-ei-capitan/</guid>
+				<description>&lt;blockquote&gt;&#xA;&lt;p&gt;For those impatient: OS X EI Capitan shipped a security feature named System Integrity Protection, which would be a hinder for &lt;code&gt;pip&lt;/code&gt;. Try to install IPython in user mode: &lt;code&gt;pip install ipython --user&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+			</item>
+	</channel>
 </rss>

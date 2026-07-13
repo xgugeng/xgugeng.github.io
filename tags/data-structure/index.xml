@@ -1,109 +1,87 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Data Structure on XGugeng</title>
-    <link>https://xgugeng.github.io/tags/data-structure/</link>
-    <description>Recent content in Data Structure on XGugeng</description>
-    <generator>Hugo -- 0.164.0</generator>
-    <language>en</language>
-    <lastBuildDate>Tue, 20 Nov 2018 20:56:57 +0800</lastBuildDate>
-    <atom:link href="https://xgugeng.github.io/tags/data-structure/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Redis Internals: Dict</title>
-      <link>https://xgugeng.github.io/post/redis-internals-dict/</link>
-      <pubDate>Thu, 15 Nov 2018 19:56:57 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/redis-internals-dict/</guid>
-      <description>&lt;p&gt;Dictionary is a data structure for storing key-value pair. Each key in a dictionary is unique and has a corresponding value. Redis implements its own dictionary and use it for hash key.&lt;/p&gt;
-&lt;p&gt;As a data structure in server side, dictionary must take memory into consideration. That&amp;rsquo;s the reason why resizing and rehashing are so significant.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Redis Internals: List</title>
-      <link>https://xgugeng.github.io/post/redis-internals-list/</link>
-      <pubDate>Tue, 06 Nov 2018 09:38:12 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/redis-internals-list/</guid>
-      <description>&lt;p&gt;Redis provides a generic doubly linked list implementation, which is widely used in Redis. If a list key involves two many elements or there are many long strings in the list, Redis will apply linked list for it.  Publish-subscribe, slow query, monitor also make use of linked list. Redis keeps the states of clients in linked list, and client&amp;rsquo;s output buffer use it too.&lt;/p&gt;
-&lt;p&gt;This post will plough into the implementation of doubly linked list.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Redis Internals: SDS</title>
-      <link>https://xgugeng.github.io/post/redis-internals-sds/</link>
-      <pubDate>Thu, 01 Nov 2018 09:26:50 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/redis-internals-sds/</guid>
-      <description>&lt;p&gt;C string is used only for literal constant in Redis. For the situation that the string can be modified, Redis provide a Simple Dynamic String(SDS). The key in Redis is actually a SDS, and if you insert a key-value with &lt;code&gt;SET msg &amp;quot;hello world&amp;quot;&lt;/code&gt;, a SDS instance will be constructed for the key. In this case, the value is also a SDS instance with the content of &amp;ldquo;hello world&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;Besides string, SDS is also used for buffer which can serve the AOF module and client&amp;rsquo;s input.&lt;/p&gt;
-&lt;p&gt;This post will dive into the implementation of SDS comparing with classic C string.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Differences between Hashtable and HashMap</title>
-      <link>https://xgugeng.github.io/post/java-hashtable-comparing-with-hashmap/</link>
-      <pubDate>Fri, 05 Aug 2016 12:01:40 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-hashtable-comparing-with-hashmap/</guid>
-      <description>&lt;p&gt;As I mentioned before, it is vital to read code with prepared questions. Hum, How about reading code with answers? The differences between Hashtable and HashMap have been explained many times including,&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;null key &amp;amp; null value&lt;/li&gt;
-&lt;li&gt;synchronized or not&lt;/li&gt;
-&lt;li&gt;Enumeration and Iterator&lt;/li&gt;
-&lt;li&gt;hash method&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I am wondering how these arguments are supported by code. This post will give a view of code illustrating the above confusion.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Java HashSet</title>
-      <link>https://xgugeng.github.io/post/java-hashset/</link>
-      <pubDate>Mon, 01 Aug 2016 11:45:53 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-hashset/</guid>
-      <description>&lt;p&gt;For those who has no patience to look through this post, I conclude it in a word: HashSet is backed by HashMap.&lt;/p&gt;
-&lt;p&gt;Set is a collection in which every element is unique. So does the keys in HashMap. It is reasonable to infer that the implementation of HashSet is based on HashMap, so it is. Remember &lt;a href=&#34;https://www.xgugeng.com/post/java-hashmap/#resize&#34;&gt;resize&lt;/a&gt; of HashMap? it makes no guarantees as to the iteration order of the set.&lt;/p&gt;
-&lt;p&gt;With the help of HashMap, HashSet offers constant time performance for the basic operations, like &lt;code&gt;add&lt;/code&gt;, &lt;code&gt;remove&lt;/code&gt;, &lt;code&gt;contains&lt;/code&gt; and &lt;code&gt;size&lt;/code&gt;. Iterating over this set requires time proportional to the sum of the HashSet instance&amp;rsquo;s size (the number of elements) plus the &amp;ldquo;capacity&amp;rdquo; of the backing HashMap instance (the number of buckets).&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Java TreeMap</title>
-      <link>https://xgugeng.github.io/post/java-treemap/</link>
-      <pubDate>Sun, 12 Jun 2016 12:54:23 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-treemap/</guid>
-      <description>&lt;p&gt;After joining the workforce, I have coded with various programming languages, like C++, Objective-C, Ruby, Python, Scala, Java, Go, etc. I ask to myself spontaneously, which language am I most skillful at? This question dismay me because I cannot answer it immediately.&lt;/p&gt;
-&lt;p&gt;Since I choice to focus on Big Data, it&amp;rsquo;s pragmatic to equipped with Java and Python, two powerful weapons in this field. Reading the source code of &lt;a href=&#34;https://www.xgugeng.com/en/tags/java.util/&#34;&gt;java.util&lt;/a&gt; is a good start.&lt;/p&gt;
-&lt;p&gt;The leading actor of this post is &lt;code&gt;TreeMap&lt;/code&gt;, a Red-Black tree based &lt;code&gt;NavigableMap&lt;/code&gt; implementation. It has no array underneath, as many of you think. Because &lt;code&gt;TreeMap&lt;/code&gt; inherits directly &lt;code&gt;AbstractMap&lt;/code&gt;, in contrast with &lt;a href=&#34;https://www.xgugeng.com/post/java-linkedhashmap/&#34;&gt;LinkedHashMap&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Performances differ on account of distinctive data structures. This implementation provides guaranteed log(n) time cost for the &lt;code&gt;containsKey&lt;/code&gt;, &lt;code&gt;get&lt;/code&gt;, &lt;code&gt;put&lt;/code&gt; and &lt;code&gt;remove&lt;/code&gt; operations. Now allow me to show you a close look.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Java LinkedHashMap</title>
-      <link>https://xgugeng.github.io/post/java-linkedhashmap/</link>
-      <pubDate>Fri, 10 Jun 2016 20:01:59 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-linkedhashmap/</guid>
-      <description>&lt;p&gt;As its name implies, &lt;code&gt;LinkedHashMap&lt;/code&gt; is a hash table and linked list implementation of the &lt;code&gt;Map&lt;/code&gt; interface, with predictable iteration order. Different with &lt;code&gt;HashMap&lt;/code&gt;, it maintains a doubly-linked list running through all of its entries, which also defines the iteration ordering, same as the order in which keys were inserted into the map. This order remains if a key is re-inserted into the map.&lt;/p&gt;
-&lt;p&gt;Like &lt;code&gt;HashMap&lt;/code&gt;, &lt;code&gt;LinkedHashMap&lt;/code&gt; provides constant-time performance for the basic operations &lt;code&gt;add&lt;/code&gt;, &lt;code&gt;contains&lt;/code&gt; and &lt;code&gt;remove&lt;/code&gt;, assuming the hash function disperses elements properly among the buckets.  Performance is likely to be just slightly below that of &lt;code&gt;HashMap&lt;/code&gt;, due to the added expense of maintaining the linked list,&lt;/p&gt;
-&lt;p&gt;Thanks to the linked list, this kind of map is well-suited to building LRU caches. So my questions is how &lt;code&gt;LinkedHashMap&lt;/code&gt; preserves the linked list when key changes.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Java HashMap</title>
-      <link>https://xgugeng.github.io/post/java-hashmap/</link>
-      <pubDate>Thu, 09 Jun 2016 20:42:52 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-hashmap/</guid>
-      <description>&lt;p&gt;It&amp;rsquo;s necessary to learn with questions. Otherwise, you may distract your focus when something you don&amp;rsquo;t know appears, whether should I go deeper or not. With preliminary doubts in your mind, this would not be a problem. Learning can be direct, clear and fruitful, which brings you more sense of achievement.&lt;/p&gt;
-&lt;p&gt;For this post about the source code of &lt;code&gt;HashMap&lt;/code&gt;, few questions need answers:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;data structure underneath&lt;/li&gt;
-&lt;li&gt;why &lt;code&gt;HashMap&lt;/code&gt; permits nulls and unsynchronized&lt;/li&gt;
-&lt;li&gt;does it make guarantees as to the order of the map&lt;/li&gt;
-&lt;li&gt;what happens when I put and get a key with value, and time complexity&lt;/li&gt;
-&lt;li&gt;how the map shrink or expand when size changes&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Java LinkedList</title>
-      <link>https://xgugeng.github.io/post/java-linkedlist/</link>
-      <pubDate>Mon, 18 Apr 2016 11:37:29 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-linkedlist/</guid>
-      <description>&lt;p&gt;&lt;code&gt;LinkedList&lt;/code&gt; is a doubly-linked list implementation of the &lt;code&gt;List&lt;/code&gt; and &lt;code&gt;Deque&lt;/code&gt; interfaces. By &amp;ldquo;doubly-linked&amp;rdquo;, it means we can traverse the list from the beginning to the end, and vice versa. This class is a member of Java Collections Framework, located in &lt;code&gt;java.util&lt;/code&gt;. Let&amp;rsquo;s go straight to the source code.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Java String</title>
-      <link>https://xgugeng.github.io/post/java-string/</link>
-      <pubDate>Wed, 13 Apr 2016 11:33:34 +0800</pubDate>
-      <guid>https://xgugeng.github.io/post/java-string/</guid>
-      <description>&lt;p&gt;&lt;code&gt;String&lt;/code&gt; is one of the most common type of data in computer languages. A Java string is a series of characters gathered together, such as &amp;ldquo;abc&amp;rdquo;. Strings are constant, which means their value cannot be changed after created.&lt;/p&gt;
-&lt;p&gt;This post introduces the basic of Java string, includes methods for examining individual characters of the sequence, for comparing strings, for searching strings, for extracting substrings and so on.&lt;/p&gt;</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Data Structure on XGugeng</title>
+		<link>https://xgugeng.github.io/tags/data-structure/</link>
+		<description>Recent content in Data Structure on XGugeng</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Tue, 20 Nov 2018 20:56:57 +0800</lastBuildDate>
+		
+			<atom:link href="https://xgugeng.github.io/tags/data-structure/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Redis Internals: Dict</title>
+				<link>https://xgugeng.github.io/post/redis-internals-dict/</link>
+				<pubDate>Thu, 15 Nov 2018 19:56:57 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/redis-internals-dict/</guid>
+				<description>&lt;p&gt;Dictionary is a data structure for storing key-value pair. Each key in a dictionary is unique and has a corresponding value. Redis implements its own dictionary and use it for hash key.&lt;/p&gt;&#xA;&lt;p&gt;As a data structure in server side, dictionary must take memory into consideration. That&amp;rsquo;s the reason why resizing and rehashing are so significant.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Redis Internals: List</title>
+				<link>https://xgugeng.github.io/post/redis-internals-list/</link>
+				<pubDate>Tue, 06 Nov 2018 09:38:12 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/redis-internals-list/</guid>
+				<description>&lt;p&gt;Redis provides a generic doubly linked list implementation, which is widely used in Redis. If a list key involves two many elements or there are many long strings in the list, Redis will apply linked list for it.  Publish-subscribe, slow query, monitor also make use of linked list. Redis keeps the states of clients in linked list, and client&amp;rsquo;s output buffer use it too.&lt;/p&gt;&#xA;&lt;p&gt;This post will plough into the implementation of doubly linked list.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Redis Internals: SDS</title>
+				<link>https://xgugeng.github.io/post/redis-internals-sds/</link>
+				<pubDate>Thu, 01 Nov 2018 09:26:50 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/redis-internals-sds/</guid>
+				<description>&lt;p&gt;C string is used only for literal constant in Redis. For the situation that the string can be modified, Redis provide a Simple Dynamic String(SDS). The key in Redis is actually a SDS, and if you insert a key-value with &lt;code&gt;SET msg &amp;quot;hello world&amp;quot;&lt;/code&gt;, a SDS instance will be constructed for the key. In this case, the value is also a SDS instance with the content of &amp;ldquo;hello world&amp;rdquo;.&lt;/p&gt;&#xA;&lt;p&gt;Besides string, SDS is also used for buffer which can serve the AOF module and client&amp;rsquo;s input.&lt;/p&gt;&#xA;&lt;p&gt;This post will dive into the implementation of SDS comparing with classic C string.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Differences between Hashtable and HashMap</title>
+				<link>https://xgugeng.github.io/post/java-hashtable-comparing-with-hashmap/</link>
+				<pubDate>Fri, 05 Aug 2016 12:01:40 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-hashtable-comparing-with-hashmap/</guid>
+				<description>&lt;p&gt;As I mentioned before, it is vital to read code with prepared questions. Hum, How about reading code with answers? The differences between Hashtable and HashMap have been explained many times including,&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;null key &amp;amp; null value&lt;/li&gt;&#xA;&lt;li&gt;synchronized or not&lt;/li&gt;&#xA;&lt;li&gt;Enumeration and Iterator&lt;/li&gt;&#xA;&lt;li&gt;hash method&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I am wondering how these arguments are supported by code. This post will give a view of code illustrating the above confusion.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Java HashSet</title>
+				<link>https://xgugeng.github.io/post/java-hashset/</link>
+				<pubDate>Mon, 01 Aug 2016 11:45:53 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-hashset/</guid>
+				<description>&lt;p&gt;For those who has no patience to look through this post, I conclude it in a word: HashSet is backed by HashMap.&lt;/p&gt;&#xA;&lt;p&gt;Set is a collection in which every element is unique. So does the keys in HashMap. It is reasonable to infer that the implementation of HashSet is based on HashMap, so it is. Remember &lt;a href=&#34;https://www.xgugeng.com/post/java-hashmap/#resize&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;resize&lt;/a&gt; of HashMap? it makes no guarantees as to the iteration order of the set.&lt;/p&gt;&#xA;&lt;p&gt;With the help of HashMap, HashSet offers constant time performance for the basic operations, like &lt;code&gt;add&lt;/code&gt;, &lt;code&gt;remove&lt;/code&gt;, &lt;code&gt;contains&lt;/code&gt; and &lt;code&gt;size&lt;/code&gt;. Iterating over this set requires time proportional to the sum of the HashSet instance&amp;rsquo;s size (the number of elements) plus the &amp;ldquo;capacity&amp;rdquo; of the backing HashMap instance (the number of buckets).&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Java TreeMap</title>
+				<link>https://xgugeng.github.io/post/java-treemap/</link>
+				<pubDate>Sun, 12 Jun 2016 12:54:23 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-treemap/</guid>
+				<description>&lt;p&gt;After joining the workforce, I have coded with various programming languages, like C++, Objective-C, Ruby, Python, Scala, Java, Go, etc. I ask to myself spontaneously, which language am I most skillful at? This question dismay me because I cannot answer it immediately.&lt;/p&gt;&#xA;&lt;p&gt;Since I choice to focus on Big Data, it&amp;rsquo;s pragmatic to equipped with Java and Python, two powerful weapons in this field. Reading the source code of &lt;a href=&#34;https://www.xgugeng.com/en/tags/java.util/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;java.util&lt;/a&gt; is a good start.&lt;/p&gt;&#xA;&lt;p&gt;The leading actor of this post is &lt;code&gt;TreeMap&lt;/code&gt;, a Red-Black tree based &lt;code&gt;NavigableMap&lt;/code&gt; implementation. It has no array underneath, as many of you think. Because &lt;code&gt;TreeMap&lt;/code&gt; inherits directly &lt;code&gt;AbstractMap&lt;/code&gt;, in contrast with &lt;a href=&#34;https://www.xgugeng.com/post/java-linkedhashmap/&#34;  class=&#34;external-link&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LinkedHashMap&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Performances differ on account of distinctive data structures. This implementation provides guaranteed log(n) time cost for the &lt;code&gt;containsKey&lt;/code&gt;, &lt;code&gt;get&lt;/code&gt;, &lt;code&gt;put&lt;/code&gt; and &lt;code&gt;remove&lt;/code&gt; operations. Now allow me to show you a close look.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Java LinkedHashMap</title>
+				<link>https://xgugeng.github.io/post/java-linkedhashmap/</link>
+				<pubDate>Fri, 10 Jun 2016 20:01:59 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-linkedhashmap/</guid>
+				<description>&lt;p&gt;As its name implies, &lt;code&gt;LinkedHashMap&lt;/code&gt; is a hash table and linked list implementation of the &lt;code&gt;Map&lt;/code&gt; interface, with predictable iteration order. Different with &lt;code&gt;HashMap&lt;/code&gt;, it maintains a doubly-linked list running through all of its entries, which also defines the iteration ordering, same as the order in which keys were inserted into the map. This order remains if a key is re-inserted into the map.&lt;/p&gt;&#xA;&lt;p&gt;Like &lt;code&gt;HashMap&lt;/code&gt;, &lt;code&gt;LinkedHashMap&lt;/code&gt; provides constant-time performance for the basic operations &lt;code&gt;add&lt;/code&gt;, &lt;code&gt;contains&lt;/code&gt; and &lt;code&gt;remove&lt;/code&gt;, assuming the hash function disperses elements properly among the buckets.  Performance is likely to be just slightly below that of &lt;code&gt;HashMap&lt;/code&gt;, due to the added expense of maintaining the linked list,&lt;/p&gt;&#xA;&lt;p&gt;Thanks to the linked list, this kind of map is well-suited to building LRU caches. So my questions is how &lt;code&gt;LinkedHashMap&lt;/code&gt; preserves the linked list when key changes.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Java HashMap</title>
+				<link>https://xgugeng.github.io/post/java-hashmap/</link>
+				<pubDate>Thu, 09 Jun 2016 20:42:52 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-hashmap/</guid>
+				<description>&lt;p&gt;It&amp;rsquo;s necessary to learn with questions. Otherwise, you may distract your focus when something you don&amp;rsquo;t know appears, whether should I go deeper or not. With preliminary doubts in your mind, this would not be a problem. Learning can be direct, clear and fruitful, which brings you more sense of achievement.&lt;/p&gt;&#xA;&lt;p&gt;For this post about the source code of &lt;code&gt;HashMap&lt;/code&gt;, few questions need answers:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;data structure underneath&lt;/li&gt;&#xA;&lt;li&gt;why &lt;code&gt;HashMap&lt;/code&gt; permits nulls and unsynchronized&lt;/li&gt;&#xA;&lt;li&gt;does it make guarantees as to the order of the map&lt;/li&gt;&#xA;&lt;li&gt;what happens when I put and get a key with value, and time complexity&lt;/li&gt;&#xA;&lt;li&gt;how the map shrink or expand when size changes&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+			</item>
+			<item>
+				<title>Java LinkedList</title>
+				<link>https://xgugeng.github.io/post/java-linkedlist/</link>
+				<pubDate>Mon, 18 Apr 2016 11:37:29 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-linkedlist/</guid>
+				<description>&lt;p&gt;&lt;code&gt;LinkedList&lt;/code&gt; is a doubly-linked list implementation of the &lt;code&gt;List&lt;/code&gt; and &lt;code&gt;Deque&lt;/code&gt; interfaces. By &amp;ldquo;doubly-linked&amp;rdquo;, it means we can traverse the list from the beginning to the end, and vice versa. This class is a member of Java Collections Framework, located in &lt;code&gt;java.util&lt;/code&gt;. Let&amp;rsquo;s go straight to the source code.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Java String</title>
+				<link>https://xgugeng.github.io/post/java-string/</link>
+				<pubDate>Wed, 13 Apr 2016 11:33:34 +0800</pubDate>
+				<guid>https://xgugeng.github.io/post/java-string/</guid>
+				<description>&lt;p&gt;&lt;code&gt;String&lt;/code&gt; is one of the most common type of data in computer languages. A Java string is a series of characters gathered together, such as &amp;ldquo;abc&amp;rdquo;. Strings are constant, which means their value cannot be changed after created.&lt;/p&gt;&#xA;&lt;p&gt;This post introduces the basic of Java string, includes methods for examining individual characters of the sequence, for comparing strings, for searching strings, for extracting substrings and so on.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>
