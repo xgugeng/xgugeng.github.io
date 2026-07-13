@@ -21,7 +21,7 @@
 				<description>&lt;p&gt;TL;DR&lt;/p&gt;&#xA;&lt;p&gt;目标导向，带着问题读源码；自顶向下，先理解 what，再去代码中找 how；最后擅用图形化工具，抓大放小，有的放矢。&lt;/p&gt;</description>
 			</item>
 			<item>
-				<title>Linux Namespace Explained</title>
+				<title>Linux Namespace 详解</title>
 				<link>https://xgugeng.github.io/zh/post/linux-namespace-explained/</link>
 				<pubDate>Wed, 27 Nov 2019 20:12:20 +0800</pubDate>
 				<guid>https://xgugeng.github.io/zh/post/linux-namespace-explained/</guid>

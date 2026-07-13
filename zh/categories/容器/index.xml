@@ -14,7 +14,7 @@
 		
 			<atom:link href="https://xgugeng.github.io/zh/categories/%E5%AE%B9%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
 			<item>
-				<title>Linux Namespace Explained</title>
+				<title>Linux Namespace 详解</title>
 				<link>https://xgugeng.github.io/zh/post/linux-namespace-explained/</link>
 				<pubDate>Wed, 27 Nov 2019 20:12:20 +0800</pubDate>
 				<guid>https://xgugeng.github.io/zh/post/linux-namespace-explained/</guid>
