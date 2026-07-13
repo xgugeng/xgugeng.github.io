@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Java.nio on Guoqing&#39;s second brain</title>
+    <title>Java.nio on XGugeng</title>
     <link>https://xgugeng.github.io/tags/java.nio/</link>
-    <description>Recent content in Java.nio on Guoqing&#39;s second brain</description>
-    <generator>Hugo -- 0.150.0</generator>
+    <description>Recent content in Java.nio on XGugeng</description>
+    <generator>Hugo -- 0.164.0</generator>
     <language>en</language>
     <lastBuildDate>Sat, 21 Jul 2018 17:54:50 +0800</lastBuildDate>
     <atom:link href="https://xgugeng.github.io/tags/java.nio/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,11 @@
       <link>https://xgugeng.github.io/post/java-nio-selector/</link>
       <pubDate>Sat, 21 Jul 2018 17:54:50 +0800</pubDate>
       <guid>https://xgugeng.github.io/post/java-nio-selector/</guid>
-      <description>&lt;p&gt;Taking FileChannel for example in the &lt;a href=&#34;https://xgugeng.github.io/post/java-nio-channel/&#34;&gt;previous post&lt;/a&gt; may bewilder audiences: it&amp;rsquo;s non-blocking, so how does NIO achievement non-blocking? Here comes Selector.&lt;/p&gt;
+      <description>&lt;p&gt;Taking FileChannel for example in the &lt;a href=&#34;https://www.xgugeng.com/post/java-nio-channel/&#34;&gt;previous post&lt;/a&gt; may bewilder audiences: it&amp;rsquo;s non-blocking, so how does NIO achievement non-blocking? Here comes Selector.&lt;/p&gt;
 &lt;p&gt;A Selector is a Java NIO component which can examine one or more NIO Channel&amp;rsquo;s, and determine which channels are ready for reading or writing. A thread can manage multiply channels with Selector making multiple network connections feasible. This way avoids the cost of switching between threads which is expensive.&lt;/p&gt;
 &lt;p&gt;Here is an illustration of a thread using a Selector to handle 3 Channels:&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/java-nio-selector-handle-channels.png&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/java-nio-selector-handle-channels.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;</description>
     </item>
     <item>
       <title>Java NIO: Channel</title>
@@ -51,7 +52,8 @@
 &lt;li&gt;Selectors&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;All IO in NIO involves with Channel. Data can be read from Channel to a Buffer and vice versa.&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/java-nio-channel-buffer.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/java-nio-channel-buffer.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
 &lt;p&gt;Buffers are used to interact with Channels. A Buffer is an allocated block of memory with fixed size, into which you can read or write data. In this post, I&amp;rsquo;ll illustrate the basic usage of Buffer and elucidate how it manages to do that from the view of source code.&lt;/p&gt;</description>
     </item>
   </channel>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Lucene on Guoqing&#39;s second brain</title>
+    <title>Lucene on XGugeng</title>
     <link>https://xgugeng.github.io/tags/lucene/</link>
-    <description>Recent content in Lucene on Guoqing&#39;s second brain</description>
-    <generator>Hugo -- 0.150.0</generator>
+    <description>Recent content in Lucene on XGugeng</description>
+    <generator>Hugo -- 0.164.0</generator>
     <language>en</language>
     <lastBuildDate>Mon, 09 Apr 2018 11:25:40 +0800</lastBuildDate>
     <atom:link href="https://xgugeng.github.io/tags/lucene/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://xgugeng.github.io/post/indexoutput-lucene-index-output/</link>
       <pubDate>Mon, 09 Apr 2018 11:25:40 +0800</pubDate>
       <guid>https://xgugeng.github.io/post/indexoutput-lucene-index-output/</guid>
-      <description>&lt;p&gt;Immediately following &lt;a href=&#34;https://xgugeng.github.io/post/indexwriter-lucene-index-creation-maintenance/&#34;&gt;
+      <description>&lt;p&gt;Immediately following &lt;a href=&#34;https://www.xgugeng.com/post/indexwriter-lucene-index-creation-maintenance/&#34;&gt;
 Indexwriter: Lucene Index Creation and Maintenance&lt;/a&gt;, &lt;code&gt;IndexOutput&lt;/code&gt;, a random-access output stream. is used for all Lucene index output operations.&lt;/p&gt;</description>
     </item>
     <item>
@@ -42,7 +42,8 @@ Indexwriter: Lucene Index Creation and Maintenance&lt;/a&gt;, &lt;code&gt;IndexO
 &lt;li&gt;A field is a named sequence of &lt;strong&gt;terms&lt;/strong&gt;.&lt;/li&gt;
 &lt;li&gt;A term is a string.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/indexing-process.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/indexing-process.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
 &lt;p&gt;In order to index data with Lucene, you must convert it to a stream of plain-text tokens firstly. Based on the stream, the document containing fields will be created. After that, you can call &lt;code&gt;addDocument&lt;/code&gt; method in &lt;code&gt;IndexWriter&lt;/code&gt; class to transmit it to index. During this procedure, analyzer may be used to make the data more suitable for indexing.&lt;/p&gt;</description>
     </item>
   </channel>

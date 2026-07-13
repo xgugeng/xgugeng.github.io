@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>HBase on Guoqing&#39;s second brain</title>
+    <title>HBase on XGugeng</title>
     <link>https://xgugeng.github.io/categories/hbase/</link>
-    <description>Recent content in HBase on Guoqing&#39;s second brain</description>
-    <generator>Hugo -- 0.150.0</generator>
+    <description>Recent content in HBase on XGugeng</description>
+    <generator>Hugo -- 0.164.0</generator>
     <language>en</language>
     <lastBuildDate>Fri, 17 Aug 2018 15:17:33 +0800</lastBuildDate>
     <atom:link href="https://xgugeng.github.io/categories/hbase/index.xml" rel="self" type="application/rss+xml" />
@@ -13,9 +13,10 @@
       <link>https://xgugeng.github.io/post/how-master-detect-death-of-regionserver/</link>
       <pubDate>Fri, 06 Jul 2018 10:31:19 +0800</pubDate>
       <guid>https://xgugeng.github.io/post/how-master-detect-death-of-regionserver/</guid>
-      <description>&lt;p&gt;Step 3 of &lt;a href=&#34;https://xgugeng.github.io/post/regionserver-stops-after-full-gc/#explanation&#34;&gt;explanation&lt;/a&gt; about what happens after Full GC may be vague. It confuses audiences by&lt;/p&gt;
+      <description>&lt;p&gt;Step 3 of &lt;a href=&#34;https://www.xgugeng.com/post/regionserver-stops-after-full-gc/#explanation&#34;&gt;explanation&lt;/a&gt; about what happens after Full GC may be vague. It confuses audiences by&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;ServerManager&lt;/code&gt; on &lt;code&gt;HMaster&lt;/code&gt; finds there must be something wrong with this &lt;code&gt;RegionServer&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;ServerManager&lt;/code&gt; on &lt;code&gt;HMaster&lt;/code&gt; finds there must be something wrong with this &lt;code&gt;RegionServer&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;How does &lt;code&gt;HMaster&lt;/code&gt; detect the death of &lt;code&gt;RegionServer&lt;/code&gt;?&lt;/p&gt;</description>
     </item>
     <item>
@@ -37,7 +38,7 @@
       <link>https://xgugeng.github.io/post/hbase-batch-puts-with-bufferedmutator/</link>
       <pubDate>Mon, 15 Jan 2018 16:56:23 +0800</pubDate>
       <guid>https://xgugeng.github.io/post/hbase-batch-puts-with-bufferedmutator/</guid>
-      <description>&lt;p&gt;&lt;code&gt;BufferedMutator&lt;/code&gt; is meant for batched, potentially asynchronous puts into a single table. This class relies heavily on &lt;code&gt;AsyncProcess&lt;/code&gt;, which I has explained &lt;a href=&#34;https://xgugeng.github.io/post/hbase-batch-puts-without-bufferedmutator/#asyncprocess&#34;&gt;here&lt;/a&gt;. Then, we can focus on what &lt;code&gt;BufferedMutator&lt;/code&gt; does in this post.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;code&gt;BufferedMutator&lt;/code&gt; is meant for batched, potentially asynchronous puts into a single table. This class relies heavily on &lt;code&gt;AsyncProcess&lt;/code&gt;, which I has explained &lt;a href=&#34;https://www.xgugeng.com/post/hbase-batch-puts-without-bufferedmutator/#asyncprocess&#34;&gt;here&lt;/a&gt;. Then, we can focus on what &lt;code&gt;BufferedMutator&lt;/code&gt; does in this post.&lt;/p&gt;</description>
     </item>
     <item>
       <title>HBase Batch Puts without BufferedMutator</title>
@@ -59,7 +60,7 @@
       <link>https://xgugeng.github.io/post/a-lifecycle-of-hbase-put-server-side/</link>
       <pubDate>Tue, 05 Dec 2017 15:14:28 +0800</pubDate>
       <guid>https://xgugeng.github.io/post/a-lifecycle-of-hbase-put-server-side/</guid>
-      <description>&lt;p&gt;Following the preceding &lt;a href=&#34;https://xgugeng.github.io/post/a-lifecycle-of-hbase-put-client-side/&#34;&gt;A Lifecycle of HBase&amp;rsquo;s Put: Client-side&lt;/a&gt;, this post will figure out how a &lt;code&gt;Put&lt;/code&gt; request does its mutation on &lt;code&gt;HRegionServer&lt;/code&gt;. The whole process involves WAL, MemStore, and Coprocessor etc. After reading this post, hope you make their roles clear.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Following the preceding &lt;a href=&#34;https://www.xgugeng.com/post/a-lifecycle-of-hbase-put-client-side/&#34;&gt;A Lifecycle of HBase&amp;rsquo;s Put: Client-side&lt;/a&gt;, this post will figure out how a &lt;code&gt;Put&lt;/code&gt; request does its mutation on &lt;code&gt;HRegionServer&lt;/code&gt;. The whole process involves WAL, MemStore, and Coprocessor etc. After reading this post, hope you make their roles clear.&lt;/p&gt;</description>
     </item>
     <item>
       <title>A Lifecycle of HBase&#39;s Put: Client-side</title>
@@ -101,7 +102,8 @@
       <pubDate>Fri, 08 Sep 2017 11:04:57 +0800</pubDate>
       <guid>https://xgugeng.github.io/post/how-does-client-find-the-region/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;client-related source code is located in the module &lt;code&gt;hbase-client&lt;/code&gt;.&lt;/p&gt;&lt;/blockquote&gt;</description>
+&lt;p&gt;client-related source code is located in the module &lt;code&gt;hbase-client&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     <item>
       <title>A Mind Map for HBase</title>

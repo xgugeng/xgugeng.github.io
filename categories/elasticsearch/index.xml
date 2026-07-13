@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Elasticsearch on Guoqing&#39;s second brain</title>
+    <title>Elasticsearch on XGugeng</title>
     <link>https://xgugeng.github.io/categories/elasticsearch/</link>
-    <description>Recent content in Elasticsearch on Guoqing&#39;s second brain</description>
-    <generator>Hugo -- 0.150.0</generator>
+    <description>Recent content in Elasticsearch on XGugeng</description>
+    <generator>Hugo -- 0.164.0</generator>
     <language>en</language>
     <lastBuildDate>Mon, 09 Apr 2018 11:25:40 +0800</lastBuildDate>
     <atom:link href="https://xgugeng.github.io/categories/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://xgugeng.github.io/post/indexoutput-lucene-index-output/</link>
       <pubDate>Mon, 09 Apr 2018 11:25:40 +0800</pubDate>
       <guid>https://xgugeng.github.io/post/indexoutput-lucene-index-output/</guid>
-      <description>&lt;p&gt;Immediately following &lt;a href=&#34;https://xgugeng.github.io/post/indexwriter-lucene-index-creation-maintenance/&#34;&gt;
+      <description>&lt;p&gt;Immediately following &lt;a href=&#34;https://www.xgugeng.com/post/indexwriter-lucene-index-creation-maintenance/&#34;&gt;
 Indexwriter: Lucene Index Creation and Maintenance&lt;/a&gt;, &lt;code&gt;IndexOutput&lt;/code&gt;, a random-access output stream. is used for all Lucene index output operations.&lt;/p&gt;</description>
     </item>
     <item>
@@ -49,7 +49,8 @@ Indexwriter: Lucene Index Creation and Maintenance&lt;/a&gt;, &lt;code&gt;IndexO
 &lt;li&gt;A field is a named sequence of &lt;strong&gt;terms&lt;/strong&gt;.&lt;/li&gt;
 &lt;li&gt;A term is a string.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/indexing-process.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/indexing-process.jpg&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;
 &lt;p&gt;In order to index data with Lucene, you must convert it to a stream of plain-text tokens firstly. Based on the stream, the document containing fields will be created. After that, you can call &lt;code&gt;addDocument&lt;/code&gt; method in &lt;code&gt;IndexWriter&lt;/code&gt; class to transmit it to index. During this procedure, analyzer may be used to make the data more suitable for indexing.&lt;/p&gt;</description>
     </item>
     <item>
@@ -60,7 +61,7 @@ Indexwriter: Lucene Index Creation and Maintenance&lt;/a&gt;, &lt;code&gt;IndexO
       <description>&lt;p&gt;The motivation of using Guice lists here: &lt;a href=&#34;https://github.com/google/guice/wiki/Motivation&#34;&gt;Motivation&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;To create bindings, extend &lt;code&gt;AbstractModule&lt;/code&gt; and override its &lt;code&gt;configure&lt;/code&gt; method. In the method body, call &lt;code&gt;bind()&lt;/code&gt; to specify each binding. These methods are type checked so the compiler can report errors if you use the wrong types. Once you&amp;rsquo;ve created your modules, pass them as arguments to &lt;code&gt;Guice.createInjector()&lt;/code&gt; to build an injector.&lt;/p&gt;
 &lt;p&gt;Elasticsearch has a &lt;code&gt;ModulesBuilder&lt;/code&gt; which is responsible for assembling modules.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ModulesBuilder&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;implements&lt;/span&gt; Iterable&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Module&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ModulesBuilder&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;implements&lt;/span&gt; Iterable&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Module&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// container for all Module&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;final&lt;/span&gt; List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Module&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; modules &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ArrayList&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt;();

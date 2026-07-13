@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Data Structure on Guoqing&#39;s second brain</title>
+    <title>Data Structure on XGugeng</title>
     <link>https://xgugeng.github.io/tags/data-structure/</link>
-    <description>Recent content in Data Structure on Guoqing&#39;s second brain</description>
-    <generator>Hugo -- 0.150.0</generator>
+    <description>Recent content in Data Structure on XGugeng</description>
+    <generator>Hugo -- 0.164.0</generator>
     <language>en</language>
     <lastBuildDate>Tue, 20 Nov 2018 20:56:57 +0800</lastBuildDate>
     <atom:link href="https://xgugeng.github.io/tags/data-structure/index.xml" rel="self" type="application/rss+xml" />
@@ -53,7 +53,7 @@
       <pubDate>Mon, 01 Aug 2016 11:45:53 +0800</pubDate>
       <guid>https://xgugeng.github.io/post/java-hashset/</guid>
       <description>&lt;p&gt;For those who has no patience to look through this post, I conclude it in a word: HashSet is backed by HashMap.&lt;/p&gt;
-&lt;p&gt;Set is a collection in which every element is unique. So does the keys in HashMap. It is reasonable to infer that the implementation of HashSet is based on HashMap, so it is. Remember &lt;a href=&#34;https://xgugeng.github.io/post/java-hashmap/#resize&#34;&gt;resize&lt;/a&gt; of HashMap? it makes no guarantees as to the iteration order of the set.&lt;/p&gt;
+&lt;p&gt;Set is a collection in which every element is unique. So does the keys in HashMap. It is reasonable to infer that the implementation of HashSet is based on HashMap, so it is. Remember &lt;a href=&#34;https://www.xgugeng.com/post/java-hashmap/#resize&#34;&gt;resize&lt;/a&gt; of HashMap? it makes no guarantees as to the iteration order of the set.&lt;/p&gt;
 &lt;p&gt;With the help of HashMap, HashSet offers constant time performance for the basic operations, like &lt;code&gt;add&lt;/code&gt;, &lt;code&gt;remove&lt;/code&gt;, &lt;code&gt;contains&lt;/code&gt; and &lt;code&gt;size&lt;/code&gt;. Iterating over this set requires time proportional to the sum of the HashSet instance&amp;rsquo;s size (the number of elements) plus the &amp;ldquo;capacity&amp;rdquo; of the backing HashMap instance (the number of buckets).&lt;/p&gt;</description>
     </item>
     <item>
@@ -62,8 +62,8 @@
       <pubDate>Sun, 12 Jun 2016 12:54:23 +0800</pubDate>
       <guid>https://xgugeng.github.io/post/java-treemap/</guid>
       <description>&lt;p&gt;After joining the workforce, I have coded with various programming languages, like C++, Objective-C, Ruby, Python, Scala, Java, Go, etc. I ask to myself spontaneously, which language am I most skillful at? This question dismay me because I cannot answer it immediately.&lt;/p&gt;
-&lt;p&gt;Since I choice to focus on Big Data, it&amp;rsquo;s pragmatic to equipped with Java and Python, two powerful weapons in this field. Reading the source code of &lt;a href=&#34;https://xgugeng.github.io/en/tags/java.util/&#34;&gt;java.util&lt;/a&gt; is a good start.&lt;/p&gt;
-&lt;p&gt;The leading actor of this post is &lt;code&gt;TreeMap&lt;/code&gt;, a Red-Black tree based &lt;code&gt;NavigableMap&lt;/code&gt; implementation. It has no array underneath, as many of you think. Because &lt;code&gt;TreeMap&lt;/code&gt; inherits directly &lt;code&gt;AbstractMap&lt;/code&gt;, in contrast with &lt;a href=&#34;https://xgugeng.github.io/post/java-linkedhashmap/&#34;&gt;LinkedHashMap&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Since I choice to focus on Big Data, it&amp;rsquo;s pragmatic to equipped with Java and Python, two powerful weapons in this field. Reading the source code of &lt;a href=&#34;https://www.xgugeng.com/en/tags/java.util/&#34;&gt;java.util&lt;/a&gt; is a good start.&lt;/p&gt;
+&lt;p&gt;The leading actor of this post is &lt;code&gt;TreeMap&lt;/code&gt;, a Red-Black tree based &lt;code&gt;NavigableMap&lt;/code&gt; implementation. It has no array underneath, as many of you think. Because &lt;code&gt;TreeMap&lt;/code&gt; inherits directly &lt;code&gt;AbstractMap&lt;/code&gt;, in contrast with &lt;a href=&#34;https://www.xgugeng.com/post/java-linkedhashmap/&#34;&gt;LinkedHashMap&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Performances differ on account of distinctive data structures. This implementation provides guaranteed log(n) time cost for the &lt;code&gt;containsKey&lt;/code&gt;, &lt;code&gt;get&lt;/code&gt;, &lt;code&gt;put&lt;/code&gt; and &lt;code&gt;remove&lt;/code&gt; operations. Now allow me to show you a close look.&lt;/p&gt;</description>
     </item>
     <item>

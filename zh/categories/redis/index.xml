@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Redis on Guoqing&#39;s second brain</title>
+    <title>Redis on XGugeng</title>
     <link>https://xgugeng.github.io/zh/categories/redis/</link>
-    <description>Recent content in Redis on Guoqing&#39;s second brain</description>
-    <generator>Hugo -- 0.150.0</generator>
+    <description>Recent content in Redis on XGugeng</description>
+    <generator>Hugo -- 0.164.0</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 03 Apr 2019 20:11:53 +0800</lastBuildDate>
     <atom:link href="https://xgugeng.github.io/zh/categories/redis/index.xml" rel="self" type="application/rss+xml" />
@@ -15,7 +15,8 @@
       <guid>https://xgugeng.github.io/zh/post/redis-cmd-population-execution/</guid>
       <description>&lt;p&gt;这篇博客想讲一下 Redis 命令的注册、解析和执行。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;本文采用的源码是 Redis 5.0.0&lt;/p&gt;&lt;/blockquote&gt;</description>
+&lt;p&gt;本文采用的源码是 Redis 5.0.0&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     <item>
       <title>Redisson 的布隆过滤器实现</title>
@@ -31,7 +32,8 @@
       <guid>https://xgugeng.github.io/zh/post/redis-sentinel-automatic-failover/</guid>
       <description>&lt;p&gt;Redis 哨兵是 Redis 的高可用实现方案。本节首先会回顾主从复制模式下故障处理可能产生的问题，而后引出高可用的概念，最后重点分析 Redis 哨兵的基本架构、优势，以及是如何实现高可用的。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;本文大部分摘录自：&lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;&gt;Redis开发与运维&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</description>
+&lt;p&gt;本文大部分摘录自：&lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;&gt;Redis开发与运维&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     <item>
       <title>Redis 哨兵: 客户端连接</title>
@@ -42,7 +44,8 @@
 &lt;p&gt;Redis Sentinel(哨兵) 就是为了解决这些问题而生的，它是 Redis 2.8 引入的高可用实现方案，包括故障发现、故障转移、配置中心、客户端通知等。&lt;/p&gt;
 &lt;p&gt;本文的关注点是哨兵下的客户端连接问题。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;本文大部分摘录自：&lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;&gt;Redis开发与运维&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</description>
+&lt;p&gt;本文大部分摘录自：&lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;&gt;Redis开发与运维&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     <item>
       <title>Redis 全量同步解析</title>
@@ -52,7 +55,8 @@
       <description>&lt;p&gt;复制功能是高可用 Redis 的基础，同时也是 Redis 日常运维的常见问题。深刻理解复制的工作原理与使用姿势对我们的日常开发和运维都非常重要。&lt;/p&gt;
 &lt;p&gt;本文从同步的过程讲起，重点是全量同步的可能问题和运维方法。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;本文大部分摘录自：&lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;&gt;Redis开发与运维&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</description>
+&lt;p&gt;本文大部分摘录自：&lt;a href=&#34;https://book.douban.com/subject/26971561/&#34;&gt;Redis开发与运维&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     <item>
       <title>页错误引发的 Redis 延迟</title>
@@ -85,7 +89,7 @@ Id:900900 When:(1/1/2019 6:16:08 PM) Duration:29050us Command:(get PRIVATE ARG)
       <pubDate>Wed, 26 Dec 2018 10:26:19 +0800</pubDate>
       <guid>https://xgugeng.github.io/zh/post/redis-ssl/</guid>
       <description>&lt;p&gt;这篇博客的起源是一位内部用户询问，Azure Cache for Redis 有没有 &lt;em&gt;.pem&lt;/em&gt; 或者 &lt;em&gt;.cem&lt;/em&gt; 的证书，然后可以在客户端指定它：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; redis
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; redis
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    conn &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; redis&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;StrictRedis(
@@ -117,7 +121,8 @@ Id:900900 When:(1/1/2019 6:16:08 PM) Duration:29050us Command:(get PRIVATE ARG)
       <pubDate>Wed, 28 Nov 2018 14:25:25 +0800</pubDate>
       <guid>https://xgugeng.github.io/zh/post/100-server-load-because-of-redis-sync/</guid>
       <description>&lt;p&gt;今天一早，就有客户来报说机器负载 100%。从日志中看到的现象是，Slave 向 Master 请求部分同步，Master 却要求 Slave 做个全套：全量同步，因为 Slave 发过来的 replication ID 太老了。Slave 说好吧，整个全的，然后消费成功。接着，Slave 还想来个部分同步，上述的过程连续发生 3 次。Master 有点强买强卖的意思了，这样一来两边的 CPU 不干了，这不是加班嘛！二者之间的网络带宽也是突增，从下图可以看出：&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/redis-network-bandwidth-spiking.png&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/redis-network-bandwidth-spiking.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

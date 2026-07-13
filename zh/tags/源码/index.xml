@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>源码 on Guoqing&#39;s second brain</title>
+    <title>源码 on XGugeng</title>
     <link>https://xgugeng.github.io/zh/tags/%E6%BA%90%E7%A0%81/</link>
-    <description>Recent content in 源码 on Guoqing&#39;s second brain</description>
-    <generator>Hugo -- 0.150.0</generator>
+    <description>Recent content in 源码 on XGugeng</description>
+    <generator>Hugo -- 0.164.0</generator>
     <language>zh</language>
     <lastBuildDate>Sun, 16 Feb 2020 11:05:45 +0800</lastBuildDate>
     <atom:link href="https://xgugeng.github.io/zh/tags/%E6%BA%90%E7%A0%81/index.xml" rel="self" type="application/rss+xml" />
@@ -35,7 +35,7 @@
       <guid>https://xgugeng.github.io/zh/post/python-threading/</guid>
       <description>&lt;p&gt;今天看了 &lt;a href=&#34;https://book.douban.com/subject/3117898/&#34;&gt;《Python源码剖析》&lt;/a&gt; 中多线程的章节，看完头都秃了。但还是感觉自己没有吸收多少，知识一股脑倾泻下来，然后匆匆流过。在两个番茄钟的间隙，我全景思考了下，还是要从上往下入手，先将 threading 模块梳理清楚。其次是带着问题来阅读源码，跟着作者的思路容易迷，而问题最好是从 threading 的使用姿势中来。&lt;/p&gt;
 &lt;p&gt;来看廖雪峰老师&lt;a href=&#34;https://www.liaoxuefeng.com/wiki/1016959663602400/1017629247922688&#34;&gt;Python教程&lt;/a&gt;中的例子：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; time&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; threading
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; time&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; threading
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;loop&lt;/span&gt;():
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;thread &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; is running...&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; threading&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;current_thread()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;name)
@@ -69,7 +69,8 @@
       <guid>https://xgugeng.github.io/zh/post/redis-cmd-population-execution/</guid>
       <description>&lt;p&gt;这篇博客想讲一下 Redis 命令的注册、解析和执行。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;本文采用的源码是 Redis 5.0.0&lt;/p&gt;&lt;/blockquote&gt;</description>
+&lt;p&gt;本文采用的源码是 Redis 5.0.0&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     <item>
       <title>Redisson 的布隆过滤器实现</title>
@@ -84,7 +85,7 @@
       <pubDate>Wed, 26 Dec 2018 10:26:19 +0800</pubDate>
       <guid>https://xgugeng.github.io/zh/post/redis-ssl/</guid>
       <description>&lt;p&gt;这篇博客的起源是一位内部用户询问，Azure Cache for Redis 有没有 &lt;em&gt;.pem&lt;/em&gt; 或者 &lt;em&gt;.cem&lt;/em&gt; 的证书，然后可以在客户端指定它：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; redis
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; redis
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    conn &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; redis&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;StrictRedis(

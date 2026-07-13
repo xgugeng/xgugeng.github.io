@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Mind Map on Guoqing&#39;s second brain</title>
+    <title>Mind Map on XGugeng</title>
     <link>https://xgugeng.github.io/tags/mind-map/</link>
-    <description>Recent content in Mind Map on Guoqing&#39;s second brain</description>
-    <generator>Hugo -- 0.150.0</generator>
+    <description>Recent content in Mind Map on XGugeng</description>
+    <generator>Hugo -- 0.164.0</generator>
     <language>en</language>
     <lastBuildDate>Mon, 03 Sep 2018 20:52:46 +0800</lastBuildDate>
     <atom:link href="https://xgugeng.github.io/tags/mind-map/index.xml" rel="self" type="application/rss+xml" />
@@ -14,7 +14,8 @@
       <pubDate>Mon, 03 Sep 2018 20:52:46 +0800</pubDate>
       <guid>https://xgugeng.github.io/post/a-few-things-about-spark/</guid>
       <description>&lt;p&gt;This post concludes a global view of Spark using a mind map, in which I try to enumerate what I know about it. A graph for the relationship of terminologies like Job, Stage is illustrated firstly so that you would be confused.&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/spark-terminology-relationship.png&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/spark-terminology-relationship.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;</description>
     </item>
     <item>
       <title>Consensus in Distributed System</title>
@@ -31,7 +32,8 @@
 &lt;li&gt;Load balancing&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;A visual diagram of this problem unfolds in the following. Each process &lt;strong&gt;p&lt;!-- raw HTML omitted --&gt;k&lt;!-- raw HTML omitted --&gt;&lt;/strong&gt; with an input value &lt;strong&gt;u&lt;!-- raw HTML omitted --&gt;k&lt;!-- raw HTML omitted --&gt;&lt;/strong&gt; runs a program to exchange its value. Finally the output of all non-faulty processes become identical. It is permissive that one or more processes may fail at any time, but the output &lt;strong&gt;v&lt;/strong&gt; must be equal to the value of at least one process.&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/distributed-consensus-problem.png&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/distributed-consensus-problem.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;</description>
     </item>
     <item>
       <title>A Quick Retrospect of Design Pattern</title>
@@ -39,7 +41,8 @@
       <pubDate>Mon, 13 Aug 2018 15:24:26 +0800</pubDate>
       <guid>https://xgugeng.github.io/post/retrospect-design-pattern/</guid>
       <description>&lt;p&gt;This post summarizes some design patterns I used in daily work or learnt from books.&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/design-pattern-overview.png&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/design-pattern-overview.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;</description>
     </item>
     <item>
       <title>Refactor: Why, What, When and How</title>
@@ -78,7 +81,8 @@
       <pubDate>Sun, 06 Nov 2016 21:20:07 +0800</pubDate>
       <guid>https://xgugeng.github.io/post/redis-mind-map/</guid>
       <description>&lt;p&gt;This post includes a few mind maps for Redis ranging from quick start to implementation.&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/redis-quick-start.png&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://xgugeng.github.io/images/redis-quick-start.png&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

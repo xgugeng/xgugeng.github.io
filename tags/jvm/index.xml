@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>JVM on Guoqing&#39;s second brain</title>
+    <title>JVM on XGugeng</title>
     <link>https://xgugeng.github.io/tags/jvm/</link>
-    <description>Recent content in JVM on Guoqing&#39;s second brain</description>
-    <generator>Hugo -- 0.150.0</generator>
+    <description>Recent content in JVM on XGugeng</description>
+    <generator>Hugo -- 0.164.0</generator>
     <language>en</language>
     <lastBuildDate>Wed, 31 Oct 2018 14:25:16 +0800</lastBuildDate>
     <atom:link href="https://xgugeng.github.io/tags/jvm/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +17,8 @@
 &lt;p&gt;This post starts with concurrent mode failure and explains the whole steps of one CMS cycle.&lt;/p&gt;
 &lt;p&gt;In a nutshell,&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The message &amp;ldquo;concurrent mode failure&amp;rdquo; signifies that the concurrent collection of the Old Generation did not finish before the Old Generation became full.&lt;/p&gt;&lt;/blockquote&gt;</description>
+&lt;p&gt;The message &amp;ldquo;concurrent mode failure&amp;rdquo; signifies that the concurrent collection of the Old Generation did not finish before the Old Generation became full.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     <item>
       <title>JVM Series: class File Format</title>
@@ -39,7 +40,7 @@
       <link>https://xgugeng.github.io/post/jvm-series-oop-klass/</link>
       <pubDate>Tue, 10 Apr 2018 14:46:26 +0800</pubDate>
       <guid>https://xgugeng.github.io/post/jvm-series-oop-klass/</guid>
-      <description>&lt;p&gt;As a part of &lt;a href=&#34;https://xgugeng.github.io/en/tags/jvm/&#34;&gt;JVM Series&lt;/a&gt;, this post tries to explore the object model in JVM.&lt;/p&gt;</description>
+      <description>&lt;p&gt;As a part of &lt;a href=&#34;https://www.xgugeng.com/en/tags/jvm/&#34;&gt;JVM Series&lt;/a&gt;, this post tries to explore the object model in JVM.&lt;/p&gt;</description>
     </item>
     <item>
       <title>JVM Series: Overview</title>
@@ -47,7 +48,7 @@
       <pubDate>Tue, 09 Jan 2018 20:56:47 +0800</pubDate>
       <guid>https://xgugeng.github.io/post/jvm-series-overview/</guid>
       <description>&lt;p&gt;When executing a java program, you may simply input in terminal, like:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;javac HelloWorld.java
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;javac HelloWorld.java
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;java HelloWorld
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Behind these commands, JVM, as the cornerstone of the Java platform, does a lot of work, which are what this blog attempts to figure out. Today, a new series about JVM will be started, and this is the first episode.&lt;/p&gt;</description>
     </item>
